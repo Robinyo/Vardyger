@@ -1,5 +1,6 @@
 'use strict';
 
+var fs = require('fs');
 var status = require('./httpResponseStatusCodes');
 
 // Post
@@ -43,18 +44,29 @@ function putPost(req, res) {
       break;
 
     case status.BAD_REQUEST:
-    case status.NOT_FOUND:
+    // case status.NOT_FOUND:
     default:
-      res.status(status.BAD_REQUEST).send('{ "code": "400", "message": "Something went wrong :(" }');
+      res.status(status.BAD_REQUEST).end('{ "code": "400", "message": "Something went wrong :(" }');
       break;
   }
 }
 
 function getPosts(req, res) {
+  serveStaticFile(res, '/posts.json');
+}
+
+function serveStaticFile(res, path) {
 
   res.type('application/json');
-  res.status(status.BAD_REQUEST).send('{ "code": "400", "message": "Something went wrong :(" }');
 
+  fs.readFile(__dirname + path, function (error, data) {
+    if (error) {
+      console.log(error);
+      res.status(status.INTERNAL_SERVER_ERROR).end('{ "code": "500", "message": "Something went wrong :(" }');
+    } else {
+      res.status(status.OK).send(data);
+    }
+  });
 }
 
 module.exports = {
@@ -62,4 +74,3 @@ module.exports = {
   put: putPost,
   get: getPosts
 }
-

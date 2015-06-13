@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1",
+    "title": "Post 1",
+    "slug": "post-1",
+    "markdown": "# The Vardyger publishing platform :)",
+    "html": "<h1>The Vardyger publishing platform :)</h1>",
+    "featured": false,
+    "page": false,
+    "status": "draft",
+    "locale": "en_GB"
+  },
+  {
+    "id": "2",
+    "title": "Post 2",
+    "slug": "post-2",
+    "markdown": "###Developer Install",
+    "html": "<h3>Developer Install</h3>",
+    "featured": true,
+    "page": false,
+    "status": "draft",
+    "locale": "en_GB"
+  }
+]
