@@ -4,6 +4,8 @@
 
 ![Swagger UI screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-api.png)
 
+Modelled using Swagger 2.0 and the Swagger Editor and built using Express.js 4.0 and Swagger Tools.
+
 ###Developer Install
 
 1. Install Node.js
