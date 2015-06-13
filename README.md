@@ -2,6 +2,8 @@
 
 ##The RESTful API
 
+![Swagger UI screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-api.png)
+
 ###Developer Install
 
 1. Install Node.js
