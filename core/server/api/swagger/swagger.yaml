@@ -1,0 +1,124 @@
+swagger: '2.0'
+info:
+  title: Vardyger API
+  description: The RESTful API for the Vardyger publishing platform modelled using the Swagger Editor.
+  version: '0.0.1'
+host: localhost:10010
+# host: api.vardyger.org
+basePath: /v1
+schemes:
+  - http
+  # - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /posts:
+    x-swagger-router-controller: posts
+    post:
+      description: >
+        Adds a post to the posts collection.
+        </br>Location (in the response header) is used to specify the URI of the newly created resource.
+      operationId: post
+      parameters:
+        - name: post
+          in: body
+          description: The posts contents
+          required: true
+          schema:
+            $ref: '#/definitions/Post'
+      tags:
+        - Posts
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/SuccessResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+  /posts/{id}:
+    x-swagger-router-controller: posts
+    put:
+      description: Updates a post in the posts collection.
+      operationId: put
+      parameters:
+        - name: id
+          in: path
+          description: The posts ID
+          required: true
+          type: string
+        - name: post
+          in: body
+          description: The posts contents
+          required: true
+          schema:
+            $ref: '#/definitions/Post'
+      tags:
+        - Posts
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SuccessResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+definitions:
+  Post:
+    required:
+      - title
+      - markdown
+      - html
+    properties:
+      title:
+        type: string
+        description: The posts title -> My First Blog Post.
+      slug:
+        type: string
+        description: The posts slug -> my-first-post-in-vardyger.
+      markdown:
+        type: string
+        description: The posts Markdown content.
+      html:
+        type: string
+        description: The posts HTML content.
+      image:
+        type: string
+        description: Associate a featured image with the post.
+      featured:
+        type: boolean
+        description: Highlight this blog post.
+      page:
+        type: boolean
+        description: Posts are listed in order from newest to oldest, pages are static and not listed by date.
+      status:
+        type: string
+        description: The posts status -> draft.
+      locale:
+        type: string
+        description: The posts (language and) locale -> en_US.
+      metaTitle:
+        type: string
+        description: Search Engine Optimsed (SEO) post title.
+      metaDescription:
+        type: string
+        description: Search Engine Optimsed (SEO) post description.
+  SuccessResponse:
+    required:
+      - id
+    properties:
+      id:
+        type: string
+  ErrorResponse:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string

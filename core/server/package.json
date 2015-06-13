@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Vardyger API",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.12.4",
+    "express": "^4.12.3",
+    "method-override": "^2.3.3",
+    "morgan": "^1.5.3",
+    "swagger-express-mw": "0.0.x",
+    "swagger-tools": "^0.8.7"
+  },
+  "devDependencies": {
+    "should": "^5.2.0",
+    "supertest": "^0.15.0"
+  }
+}
