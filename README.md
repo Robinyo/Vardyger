@@ -29,3 +29,5 @@
 **Note:** Edit the API (/core/server/api/swagger/swagger.yaml):
 
     swagger project edit
+
+![Swagger UI screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/swagger-editor.png)

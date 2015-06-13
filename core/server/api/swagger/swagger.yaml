@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   title: Vardyger API
-  description: The RESTful API for the Vardyger publishing platform modelled using the Swagger Editor.
+  description: The RESTful API for the Vardyger publishing platform.
   version: '0.0.1'
 host: localhost:10010
 # host: api.vardyger.org
