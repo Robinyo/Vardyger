@@ -39,7 +39,6 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/ErrorResponse'
-
   /post:
     x-swagger-router-controller: posts
     get:
@@ -59,7 +58,6 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/ErrorResponse'
-
   /posts/{id}:
     x-swagger-router-controller: posts
     put:
@@ -92,9 +90,7 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorResponse'
-
 definitions:
-
   Post:
     required:
       - title
@@ -134,14 +130,12 @@ definitions:
       metaDescription:
         type: string
         description: Search Engine Optimsed (SEO) post description.
-
   SuccessResponse:
     required:
       - id
     properties:
       id:
         type: string
-
   ErrorResponse:
     required:
       - code
