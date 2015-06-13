@@ -54,7 +54,3 @@ module.exports = {
   put: put
 }
 
-// cd ~/opt/WebStorm/projects/Vardyger/core/server
-// swagger project start
-// swagger project edit
-
