@@ -14,7 +14,7 @@ consumes:
 produces:
   - application/json
 paths:
-  /posts:
+  /post:
     x-swagger-router-controller: posts
     post:
       description: >
@@ -39,6 +39,27 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/ErrorResponse'
+
+  /post:
+    x-swagger-router-controller: posts
+    get:
+      description: >
+        Returns all the posts in the collection.
+      operationId: get
+      tags:
+        - Posts
+      responses:
+        '200':
+          description: An array of posts
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Post'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+
   /posts/{id}:
     x-swagger-router-controller: posts
     put:
@@ -67,7 +88,13 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+
 definitions:
+
   Post:
     required:
       - title
@@ -107,12 +134,14 @@ definitions:
       metaDescription:
         type: string
         description: Search Engine Optimsed (SEO) post description.
+
   SuccessResponse:
     required:
       - id
     properties:
       id:
         type: string
+
   ErrorResponse:
     required:
       - code

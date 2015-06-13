@@ -6,7 +6,7 @@ var status = require('./httpResponseStatusCodes');
 // Rule: POST must be used to create a new resource in a collection
 // Rule: Location must be used to specify the URI of a newly created resource
 
-function post(req, res) {
+function postPost(req, res) {
 
   var responseCode = status.CREATED;
 
@@ -28,7 +28,7 @@ function post(req, res) {
   }
 }
 
-function put(req, res) {
+function putPost(req, res) {
 
   var responseCode = status.OK;
 
@@ -43,14 +43,23 @@ function put(req, res) {
       break;
 
     case status.BAD_REQUEST:
+    case status.NOT_FOUND:
     default:
       res.status(status.BAD_REQUEST).send('{ "code": "400", "message": "Something went wrong :(" }');
       break;
   }
 }
 
+function getPosts(req, res) {
+
+  res.type('application/json');
+  res.status(status.BAD_REQUEST).send('{ "code": "400", "message": "Something went wrong :(" }');
+
+}
+
 module.exports = {
-  post: post,
-  put: put
+  post: postPost,
+  put: putPost,
+  get: getPosts
 }
 
