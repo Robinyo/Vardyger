@@ -32,4 +32,8 @@ Modelled using Swagger 2.0 and the Swagger Editor and built using Express.js 4.0
 
     swagger project edit
 
-![Swagger UI screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/swagger-editor.png)
+![Swagger Editor screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/swagger-editor.png)
+
+###Copyright & License
+
+Copyright (c) 2015 The Vardyger Foundation - Released under the MIT license.
