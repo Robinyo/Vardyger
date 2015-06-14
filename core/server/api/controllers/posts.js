@@ -52,17 +52,27 @@ function putPost(req, res) {
 }
 
 function getPosts(req, res) {
-  serveStaticFile(res, '/posts.json');
+
+  serveStaticFileSync(res, '/posts.json');
+  // serveStaticFile(res, '/posts.json');
+}
+
+function serveStaticFileSync(res, path) {
+
+  // var obj = JSON.parse(fs.readFileSync(__dirname + path, 'utf8'));
+  var obj = fs.readFileSync(__dirname + path, 'utf8');
+
+  res.type('application/json');
+  res.status(status.OK).send(obj);
 }
 
 function serveStaticFile(res, path) {
 
   res.type('application/json');
 
-  fs.readFile(__dirname + path, function (error, data) {
+  fs.readFile(__dirname + path, 'utf8', function (error, data) {
     if (error) {
-      console.log(error);
-      res.status(status.INTERNAL_SERVER_ERROR).end('{ "code": "500", "message": "Something went wrong :(" }');
+      res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
     } else {
       res.status(status.OK).send(data);
     }
