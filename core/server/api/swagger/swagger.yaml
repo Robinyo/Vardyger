@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Vardyger API
   description: The RESTful API for the Vardyger publishing platform.
-  version: '0.0.1'
+  version: '1.0.0'
 host: localhost:10010
 # host: api.vardyger.org
 basePath: /v1
@@ -85,6 +85,26 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/ErrorResponse'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+    delete:
+      description: Deletes a post in the posts collection.
+      operationId: delete
+      parameters:
+        - name: id
+          in: path
+          description: The posts ID
+          required: true
+          type: string
+      tags:
+        - Posts
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SuccessResponse'
         '404':
           description: Not Found
           schema:
