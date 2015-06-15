@@ -118,13 +118,13 @@ definitions:
     properties:
       id:
         type: string
-        description: The posts ID.
+        description: The posts unique identifier.
       title:
         type: string
         description: The posts title -> My First Blog Post.
       slug:
         type: string
-        description: The posts slug -> my-first-post-in-vardyger.
+        description: The posts slug -> my-first-blog-post.
       markdown:
         type: string
         description: The posts Markdown content.
