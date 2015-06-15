@@ -31,3 +31,10 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   var port = process.env.PORT || 10010;
   app.listen(port);
 });
+
+// DEBUG=swagger-tools:middleware:* node .
+// https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
+
+// cd ~/opt/WebStorm/projects/Vardyger/core/server
+// swagger project start
+// swagger project edit

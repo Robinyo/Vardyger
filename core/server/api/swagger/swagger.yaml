@@ -20,7 +20,7 @@ paths:
       description: >
         Adds a post to the posts collection.
         </br>Location (in the response header) is used to specify the URI of the newly created resource.
-      operationId: post
+      operationId: addPost
       parameters:
         - name: post
           in: body
@@ -43,7 +43,7 @@ paths:
     get:
       description: >
         Returns all the posts in the collection.
-      operationId: get
+      operationId: findPosts
       tags:
         - Posts
       responses:
@@ -61,7 +61,7 @@ paths:
     x-swagger-router-controller: posts
     put:
       description: Updates a post in the posts collection.
-      operationId: put
+      operationId: deletePost
       parameters:
         - name: id
           in: path
@@ -91,7 +91,7 @@ paths:
             $ref: '#/definitions/ErrorResponse'
     delete:
       description: Deletes a post in the posts collection.
-      operationId: delete
+      operationId: deletePost
       parameters:
         - name: id
           in: path

@@ -6,7 +6,7 @@ var status = require('./http-status-codes');
 // Rule: POST must be used to create a new resource in a collection
 // Rule: Location must be used to specify the URI of a newly created resource
 
-function postPost(req, res) {
+function addPost(req, res) {
 
   var responseCode = status.CREATED;
 
@@ -30,7 +30,7 @@ function postPost(req, res) {
 
 // Rule: GET must be used to retrieve a representation of a resource
 
-function getPosts(req, res) {
+function findPosts(req, res) {
   // serveStaticFileSync(res, '/posts.json');
   serveStaticFile(res, '/posts.json');
 }
@@ -60,7 +60,7 @@ function serveStaticFileSync(res, path) {
 // Rule: PUT must be used to both insert and update a stored resource
 // Rule: PUT must be used to update mutable resources
 
-function putPost(req, res) {
+function updatePost(req, res) {
 
   var responseCode = status.OK;
 
@@ -106,8 +106,10 @@ function deletePost(req, res) {
 }
 
 module.exports = {
-  post: postPost,       // create
-  get: getPosts,        // retrieve
-  put: putPost,         // update
-  delete: deletePost    // delete
+  addPost:        addPost,
+  findPosts:      findPosts,
+  // findPostById:   findPostById,
+  // findPostBySlug: findPostBySlug,
+  updatePost:     updatePost,
+  deletePost:     deletePost
 }
