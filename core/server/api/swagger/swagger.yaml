@@ -145,7 +145,7 @@ definitions:
         description: The posts status -> draft.
       locale:
         type: string
-        description: The posts (language and) locale -> en_US.
+        description: The posts (language and) locale -> en_GB.
       metaTitle:
         type: string
         description: Search Engine Optimsed (SEO) post title.

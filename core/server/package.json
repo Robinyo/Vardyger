@@ -1,16 +1,38 @@
 {
-  "name": "server",
-  "version": "0.0.1",
-  "private": true,
-  "description": "Vardyger API",
-  "keywords": [],
-  "author": "",
-  "license": "",
-  "main": "app.js",
+  "name": "Vardyger",
+  "version": "1.0.0",
+  "description": "The Vardyger Publishing Platform :)",
+  "author": "The Vardyger Foundation",
+  "homepage": "http://vardyger.org",
+  "keywords": [
+    "vardyger",
+    "express",
+    "mongoose",
+    "mongodb",
+    "passport",
+    "restful",
+    "api",
+    "blog",
+    "cms"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Robinyo/Vardyger.git"
+  },
+  "bugs": "https://github.com/Robinyo/Vardyger/issues",
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "engines": {
+    "node": "~0.12.0",
+    "iojs": "~1.2.0"
+  },
   "dependencies": {
     "body-parser": "^1.12.4",
     "express": "^4.12.3",
-    "method-override": "^2.3.3",
+    "mongoose": "^4.0.5",
     "morgan": "^1.5.3",
     "swagger-express-mw": "0.0.x",
     "swagger-tools": "^0.8.7"
