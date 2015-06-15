@@ -6,6 +6,8 @@
   "homepage": "http://vardyger.org",
   "keywords": [
     "vardyger",
+    "swagger",
+    "swagger-tools",
     "express",
     "mongoose",
     "mongodb",

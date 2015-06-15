@@ -12,8 +12,8 @@ Modelled using Swagger 2.0 and the Swagger Editor and built using Express.js 4.0
 
 1. Install MongoDB
 
-    <pre>brew update</pre>
-    <pre>brew install mongodb</pre>
+    <pre>brew update
+    brew install mongodb</pre>
 
 ###Install Node.js
 
@@ -27,7 +27,8 @@ Modelled using Swagger 2.0 and the Swagger Editor and built using Express.js 4.0
 
 3. Clone the repo
 
-    <pre>https://github.com/Robinyo/Vardyger.git</pre>
+    <pre>https://github.com/Robinyo/Vardyger.git
+    npm init</pre>
 
 4. Run MongoDB
 
