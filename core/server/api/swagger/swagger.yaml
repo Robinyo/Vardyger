@@ -116,6 +116,9 @@ definitions:
       - markdown
       - html
     properties:
+      id:
+        type: string
+        description: The posts unique identifier.
       title:
         type: string
         description: The posts title -> My First Blog Post.

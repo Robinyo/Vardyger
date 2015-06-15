@@ -4,7 +4,6 @@
  * Module dependencies.
  */
 
-var fs = require('fs');
 var mongoose = require('mongoose');
 var status = require('./http-status-codes');
 
@@ -23,9 +22,10 @@ function addPost(req, res) {
   res.type('application/json');
 
   model.save(function (error) {
-    if (!error) {
+    if (! error) {
       res.location('/posts/' + model._id);
-      res.status(status.CREATED).send('{ "id": "' + model._id + '" }');
+      // res.status(status.CREATED).send('{ "id": "' + model._id + '" }');
+      res.status(status.CREATED).json({ id: model._id });
     } else {
       res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
     }
@@ -36,30 +36,31 @@ function addPost(req, res) {
 // Rule: GET must be used to retrieve a representation of a resource
 
 function findPosts(req, res) {
-  // serveStaticFileSync(res, '/posts.json');
-  serveStaticFile(res, '/posts.json');
-}
 
-function serveStaticFile(res, path) {
+  var filteredQuery = {};
 
-  res.type('application/json');
-
-  fs.readFile(__dirname + path, 'utf8', function (error, data) {
-    if (error) {
-      res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
+  Post.find(filteredQuery, function (error, posts) {
+    if (! error) {
+      res.status(status.OK).json(posts.map(function(a){
+        return {
+          id: a._id,
+          title: a.title,
+          slug: a.slug,
+          markdown: a.markdown,
+          html: a.html,
+          image: a.image,
+          featured: a.featured,
+          page: a.page,
+          state: a.state,
+          locale: a.locale,
+          metaTitle: a.metaTitle,
+          metaDescription: a.metaDescription
+        }
+      }));
     } else {
-      res.status(status.OK).send(JSON.parse(data));
+      res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
     }
   });
-}
-
-function serveStaticFileSync(res, path) {
-
-  // var obj = fs.readFileSync(__dirname + path, 'utf8');
-  var obj = JSON.parse(fs.readFileSync(__dirname + path, 'utf8'));
-
-  res.type('application/json');
-  res.status(status.OK).send(obj);
 }
 
 // PUT /posts/{id}
@@ -120,3 +121,34 @@ module.exports = {
   updatePost:     updatePost,
   deletePost:     deletePost
 }
+
+/*
+
+var fs = require('fs');
+
+// serveStaticFileSync(res, '/posts.json');
+// serveStaticFile(res, '/posts.json');
+
+function serveStaticFile(res, path) {
+
+  res.type('application/json');
+
+  fs.readFile(__dirname + path, 'utf8', function (error, data) {
+    if (error) {
+      res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
+    } else {
+      res.status(status.OK).send(JSON.parse(data));
+    }
+  });
+}
+
+function serveStaticFileSync(res, path) {
+
+  // var obj = fs.readFileSync(__dirname + path, 'utf8');
+  var obj = JSON.parse(fs.readFileSync(__dirname + path, 'utf8'));
+
+  res.type('application/json');
+  res.status(status.OK).send(obj);
+}
+
+*/
