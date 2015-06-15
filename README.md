@@ -27,18 +27,21 @@ Modelled using Swagger 2.0 and the Swagger Editor and built using Express.js 4.0
 
 3. Clone the repo
 
-    <pre>https://github.com/Robinyo/Vardyger.git
-    npm init</pre>
+    <pre>https://github.com/Robinyo/Vardyger.git</pre>
+
+4. Install the project's dependencies (as per /core/server/package.json)
+
+    <pre>npm init</pre>
 
 4. Run MongoDB
 
     <pre>ulimit -n 1024 && mongod --config /usr/local/etc/mongod.conf</pre>
 
-5. Start the API server (in the project's /core/server directory)
+6. Start the API server (in the project's /core/server directory)
 
     <pre>swagger project start</pre>
 
-6. View the Swagger UI:
+7. View the Swagger UI:
 
     <pre>http://localhost:10010/docs</pre>
 
