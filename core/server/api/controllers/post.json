@@ -1,0 +1,13 @@
+{
+  "title": "Post 1",
+  "slug": "post-1",
+  "markdown": "# The Vardyger publishing platform :)",
+  "html": "<h1>The Vardyger publishing platform :)</h1>",
+  "image": "",
+  "featured": false,
+  "page": false,
+  "state": "Draft",
+  "locale": "en_GB",
+  "metaTitle": "The SEO Title",
+  "metaDescription": "The SEO Description"
+}

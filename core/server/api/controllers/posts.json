@@ -7,7 +7,7 @@
     "html": "<h1>The Vardyger publishing platform :)</h1>",
     "featured": false,
     "page": false,
-    "status": "draft",
+    "state": "Draft",
     "locale": "en_GB"
   },
   {
@@ -18,7 +18,7 @@
     "html": "<h3>Developer Install</h3>",
     "featured": true,
     "page": false,
-    "status": "draft",
+    "state": "Draft",
     "locale": "en_GB"
   }
 ]

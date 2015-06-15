@@ -35,8 +35,8 @@ paths:
           description: Created
           schema:
             $ref: '#/definitions/SuccessResponse'
-        '400':
-          description: Bad Request
+        '500':
+          description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'
     x-swagger-router-controller: posts
@@ -116,9 +116,6 @@ definitions:
       - markdown
       - html
     properties:
-      id:
-        type: string
-        description: The posts unique identifier.
       title:
         type: string
         description: The posts title -> My First Blog Post.
@@ -140,7 +137,7 @@ definitions:
       page:
         type: boolean
         description: Posts are listed in order from newest to oldest, pages are static and not listed by date.
-      status:
+      state:
         type: string
         description: The posts status -> draft.
       locale:

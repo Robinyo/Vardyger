@@ -6,7 +6,16 @@
 
 Modelled using Swagger 2.0 and the Swagger Editor and built using Express.js 4.0 and Swagger Tools.
 
-###Developer Install
+##Developer Install
+
+###Install MongoDB
+
+1. Install MongoDB
+
+    <pre>brew update</pre>
+    <pre>brew install mongodb</pre>
+
+###Install Node.js
 
 1. Install Node.js
 
@@ -20,11 +29,15 @@ Modelled using Swagger 2.0 and the Swagger Editor and built using Express.js 4.0
 
     <pre>https://github.com/Robinyo/Vardyger.git</pre>
 
-4. Start the API server (in the project's /core/server directory)
+4. Run MongoDB
+
+    <pre>ulimit -n 1024 && mongod --config /usr/local/etc/mongod.conf</pre>
+
+5. Start the API server (in the project's /core/server directory)
 
     <pre>swagger project start</pre>
 
-5. View the Swagger UI:
+6. View the Swagger UI:
 
     <pre>http://localhost:10010/docs</pre>
 
@@ -34,6 +47,6 @@ Modelled using Swagger 2.0 and the Swagger Editor and built using Express.js 4.0
 
 ![Swagger Editor screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/swagger-editor.png)
 
-###Copyright & License
+####Copyright & License
 
 Copyright (c) 2015 The Vardyger Foundation - Released under the MIT license.

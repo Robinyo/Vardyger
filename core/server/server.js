@@ -55,12 +55,28 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
 
 module.exports = app;
 
-// DEBUG=swagger-tools:middleware:* node .
-// https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
+/*
 
-// cd ~/opt/WebStorm/projects/Vardyger/core/server
-// swagger project start
-// swagger project edit
-// http://localhost:10010/docs
+ // DEBUG=swagger-tools:middleware:* node .
+ // https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
 
-// ulimit -n 1024 && mongod --config /usr/local/etc/mongod.conf
+ // cd ~/opt/WebStorm/projects/Vardyger/core/server
+ // swagger project start
+ // swagger project edit
+ // http://localhost:10010/docs
+
+ulimit -n 1024 && mongod --config /usr/local/etc/mongod.conf
+
+...
+
+mongo
+show dbs
+use vardyger-dev
+show collections
+
+db.posts.find()
+db.posts.drop()
+
+exit
+
+*/
