@@ -17,14 +17,11 @@ function addPost(req, res) {
 
   var model = new Post(req.body);
 
-  // console.log(JSON.stringify(model));
-
   res.type('application/json');
 
   model.save(function (error) {
     if (! error) {
       res.location('/posts/' + model._id);
-      // res.status(status.CREATED).send('{ "id": "' + model._id + '" }');
       res.status(status.CREATED).json({ id: model._id });
     } else {
       res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
