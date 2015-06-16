@@ -86,9 +86,7 @@ function updatePost(req, res) {
 
   res.type('application/json');
 
-  if (undefined === req.params.id || null ===  req.params.id) {
-    console.log('req.params.id: ' + req.params.id);
-  }
+  console.log('req.params.id: ' + req.params.id);
 
   Post.findById(req.params.id)
     .exec(function (error, model) {
