@@ -45,6 +45,12 @@ function findPosts(req, res) {
 
   Post.find(filteredQuery, function (error, posts) {
     if (! error) {
+
+      if (null === posts || undefined === posts)
+      {
+        return res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+      }
+
       res.status(status.OK).json(posts.map(function(a){
         return {
           id: a._id,
@@ -61,6 +67,7 @@ function findPosts(req, res) {
           metaDescription: a.metaDescription
         }
       }));
+
     } else {
       res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
     }
@@ -69,6 +76,46 @@ function findPosts(req, res) {
 
 function findPostById(req, res) {
 
+  var id = req.swagger.params.id.value;  // req.params.id
+
+  // console.log('id: ' + req.swagger.params.id.value);
+
+  res.type('application/json');
+
+  Post.findById(id)
+    .exec(function (error, model) {
+      if (! error) {
+
+        if (null === model || undefined === model)
+        {
+          return res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+        }
+
+        var original = {};
+        console.log('original: ' + JSON.stringify(original));
+        var extended = extend(original, {
+          id: model._id,
+          title: model.title,
+          slug: model.slug,
+          markdown: model.markdown,
+          html: model.html,
+          image: model.image,
+          featured: model.featured,
+          page: model.page,
+          state: model.state,
+          locale: model.locale,
+          metaTitle: model.metaTitle,
+          metaDescription: model.metaDescription
+        });
+
+        console.log('extended: ' + JSON.stringify(extended));
+
+        res.status(status.OK).json(extended);
+
+      } else {
+        res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+      }
+    });
 }
 
 function findPostBySlug(req, res) {
