@@ -31,11 +31,11 @@ paths:
       tags:
         - Posts
       responses:
-        '201':
+        201:
           description: Created
           schema:
             $ref: '#/definitions/SuccessResponse'
-        '500':
+        500:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'
@@ -195,6 +195,6 @@ definitions:
       - message
     properties:
       code:
-        type: string
+        type: integer
       message:
         type: string

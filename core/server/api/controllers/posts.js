@@ -20,15 +20,40 @@ function addPost(req, res) {
 
   res.type('application/json');
 
-  model.save(function (error) {
+  model.save(function(error) {
     if (! error) {
-      res.location('/posts/' + model._id);
-      // res.status(status.CREATED).json({ id: model._id });
-      res.status(status.CREATED).send('{ "id": "' + model._id + '" }');
+      returnId(res, status.CREATED, model._id) ;
     } else {
-      res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
+      returnError(res, status.INTERNAL_SERVER_ERROR);
     }
   });
+}
+
+function returnId(res, statusCode, objectId) {
+  res.location('/posts/' + objectId);
+  return res.status(statusCode).send(JSON.stringify({ id: objectId }));
+}
+
+function returnError(res, statusCode) {
+
+  var errorMessage = 'Something went wrong :(';
+
+  switch(statusCode) {
+
+    case status.BAD_REQUEST:
+      errorMessage = 'Bad request';
+      break;
+
+    case status.NOT_FOUND:
+      errorMessage = 'Not found';
+      break;
+
+    case status.INTERNAL_SERVER_ERROR:
+    default:
+      break;
+  }
+
+  return res.status(statusCode).send(JSON.stringify({ code: statusCode, message: errorMessage }));
 }
 
 // GET /posts
@@ -43,7 +68,7 @@ function findPosts(req, res) {
 
   res.type('application/json');
 
-  Post.find(filteredQuery, function (error, posts) {
+  Post.find(filteredQuery, function(error, posts) {
     if (! error) {
 
       if (null === posts || undefined === posts)
@@ -83,7 +108,7 @@ function findPostById(req, res) {
   res.type('application/json');
 
   Post.findById(id)
-    .exec(function (error, model) {
+    .exec(function(error, model) {
       if (! error) {
 
         if (null === model || undefined === model)
@@ -150,7 +175,7 @@ function updatePost(req, res) {
   res.type('application/json');
 
   Post.findById(id)
-    .exec(function (error, model) {
+    .exec(function(error, model) {
       if (! error) {
 
         if (null === model || undefined === model)
@@ -162,7 +187,7 @@ function updatePost(req, res) {
         model = extend(model, body);
         // console.log(JSON.stringify(model));
 
-        model.save(function (error) {
+        model.save(function(error) {
           if (! error) {
             res.location('/posts/' + model._id);
             res.status(status.OK).json({ id: model._id });
@@ -187,7 +212,7 @@ function deletePost(req, res) {
 
   res.type('application/json');
 
-  Post.findByIdAndRemove(id, function (error) {
+  Post.findByIdAndRemove(id, function(error) {
     if (! error) {
       res.status(status.OK).json({ id: id });
     } else {
