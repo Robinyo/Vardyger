@@ -4,11 +4,16 @@
  * Module dependencies.
  */
 
-var extend = require('util')._extend;
+var util = require('util');  // console.log(util.inspect(anyObject));
+var extend = util._extend;
 var mongoose = require('mongoose');
-var status = require('./http-status-codes');
+var status = require('../../utils/http-status-codes');
 
 var Post = mongoose.model('Post');
+
+// const LOCATION = '/posts/';
+var LOCATION = '/posts/';
+var APPLICATION_JSON = 'application/json';
 
 // POST /posts
 // Rule: POST must be used to create a new resource in a collection
@@ -18,11 +23,11 @@ function addPost(req, res) {
 
   var model = new Post(req.body);
 
-  res.type('application/json');
+  res.type(APPLICATION_JSON);
 
   model.save(function(error) {
     if (! error) {
-      returnId(res, status.CREATED, model._id) ;
+      returnId(res, status.CREATED, model._id);
     } else {
       returnError(res, status.INTERNAL_SERVER_ERROR);
     }
@@ -39,7 +44,7 @@ function findPosts(req, res) {
 
   var filteredQuery = {};
 
-  res.type('application/json');
+  res.type(APPLICATION_JSON);
 
   Post.find(filteredQuery, function(error, posts) {
     if (! error) {
@@ -80,11 +85,13 @@ function findPosts(req, res) {
 
 function findPostById(req, res) {
 
-  var id = req.swagger.params.id.value;  // req.params.id
+  // Note: req.swagger.params.id.value not req.params.id
+  // See: https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
+  var id = req.swagger.params.id.value;
 
-  // console.log('id: ' + req.swagger.params.id.value);
+  // console.log('id: ' + id);
 
-  res.type('application/json');
+  res.type(APPLICATION_JSON);
 
   Post.findById(id)
     .exec(function(error, model) {
@@ -127,15 +134,21 @@ function findPostBySlug(req, res) {
 
 function updatePost(req, res) {
 
-  var id = req.swagger.params.id.value;  // req.params.id
+  // Note: req.swagger.params.id.value not req.params.id
+  // See: https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
+  var id = req.swagger.params.id.value;
+
+  // console.log('id: ' + id);
+
   var body = req.body;
 
+  // console.log(util.inspect(body));
+
   delete body.id;
+  
+  // console.log(util.inspect(body));
 
-  // console.log('id: ' + req.swagger.params.id.value);
-  // console.log('body: ' + JSON.stringify(body));
-
-  res.type('application/json');
+  res.type(APPLICATION_JSON);
 
   Post.findById(id)
     .exec(function(error, model) {
@@ -146,9 +159,9 @@ function updatePost(req, res) {
           returnError(res, status.NOT_FOUND);
         }
 
-        // console.log(JSON.stringify(model));
+        // console.log(util.inspect(model));
         model = extend(model, body);
-        // console.log(JSON.stringify(model));
+        // console.log(util.inspect(model));
 
         model.save(function(error) {
           if (! error) {
@@ -168,15 +181,17 @@ function updatePost(req, res) {
 
 function deletePost(req, res) {
 
-  var id = req.swagger.params.id.value;  // req.params.id
+  // Note: req.swagger.params.id.value not req.params.id
+  // See: https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
+  var id = req.swagger.params.id.value;
 
-  // console.log('id: ' + req.swagger.params.id.value);
+  // console.log('id: ' + id);
 
-  res.type('application/json');
+  res.type(APPLICATION_JSON);
 
   Post.findByIdAndRemove(id, function(error) {
     if (! error) {
-      return res.status(status.OK).json({ id: id });
+      returnId(res, status.OK, id);
     } else {
       returnError(res, status.INTERNAL_SERVER_ERROR);
     }
@@ -184,7 +199,7 @@ function deletePost(req, res) {
 }
 
 function returnId(res, statusCode, objectId) {
-  res.location('/posts/' + objectId);
+  res.location(LOCATION + objectId);
   return res.status(statusCode).send(JSON.stringify({ id: objectId }));
 }
 
@@ -214,7 +229,7 @@ module.exports = {
   addPost:        addPost,
   findPosts:      findPosts,
   findPostById:   findPostById,
-  findPostBySlug: findPostBySlug,
+  // findPostBySlug: findPostBySlug,
   updatePost:     updatePost,
   deletePost:     deletePost
 }
