@@ -29,33 +29,6 @@ function addPost(req, res) {
   });
 }
 
-function returnId(res, statusCode, objectId) {
-  res.location('/posts/' + objectId);
-  return res.status(statusCode).send(JSON.stringify({ id: objectId }));
-}
-
-function returnError(res, statusCode) {
-
-  var errorMessage = 'Something went wrong :(';
-
-  switch(statusCode) {
-
-    case status.BAD_REQUEST:
-      errorMessage = 'Bad request';
-      break;
-
-    case status.NOT_FOUND:
-      errorMessage = 'Not found';
-      break;
-
-    case status.INTERNAL_SERVER_ERROR:
-    default:
-      break;
-  }
-
-  return res.status(statusCode).send(JSON.stringify({ code: statusCode, message: errorMessage }));
-}
-
 // GET /posts
 // Rule: GET must be used to retrieve a representation of a resource
 // Note: When we return the array of posts, we don’t simply return the model as returned from the database.
@@ -73,7 +46,7 @@ function findPosts(req, res) {
 
       if (null === posts || undefined === posts)
       {
-        return res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+        returnError(res, status.NOT_FOUND);
       }
 
       res.status(status.OK).json(posts.map(function(a){
@@ -94,10 +67,16 @@ function findPosts(req, res) {
       }));
 
     } else {
-      res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
+      returnError(res, status.INTERNAL_SERVER_ERROR);
     }
   });
 }
+
+// GET /posts/{id}
+// Rule: GET must be used to retrieve a representation of a resource
+// Note: When we return the array of posts, we don’t simply return the model as returned from the database.
+// That would expose internal implementation details. Instead, we pick the information we need and construct a
+// new object to return.
 
 function findPostById(req, res) {
 
@@ -113,43 +92,27 @@ function findPostById(req, res) {
 
         if (null === model || undefined === model)
         {
-          return res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+          returnError(res, status.NOT_FOUND);
         }
 
-        /*
-
-        var original = {};
-        console.log('original: ' + JSON.stringify(original));
-        var extended = extend(original, model);
-        console.log('extended: ' + JSON.stringify(extended));
-        delete extended._id;
-        console.log('extended: ' + JSON.stringify(extended));
-
-        */
-
-        var original = {};
-        console.log('original: ' + JSON.stringify(original));
-        var extended = extend(original, {
-          id: model._id,
-          title: model.title,
-          slug: model.slug,
-          markdown: model.markdown,
-          html: model.html,
-          image: model.image,
-          featured: model.featured,
-          page: model.page,
-          state: model.state,
-          locale: model.locale,
-          metaTitle: model.metaTitle,
-          metaDescription: model.metaDescription
-        });
-
-        console.log('extended: ' + JSON.stringify(extended));
-
-        res.status(status.OK).json(extended);
+        return res.status(status.OK).send(JSON.stringify(
+          {
+            id: model._id,
+            title: model.title,
+            slug: model.slug,
+            markdown: model.markdown,
+            html: model.html,
+            image: model.image,
+            featured: model.featured,
+            page: model.page,
+            state: model.state,
+            locale: model.locale,
+            metaTitle: model.metaTitle,
+            metaDescription: model.metaDescription
+          }));
 
       } else {
-        res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+        returnError(res, status.NOT_FOUND);
       }
     });
 }
@@ -180,7 +143,7 @@ function updatePost(req, res) {
 
         if (null === model || undefined === model)
         {
-          return res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+          returnError(res, status.NOT_FOUND);
         }
 
         // console.log(JSON.stringify(model));
@@ -189,14 +152,13 @@ function updatePost(req, res) {
 
         model.save(function(error) {
           if (! error) {
-            res.location('/posts/' + model._id);
-            res.status(status.OK).json({ id: model._id });
+            returnId(res, status.OK, model._id) ;
           } else {
-            res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
+            returnError(res, status.INTERNAL_SERVER_ERROR);
           }
         });
       } else {
-        res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+        returnError(res, status.NOT_FOUND);
       }
     });
 }
@@ -214,11 +176,38 @@ function deletePost(req, res) {
 
   Post.findByIdAndRemove(id, function(error) {
     if (! error) {
-      res.status(status.OK).json({ id: id });
+      return res.status(status.OK).json({ id: id });
     } else {
-      res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
+      returnError(res, status.INTERNAL_SERVER_ERROR);
     }
   });
+}
+
+function returnId(res, statusCode, objectId) {
+  res.location('/posts/' + objectId);
+  return res.status(statusCode).send(JSON.stringify({ id: objectId }));
+}
+
+function returnError(res, statusCode) {
+
+  var errorMessage = 'Something went wrong :(';
+
+  switch(statusCode) {
+
+    case status.BAD_REQUEST:
+      errorMessage = 'Bad request';
+      break;
+
+    case status.NOT_FOUND:
+      errorMessage = 'Resource not found';
+      break;
+
+    case status.INTERNAL_SERVER_ERROR:
+    default:
+      break;
+  }
+
+  return res.status(statusCode).send(JSON.stringify({ code: statusCode, message: errorMessage }));
 }
 
 module.exports = {
