@@ -68,7 +68,11 @@ function findPosts(req, res) {
 }
 
 function findPostById(req, res) {
-  
+
+}
+
+function findPostBySlug(req, res) {
+
 }
 
 // PUT /posts/{id}
@@ -77,10 +81,13 @@ function findPostById(req, res) {
 
 function updatePost(req, res) {
 
-  // console.log('req.params.id: ' + req.params.id);
-  // console.log('req.swagger.params.id.value: ' + req.swagger.params.id.value);
+  var id = req.swagger.params.id.value;  // req.params.id
+  var body = req.body;
 
-  var id = req.swagger.params.id.value;
+  delete body.id;
+
+  // console.log('id: ' + req.swagger.params.id.value);
+  // console.log('body: ' + JSON.stringify(body));
 
   res.type('application/json');
 
@@ -88,15 +95,23 @@ function updatePost(req, res) {
     .exec(function (error, model) {
       if (! error) {
 
-        if (null === model)
+        if (null === model || undefined === model)
         {
           return res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
         }
 
-        res.location('/posts/' + model._id);
-        res.status(status.OK).json({ id: model._id });
-        // res.status(status.OK).send('{ "id": "' + model._id + '" }');
+        // console.log(JSON.stringify(model));
+        model = extend(model, body);
+        // console.log(JSON.stringify(model));
 
+        model.save(function (error) {
+          if (! error) {
+            res.location('/posts/' + model._id);
+            res.status(status.OK).json({ id: model._id });
+          } else {
+            res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
+          }
+        });
       } else {
         res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
       }
@@ -108,13 +123,26 @@ function updatePost(req, res) {
 
 function deletePost(req, res) {
 
+  var id = req.swagger.params.id.value;  // req.params.id
+
+  // console.log('id: ' + req.swagger.params.id.value);
+
+  res.type('application/json');
+
+  Post.findByIdAndRemove(id, function (error) {
+    if (! error) {
+      res.status(status.OK).json({ id: id });
+    } else {
+      res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
+    }
+  });
 }
 
 module.exports = {
   addPost:        addPost,
   findPosts:      findPosts,
   findPostById:   findPostById,
-  // findPostBySlug: findPostBySlug,
+  findPostBySlug: findPostBySlug,
   updatePost:     updatePost,
   deletePost:     deletePost
 }
