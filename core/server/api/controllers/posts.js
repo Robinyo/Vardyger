@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+var extend = require('util')._extend;
 var mongoose = require('mongoose');
 var status = require('./http-status-codes');
 
@@ -22,7 +23,8 @@ function addPost(req, res) {
   model.save(function (error) {
     if (! error) {
       res.location('/posts/' + model._id);
-      res.status(status.CREATED).json({ id: model._id });
+      // res.status(status.CREATED).json({ id: model._id });
+      res.status(status.CREATED).send('{ "id": "' + model._id + '" }');
     } else {
       res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
     }
@@ -31,10 +33,15 @@ function addPost(req, res) {
 
 // GET /posts
 // Rule: GET must be used to retrieve a representation of a resource
+// Note: When we return the array of posts, we don’t simply return the model as returned from the database.
+// That would expose internal implementation details. Instead, we pick the information we need and construct a
+// new object to return.
 
 function findPosts(req, res) {
 
   var filteredQuery = {};
+
+  res.type('application/json');
 
   Post.find(filteredQuery, function (error, posts) {
     if (! error) {
@@ -60,30 +67,46 @@ function findPosts(req, res) {
   });
 }
 
+function findPostById(req, res) {
+
+  res.type('application/json');
+
+  if (undefined === req.params.id || null ===  req.params.id) {
+    console.log('req.params.id: ' + req.params.id);
+  }
+
+  res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+}
+
 // PUT /posts/{id}
 // Rule: PUT must be used to both insert and update a stored resource
 // Rule: PUT must be used to update mutable resources
 
 function updatePost(req, res) {
 
-  var responseCode = status.OK;
-
-  // do something ...
-
   res.type('application/json');
 
-  switch (responseCode) {
-
-    case status.OK:
-      res.status(status.OK).send('{ "id": "123456" }');
-      break;
-
-    case status.BAD_REQUEST:
-    // case status.NOT_FOUND:
-    default:
-      res.status(status.BAD_REQUEST).end('{ "code": "400", "message": "Something went wrong :(" }');
-      break;
+  if (undefined === req.params.id || null ===  req.params.id) {
+    console.log('req.params.id: ' + req.params.id);
   }
+
+  Post.findById(req.params.id)
+    .exec(function (error, model) {
+      if (! error) {
+
+        if (null === model)
+        {
+          return res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+        }
+
+        res.location('/posts/' + model._id);
+        // res.status(status.OK).json({ id: model._id });
+        res.status(status.OK).send('{ "id": "' + model._id + '" }');
+
+      } else {
+        res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+      }
+    });
 }
 
 // DELETE /posts/{id}
@@ -91,29 +114,12 @@ function updatePost(req, res) {
 
 function deletePost(req, res) {
 
-  var responseCode = status.OK;
-
-  // do something ...
-
-  res.type('application/json');
-
-  switch (responseCode) {
-
-    case status.OK:
-      res.status(status.OK).send('{ "id": "123456" }');
-      break;
-
-    case status.NOT_FOUND:
-    default:
-      res.status(status.BAD_REQUEST).end('{ "code": "404", "message": "Something went wrong :(" }');
-      break;
-  }
 }
 
 module.exports = {
   addPost:        addPost,
   findPosts:      findPosts,
-  // findPostById:   findPostById,
+  findPostById:   findPostById,
   // findPostBySlug: findPostBySlug,
   updatePost:     updatePost,
   deletePost:     deletePost
@@ -141,7 +147,6 @@ function serveStaticFile(res, path) {
 
 function serveStaticFileSync(res, path) {
 
-  // var obj = fs.readFileSync(__dirname + path, 'utf8');
   var obj = JSON.parse(fs.readFileSync(__dirname + path, 'utf8'));
 
   res.type('application/json');

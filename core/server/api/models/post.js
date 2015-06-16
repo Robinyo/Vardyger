@@ -57,6 +57,10 @@ var PostSchema = new Schema({
 // module.exports = mongoose.model('Post', PostSchema);
 mongoose.model('Post', PostSchema);
 
+// To have the 'Post' model use the 'Post' collection, you need to explicitly provide that collection name as the
+// third parameter to mongoose.model, otherwise Mongoose will use the pluralised, lower-cased model name which
+// would be 'posts'.
+
 
 /*
 

@@ -59,9 +59,34 @@ paths:
             $ref: '#/definitions/ErrorResponse'
   /posts/{id}:
     x-swagger-router-controller: posts
+    get:
+      description: >
+        Returns a post in the collection.
+      operationId: findPostById
+      parameters:
+        - name: id
+          in: path
+          description: The posts ID
+          required: true
+          type: string
+      tags:
+        - Posts
+      responses:
+        '200':
+          description: A post
+          schema:
+            $ref: '#/definitions/Post'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorResponse'
     put:
       description: Updates a post in the posts collection.
-      operationId: deletePost
+      operationId: updatePost
       parameters:
         - name: id
           in: path
@@ -81,12 +106,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/SuccessResponse'
-        '400':
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/ErrorResponse'
         '404':
           description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'
     delete:

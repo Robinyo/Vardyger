@@ -10,7 +10,7 @@ var SwaggerUi = require('swagger-tools/middleware/swagger-ui');
 var bodyParser = require('body-parser');
 var express = require('express');
 var fs = require('fs');
-// var methodOverride = require('method-override');
+var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 
@@ -46,7 +46,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: false}));
   app.use(bodyParser.json());
-  // app.use(methodOverride());
+  app.use(methodOverride());
 
   swaggerExpress.register(app);
 
@@ -60,7 +60,7 @@ module.exports = app;
   // https://github.com/swagger-api/swagger-spec/blob/master/versions/2.0.md
   // https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
 
-  // DEBUG=swagger-tools:middleware:* node .
+  // DEBUG=swagger-tools:middleware:* node
   // https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
 
   // cd ~/opt/WebStorm/projects/Vardyger/core/server
