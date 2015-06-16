@@ -145,7 +145,7 @@ function updatePost(req, res) {
   // console.log(util.inspect(body));
 
   delete body.id;
-  
+
   // console.log(util.inspect(body));
 
   res.type(APPLICATION_JSON);
