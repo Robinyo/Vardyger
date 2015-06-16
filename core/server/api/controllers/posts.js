@@ -68,14 +68,7 @@ function findPosts(req, res) {
 }
 
 function findPostById(req, res) {
-
-  res.type('application/json');
-
-  if (undefined === req.params.id || null ===  req.params.id) {
-    console.log('req.params.id: ' + req.params.id);
-  }
-
-  res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
+  
 }
 
 // PUT /posts/{id}
@@ -84,11 +77,14 @@ function findPostById(req, res) {
 
 function updatePost(req, res) {
 
+  // console.log('req.params.id: ' + req.params.id);
+  // console.log('req.swagger.params.id.value: ' + req.swagger.params.id.value);
+
+  var id = req.swagger.params.id.value;
+
   res.type('application/json');
 
-  console.log('req.params.id: ' + req.params.id);
-
-  Post.findById(req.params.id)
+  Post.findById(id)
     .exec(function (error, model) {
       if (! error) {
 
@@ -98,8 +94,8 @@ function updatePost(req, res) {
         }
 
         res.location('/posts/' + model._id);
-        // res.status(status.OK).json({ id: model._id });
-        res.status(status.OK).send('{ "id": "' + model._id + '" }');
+        res.status(status.OK).json({ id: model._id });
+        // res.status(status.OK).send('{ "id": "' + model._id + '" }');
 
       } else {
         res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
