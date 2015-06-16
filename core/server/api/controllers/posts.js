@@ -91,6 +91,17 @@ function findPostById(req, res) {
           return res.status(status.NOT_FOUND).send('{ "code": "404", "message": "Resource not found" }');
         }
 
+        /*
+
+        var original = {};
+        console.log('original: ' + JSON.stringify(original));
+        var extended = extend(original, model);
+        console.log('extended: ' + JSON.stringify(extended));
+        delete extended._id;
+        console.log('extended: ' + JSON.stringify(extended));
+
+        */
+
         var original = {};
         console.log('original: ' + JSON.stringify(original));
         var extended = extend(original, {
