@@ -14,6 +14,7 @@ var Post = mongoose.model('Post');
 // const LOCATION = '/posts/';
 var LOCATION = '/posts/';
 var APPLICATION_JSON = 'application/json';
+var TEXT_HTML = 'text/html';
 
 // POST /posts
 // Rule: POST must be used to create a new resource in a collection
@@ -125,31 +126,15 @@ function findPostById(req, res) {
           returnError(res, status.NOT_FOUND);
         }
 
-        return res.status(status.OK).send(JSON.stringify(
-          {
-            id: model._id,
-            title: model.title,
-            slug: model.slug,
-            markdown: model.markdown,
-            html: model.html,
-            image: model.image,
-            featured: model.featured,
-            page: model.page,
-            state: model.state,
-            locale: model.locale,
-            metaTitle: model.metaTitle,
-            metaDescription: model.metaDescription
-          }));
-
-        /*
-
         res.format({
           html: function(){
-            return res.status(status.OK).send('<html><body><h1>findById()</h1></body></html>');
+            res.type(TEXT_HTML);
+            res.status(status.OK).send('<html><body><h1>findById()</h1></body></html>');
           },
 
           json: function(){
-            return res.status(status.OK).send(JSON.stringify(
+            res.type(APPLICATION_JSON);
+            res.status(status.OK).send(JSON.stringify(
               {
                 id: model._id,
                 title: model.title,
@@ -170,9 +155,7 @@ function findPostById(req, res) {
             returnError(res, status.NOT_ACCEPTABLE);
           }
         })
-
-        */
-
+        
       } else {
         returnError(res, status.NOT_FOUND);
       }
@@ -292,3 +275,51 @@ module.exports = {
   updatePost:     updatePost,
   deletePost:     deletePost
 }
+
+/*
+
+return res.status(status.OK).send(JSON.stringify(
+  {
+    id: model._id,
+    title: model.title,
+    slug: model.slug,
+    markdown: model.markdown,
+    html: model.html,
+    image: model.image,
+    featured: model.featured,
+    page: model.page,
+    state: model.state,
+    locale: model.locale,
+    metaTitle: model.metaTitle,
+    metaDescription: model.metaDescription
+  }));
+
+res.format({
+  html: function(){
+    return res.status(status.OK).send('<html><body><h1>findById()</h1></body></html>');
+  },
+
+  json: function(){
+    return res.status(status.OK).send(JSON.stringify(
+      {
+        id: model._id,
+        title: model.title,
+        slug: model.slug,
+        markdown: model.markdown,
+        html: model.html,
+        image: model.image,
+        featured: model.featured,
+        page: model.page,
+        state: model.state,
+        locale: model.locale,
+        metaTitle: model.metaTitle,
+        metaDescription: model.metaDescription
+      }));
+  },
+
+  default: function() {
+    returnError(res, status.NOT_ACCEPTABLE);
+  }
+})
+
+*/
