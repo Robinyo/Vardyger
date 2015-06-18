@@ -155,7 +155,7 @@ function findPostById(req, res) {
             returnError(res, status.NOT_ACCEPTABLE);
           }
         })
-        
+
       } else {
         returnError(res, status.NOT_FOUND);
       }

@@ -79,7 +79,7 @@ paths:
         - Posts
       produces:
         - application/json
-        # - text/html
+        - text/html
       responses:
         200:
           description: A post
