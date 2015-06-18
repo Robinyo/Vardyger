@@ -11,6 +11,8 @@ schemes:
   # - https
 consumes:
   - application/json
+produces:
+  - application/json
 paths:
   /posts:
     x-swagger-router-controller: posts
@@ -30,7 +32,7 @@ paths:
         - Posts
       produces:
         - application/json
-        - text/html
+        # - text/html
       responses:
         201:
           description: Created
@@ -49,7 +51,7 @@ paths:
         - Posts
       produces:
         - application/json
-        - text/html
+        # - text/html
       responses:
         200:
           description: An array of posts
@@ -77,10 +79,7 @@ paths:
         - Posts
       produces:
         - application/json
-        - text/html
-      produces:
-        - application/json
-        - text/html
+        # - text/html
       responses:
         200:
           description: A post
@@ -90,8 +89,8 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorResponse'
-        500:
-          description: Internal Server Error
+        406:
+          description: Not Acceptable
           schema:
             $ref: '#/definitions/ErrorResponse'
     x-swagger-router-controller: posts
@@ -114,7 +113,7 @@ paths:
         - Posts
       produces:
         - application/json
-        - text/html
+        # - text/html
       responses:
         200:
           description: OK
@@ -142,7 +141,7 @@ paths:
         - Posts
       produces:
         - application/json
-        - text/html
+        # - text/html
       responses:
         200:
           description: OK

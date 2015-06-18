@@ -39,6 +39,7 @@ app.set('views', __dirname + '/views');
 
 var config = {
   appRoot: __dirname,
+  validateResponse: false,
   db: 'mongodb://localhost/vardyger-dev'
 };
 
