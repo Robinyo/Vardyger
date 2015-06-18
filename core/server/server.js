@@ -4,18 +4,38 @@
  * Module dependencies.
  */
 
+var express = require('express');
+var path = require('path');
+var fs = require('fs');
+
 var SwaggerExpress = require('swagger-express-mw');
 var SwaggerUi = require('swagger-tools/middleware/swagger-ui');
 
-var bodyParser = require('body-parser');
-var express = require('express');
-var fs = require('fs');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
 var methodOverride = require('method-override');
+// var session = require('express-session');
+var bodyParser = require('body-parser');
+// var multer = require('multer');
+var errorHandler = require('errorhandler');
+var hbs = require('express-hbs');
 var mongoose = require('mongoose');
-var morgan = require('morgan');
 
 var app = express();
-var port = process.env.PORT || 10010;
+
+// all environments
+app.set('port', process.env.PORT || 10010);
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
+
+// Use `.hbs` for extensions and find partials in `views/partials`.
+app.engine('hbs', hbs.express4({
+  partialsDir: __dirname + '/views/partials'
+}));
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
+
+
 
 var config = {
   appRoot: __dirname,
@@ -37,20 +57,33 @@ fs.readdirSync(__dirname + '/api/models').forEach(function (file) {
   if (~file.indexOf('.js')) require(__dirname + '/api/models/' + file);
 });
 
+
+
+
 SwaggerExpress.create(config, function(err, swaggerExpress) {
 
   if (err) { throw err; }
 
   app.use(SwaggerUi(swaggerExpress.runner.swagger));
 
-  app.use(morgan('dev'));
-  app.use(bodyParser.urlencoded({extended: false}));
-  app.use(bodyParser.json());
+  app.use(favicon(__dirname + '/public/images/favicon.ico'));
+  // app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
+  app.use(logger('dev'));
   app.use(methodOverride());
+  // app.use(session({ resave: true, saveUninitialized: true, secret: 'uwotm8' }));
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended: false}));
+  // app.use(multer());
+  app.use(express.static(path.join(__dirname, 'public')));
+
+  // error handling middleware should be loaded after loading routes
+  if ('development' == app.get('env')) {
+    app.use(errorHandler());
+  }
 
   swaggerExpress.register(app);
 
-  app.listen(port);
+  app.listen(app.get('port'));
 });
 
 module.exports = app;

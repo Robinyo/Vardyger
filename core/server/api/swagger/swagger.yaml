@@ -11,8 +11,6 @@ schemes:
   # - https
 consumes:
   - application/json
-produces:
-  - application/json
 paths:
   /posts:
     x-swagger-router-controller: posts
@@ -30,6 +28,9 @@ paths:
             $ref: '#/definitions/Post'
       tags:
         - Posts
+      produces:
+        - application/json
+        - text/html
       responses:
         201:
           description: Created
@@ -46,14 +47,17 @@ paths:
       operationId: findPosts
       tags:
         - Posts
+      produces:
+        - application/json
+        - text/html
       responses:
-        '200':
+        200:
           description: An array of posts
           schema:
             type: array
             items:
               $ref: '#/definitions/Post'
-        '500':
+        500:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'
@@ -71,16 +75,22 @@ paths:
           type: string
       tags:
         - Posts
+      produces:
+        - application/json
+        - text/html
+      produces:
+        - application/json
+        - text/html
       responses:
-        '200':
+        200:
           description: A post
           schema:
             $ref: '#/definitions/Post'
-        '404':
+        404:
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorResponse'
-        '500':
+        500:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'
@@ -102,16 +112,19 @@ paths:
             $ref: '#/definitions/Post'
       tags:
         - Posts
+      produces:
+        - application/json
+        - text/html
       responses:
-        '200':
+        200:
           description: OK
           schema:
             $ref: '#/definitions/SuccessResponse'
-        '404':
+        404:
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorResponse'
-        '500':
+        500:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'
@@ -127,16 +140,19 @@ paths:
           type: string
       tags:
         - Posts
+      produces:
+        - application/json
+        - text/html
       responses:
-        '200':
+        200:
           description: OK
           schema:
             $ref: '#/definitions/SuccessResponse'
-        '404':
+        404:
           description: Not Found
           schema:
             $ref: '#/definitions/ErrorResponse'
-        '500':
+        500:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'

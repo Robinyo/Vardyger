@@ -23,11 +23,24 @@ function addPost(req, res) {
 
   var model = new Post(req.body);
 
-  res.type(APPLICATION_JSON);
-
   model.save(function(error) {
     if (! error) {
-      returnId(res, status.CREATED, model._id);
+
+      res.format({
+        'text/html': function(){
+          return res.status(201).send('<html><body><h1>addPost()</h1></body></html>');
+        },
+        'application/json': function(){
+          // res.type(APPLICATION_JSON);
+          returnId(res, status.CREATED, model._id);
+        },
+        'default': function() {
+          returnError(res, status.NOT_ACCEPTABLE);
+        }
+      })
+
+      // returnId(res, status.CREATED, model._id);
+
     } else {
       returnError(res, status.INTERNAL_SERVER_ERROR);
     }
@@ -53,6 +66,10 @@ function findPosts(req, res) {
       {
         returnError(res, status.NOT_FOUND);
       }
+
+      // Node defaults to "transfer-encoding": "chunked"
+      // Sending a 'Content-length' header will disable the default encoding.
+      // res.setHeader("Content-Length", Buffer.byteLength(posts));
 
       res.status(status.OK).json(posts.map(function(a){
         return {
@@ -91,7 +108,7 @@ function findPostById(req, res) {
 
   // console.log('id: ' + id);
 
-  res.type(APPLICATION_JSON);
+  console.log('Content-Type => ' + res.get('Content-Type'));
 
   Post.findById(id)
     .exec(function(error, model) {
@@ -102,22 +119,33 @@ function findPostById(req, res) {
           returnError(res, status.NOT_FOUND);
         }
 
-        return res.status(status.OK).send(JSON.stringify(
-          {
-            id: model._id,
-            title: model.title,
-            slug: model.slug,
-            markdown: model.markdown,
-            html: model.html,
-            image: model.image,
-            featured: model.featured,
-            page: model.page,
-            state: model.state,
-            locale: model.locale,
-            metaTitle: model.metaTitle,
-            metaDescription: model.metaDescription
-          }));
+        res.format({
+          'text/html': function(){
+            return res.status(status.OK).send('<html><body><h1>findById()</h1></body></html>');
+          },
 
+          'application/json': function(){
+            return res.status(status.OK).send(JSON.stringify(
+              {
+                id: model._id,
+                title: model.title,
+                slug: model.slug,
+                markdown: model.markdown,
+                html: model.html,
+                image: model.image,
+                featured: model.featured,
+                page: model.page,
+                state: model.state,
+                locale: model.locale,
+                metaTitle: model.metaTitle,
+                metaDescription: model.metaDescription
+              }));
+          },
+
+          'default': function() {
+            returnError(res, status.NOT_ACCEPTABLE);
+          }
+        })
       } else {
         returnError(res, status.NOT_FOUND);
       }
@@ -217,6 +245,10 @@ function returnError(res, statusCode) {
       errorMessage = 'Resource not found';
       break;
 
+    case status.NOT_ACCEPTABLE:
+      errorMessage = 'Not acceptable';
+      break;
+
     case status.INTERNAL_SERVER_ERROR:
     default:
       break;
@@ -233,33 +265,3 @@ module.exports = {
   updatePost:     updatePost,
   deletePost:     deletePost
 }
-
-/*
-
-var fs = require('fs');
-
-// serveStaticFileSync(res, '/posts.json');
-// serveStaticFile(res, '/posts.json');
-
-function serveStaticFile(res, path) {
-
-  res.type('application/json');
-
-  fs.readFile(__dirname + path, 'utf8', function (error, data) {
-    if (error) {
-      res.status(status.INTERNAL_SERVER_ERROR).send('{ "code": "500", "message": "Something went wrong :(" }');
-    } else {
-      res.status(status.OK).send(JSON.parse(data));
-    }
-  });
-}
-
-function serveStaticFileSync(res, path) {
-
-  var obj = JSON.parse(fs.readFileSync(__dirname + path, 'utf8'));
-
-  res.type('application/json');
-  res.status(status.OK).send(obj);
-}
-
-*/

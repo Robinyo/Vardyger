@@ -33,10 +33,14 @@
   },
   "dependencies": {
     "body-parser": "^1.12.4",
+    "errorhandler": "^1.4.0",
     "express": "^4.12.3",
+    "express-hbs": "^0.8.4",
+    "i18n": "^0.5.0",
     "method-override": "^2.3.3",
     "mongoose": "^4.0.5",
     "morgan": "^1.5.3",
+    "serve-favicon": "^2.3.0",
     "swagger-express-mw": "0.0.x",
     "swagger-tools": "^0.8.7"
   },
