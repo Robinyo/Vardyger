@@ -78,23 +78,36 @@ function findPosts(req, res) {
       // Sending a 'Content-length' header will disable the default encoding.
       // res.setHeader("Content-Length", Buffer.byteLength(posts));
 
-      res.status(status.OK).json(posts.map(function(a){
-        return {
-          id: a._id,
-          title: a.title,
-          slug: a.slug,
-          markdown: a.markdown,
-          html: a.html,
-          image: a.image,
-          featured: a.featured,
-          page: a.page,
-          state: a.state,
-          locale: a.locale,
-          metaTitle: a.metaTitle,
-          metaDescription: a.metaDescription
-        }
-      }));
+      res.format({
+        html: function(){
+          res.type(TEXT_HTML);
+          res.status(status.OK).send('<html><body><h1>findPosts()</h1></body></html>');
+        },
 
+        json: function(){
+          res.type(APPLICATION_JSON);
+          res.status(status.OK).json(posts.map(function(a){
+            return {
+              id: a._id,
+              title: a.title,
+              slug: a.slug,
+              markdown: a.markdown,
+              html: a.html,
+              image: a.image,
+              featured: a.featured,
+              page: a.page,
+              state: a.state,
+              locale: a.locale,
+              metaTitle: a.metaTitle,
+              metaDescription: a.metaDescription
+            }
+          }));
+        },
+
+        default: function() {
+          returnError(res, status.NOT_ACCEPTABLE);
+        }
+      })
     } else {
       returnError(res, status.INTERNAL_SERVER_ERROR);
     }
@@ -113,9 +126,8 @@ function findPostById(req, res) {
   // See: https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
   var id = req.swagger.params.id.value;
 
-  console.log('id: ' + id);
-
-  console.log('Content-Type => ' + res.get('Content-Type')); // === undefined
+  // console.log('id: ' + id);
+  // console.log('Content-Type => ' + res.get('Content-Type')); // === undefined
 
   Post.findById(id)
     .exec(function(error, model) {
@@ -155,9 +167,8 @@ function findPostById(req, res) {
             returnError(res, status.NOT_ACCEPTABLE);
           }
         })
-
       } else {
-        returnError(res, status.NOT_FOUND);
+        returnError(res, status.INTERNAL_SERVER_ERROR);
       }
     });
 }

@@ -39,7 +39,7 @@ app.set('views', __dirname + '/views');
 
 var config = {
   appRoot: __dirname,
-  validateResponse: false,
+  validateResponse: false, // how to support json or html response ???
   db: 'mongodb://localhost/vardyger-dev'
 };
 

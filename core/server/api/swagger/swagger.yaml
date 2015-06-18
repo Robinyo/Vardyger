@@ -18,8 +18,8 @@ paths:
     x-swagger-router-controller: posts
     post:
       description: >
-        Adds a post to the posts collection.
-        </br>Location (in the response header) is used to specify the URI of the newly created resource.
+        Adds a post to the posts collection.</br>
+        Location (in the response header) is used to specify the URI of the newly created resource.
       operationId: addPost
       parameters:
         - name: post
@@ -32,7 +32,6 @@ paths:
         - Posts
       produces:
         - application/json
-        # - text/html
       responses:
         201:
           description: Created
@@ -51,7 +50,7 @@ paths:
         - Posts
       produces:
         - application/json
-        # - text/html
+        - text/html
       responses:
         200:
           description: An array of posts
@@ -59,6 +58,14 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Post'
+        404:
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        406:
+          description: Not Acceptable
+          schema:
+            $ref: '#/definitions/ErrorResponse'
         500:
           description: Internal Server Error
           schema:
@@ -91,6 +98,10 @@ paths:
             $ref: '#/definitions/ErrorResponse'
         406:
           description: Not Acceptable
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        500:
+          description: Internal Server Error
           schema:
             $ref: '#/definitions/ErrorResponse'
     x-swagger-router-controller: posts
