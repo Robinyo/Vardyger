@@ -1,8 +1,8 @@
 {
   "title": "Post 1",
   "slug": "post-1",
-  "markdown": "# The Vardyger publishing platform :)",
-  "html": "<h1>The Vardyger publishing platform :)</h1>",
+  "markdown": "##The Vardyger publishing platform :) Modelled using **Swagger 2.0** and the Swagger Editor, built using Express.js 4.0, Swagger Tools, Mongoose and MongoDB.",
+  "html": "<h2>The Vardyger publishing platform :)</h2>Modelled using <strong>Swagger 2.0</strong> and the Swagger Editor, built using Express.js 4.0, Swagger Tools, Mongoose and MongoDB.",
   "image": "",
   "featured": false,
   "page": false,

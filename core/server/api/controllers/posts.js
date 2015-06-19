@@ -141,7 +141,15 @@ function findPostById(req, res) {
         res.format({
           html: function(){
             res.type(TEXT_HTML);
-            res.status(status.OK).send('<html><body><h1>findById()</h1></body></html>');
+            res.render('post',
+              { title: model.title,
+                html: model.html,
+                image: model.image,
+                featured: model.featured,
+                locale: model.locale,
+                metaTitle: model.metaTitle,
+                metaDescription: model.metaDescription
+              });
           },
 
           json: function(){

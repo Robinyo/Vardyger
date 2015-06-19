@@ -3,22 +3,28 @@
     "id": "1",
     "title": "Post 1",
     "slug": "post-1",
-    "markdown": "# The Vardyger publishing platform :)",
-    "html": "<h1>The Vardyger publishing platform :)</h1>",
+    "markdown": "##The Vardyger publishing platform :) Modelled using **Swagger 2.0** and the Swagger Editor, built using Express.js 4.0, Swagger Tools, Mongoose and MongoDB.",
+    "html": "<h2>The Vardyger publishing platform :)</h2>Modelled using <strong>Swagger 2.0</strong> and the Swagger Editor, built using Express.js 4.0, Swagger Tools, Mongoose and MongoDB.",
+    "image": "",
     "featured": false,
     "page": false,
     "state": "Draft",
-    "locale": "en_GB"
+    "locale": "en_GB",
+    "metaTitle": "The SEO Title",
+    "metaDescription": "The SEO Description"
   },
   {
     "id": "2",
     "title": "Post 2",
     "slug": "post-2",
-    "markdown": "###Developer Install",
-    "html": "<h3>Developer Install</h3>",
-    "featured": true,
+    "markdown": "##The Vardyger publishing platform :) Modelled using **Swagger 2.0** and the Swagger Editor, built using Express.js 4.0, Swagger Tools, Mongoose and MongoDB.",
+    "html": "<h2>The Vardyger publishing platform :)</h2>Modelled using <strong>Swagger 2.0</strong> and the Swagger Editor, built using Express.js 4.0, Swagger Tools, Mongoose and MongoDB.",
+    "image": "",
+    "featured": false,
     "page": false,
     "state": "Draft",
-    "locale": "en_GB"
-  }
+    "locale": "en_GB",
+    "metaTitle": "The SEO Title",
+    "metaDescription": "The SEO Description"
+  },
 ]
