@@ -11,7 +11,7 @@ var fs = require('fs');
 var SwaggerExpress = require('swagger-express-mw');
 var SwaggerUi = require('swagger-tools/middleware/swagger-ui');
 
-var favicon = require('serve-favicon');
+// var favicon = require('serve-favicon');
 var logger = require('morgan');
 var methodOverride = require('method-override');
 // var session = require('express-session');
@@ -25,23 +25,28 @@ var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 10010);
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
-
-// Use `.hbs` for extensions and find partials in `views/partials`.
-app.engine('hbs', hbs.express4({
-  partialsDir: __dirname + '/views/partials'
-}));
-app.set('view engine', 'hbs');
-app.set('views', __dirname + '/views');
-
-
 
 var config = {
   appRoot: __dirname,
   validateResponse: false, // how to support json or html response ???
-  db: 'mongodb://localhost/vardyger-dev'
+  db: 'mongodb://localhost/vardyger-dev',
+  theme: 'troll'
 };
+
+// /content/themes/troll
+var themeDir = path.resolve(__dirname + '../../../content/themes/' + config.theme);
+
+// Layouts are in the theme directory
+var layoutsDir = themeDir;
+
+app.engine('hbs', hbs.express4({
+  layoutsDir: layoutsDir,
+  defaultLayout: layoutsDir + '/default.hbs',
+  partialsDir: layoutsDir + '/partials'
+  // i18n:
+}));
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
 
 // Connect to mongodb
 var connect = function () {
@@ -67,7 +72,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
 
   app.use(SwaggerUi(swaggerExpress.runner.swagger));
 
-  app.use(favicon(__dirname + '/public/images/favicon.ico'));
+  // app.use(favicon(__dirname + '/public/images/favicon.ico'));
   // app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
   app.use(logger('dev'));
   app.use(methodOverride());
@@ -75,7 +80,10 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: false}));
   // app.use(multer());
-  app.use(express.static(path.join(__dirname, 'public')));
+
+  // app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static(themeDir));
+  console.log('express.static: ' + themeDir);
 
   // error handling middleware should be loaded after loading routes
   if ('development' == app.get('env')) {
