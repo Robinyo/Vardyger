@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Module dependencies.
+ * Module dependencies
  */
 
 var util = require('util');  // console.log(util.inspect(anyObject));
@@ -11,7 +11,6 @@ var status = require('../../utils/http-status-codes');
 
 var Post = mongoose.model('Post');
 
-// const LOCATION = '/posts/';
 var LOCATION = '/posts/';
 var APPLICATION_JSON = 'application/json';
 var TEXT_HTML = 'text/html';
@@ -124,61 +123,93 @@ function findPostById(req, res) {
 
   // Note: req.swagger.params.id.value not req.params.id
   // See: https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
-  var id = req.swagger.params.id.value;
+  var id = req.swagger.params.id.value,
+      view = 'post',
+      response;
 
   // console.log('id: ' + id);
-  // console.log('Content-Type => ' + res.get('Content-Type')); // === undefined
 
-  Post.findById(id)
-    .exec(function(error, model) {
-      if (! error) {
+  Post.findById(id).exec(function(error, model) {
 
-        if (null === model || undefined === model)
+    if (! error) {
+
+      if (null === model || undefined === model) { returnError(res, status.NOT_FOUND); }
+
+      response = formatResponse(model);
+      // setResponseContext(req, res, response);
+
+      res.format({
+        html: function() {
+          res.type(TEXT_HTML);
+          res.render(view, response);
+        },
+        json: function() {
+          res.type(APPLICATION_JSON);
+          res.status(status.OK).send(JSON.stringify(response));
+        },
+        default: function() { returnError(res, status.NOT_ACCEPTABLE); }
+      })
+
+    } else {
+      returnError(res, status.INTERNAL_SERVER_ERROR);
+    }
+  });
+}
+
+// as per http://themes.ghost.org/v0.6.4/docs/post-context
+//        http://themes.ghost.org/v0.6.4/docs/navigation
+//        Ghost/core/server/controllers/frontend.js
+// Note: You can override the default template by placing a file called navigation.hbs in the partials directory
+//       of your theme.
+
+function formatResponse(model) {
+  return {
+    meta_title: model.metaTitle,
+    meta_description: model.metaDescription,
+    post: {
+      id: model._id,
+      title: model.title,
+      excerpt: model.html,
+      content: model.html,
+      url: 'http://robferguson.org',
+      image: model.image,
+      featured: model.featured,
+      page: model.page,
+      published_at: model.publishedAt,
+      updated_at: model.updatedAt,
+      created_at: model.createdAt,
+      author: {
+        name: 'Rob Ferguson',
+        location: 'Sydney, Australia'
+      },
+      tags: '',
+      navigation: [ {
+        label: 'Home',
+        url: 'http://robferguson.org',
+        current: false,
+        slug: ''
+      },
         {
-          returnError(res, status.NOT_FOUND);
+          label: 'About',
+          url: 'http://robferguson.org/about',
+          current: false,
+          slug: 'about'
         }
+      ]
+    }
+  }
+}
 
-        res.format({
-          html: function(){
-            res.type(TEXT_HTML);
-            res.render('post',
-              { title: model.title,
-                html: model.html,
-                image: model.image,
-                featured: model.featured,
-                locale: model.locale,
-                metaTitle: model.metaTitle,
-                metaDescription: model.metaDescription
-              });
-          },
+// website:
+// bio:
 
-          json: function(){
-            res.type(APPLICATION_JSON);
-            res.status(status.OK).send(JSON.stringify(
-              {
-                id: model._id,
-                title: model.title,
-                slug: model.slug,
-                markdown: model.markdown,
-                html: model.html,
-                image: model.image,
-                featured: model.featured,
-                page: model.page,
-                state: model.state,
-                locale: model.locale,
-                metaTitle: model.metaTitle,
-                metaDescription: model.metaDescription
-              }));
-          },
+function setResponseContext(req, res, data) {
 
-          default: function() {
-            returnError(res, status.NOT_ACCEPTABLE);
-          }
-        })
-      } else {
-        returnError(res, status.INTERNAL_SERVER_ERROR);
-      }
-    });
+  var contexts = [];
+
+  contexts.push('post');
+
+  res.locals.context = contexts;
 }
 
 function findPostBySlug(req, res) {
@@ -297,48 +328,25 @@ module.exports = {
 
 /*
 
-return res.status(status.OK).send(JSON.stringify(
-  {
-    id: model._id,
-    title: model.title,
-    slug: model.slug,
-    markdown: model.markdown,
-    html: model.html,
-    image: model.image,
-    featured: model.featured,
-    page: model.page,
-    state: model.state,
-    locale: model.locale,
-    metaTitle: model.metaTitle,
-    metaDescription: model.metaDescription
-  }));
+// validateResponse: true,
 
-res.format({
-  html: function(){
-    return res.status(status.OK).send('<html><body><h1>findById()</h1></body></html>');
-  },
-
-  json: function(){
-    return res.status(status.OK).send(JSON.stringify(
-      {
-        id: model._id,
-        title: model.title,
-        slug: model.slug,
-        markdown: model.markdown,
-        html: model.html,
-        image: model.image,
-        featured: model.featured,
-        page: model.page,
-        state: model.state,
-        locale: model.locale,
-        metaTitle: model.metaTitle,
-        metaDescription: model.metaDescription
-      }));
-  },
-
-  default: function() {
-    returnError(res, status.NOT_ACCEPTABLE);
-  }
-})
+json: function(){
+  res.type(APPLICATION_JSON);
+  res.status(status.OK).send(JSON.stringify(
+    {
+      id: model._id,
+      title: model.title,
+      slug: model.slug,
+      markdown: model.markdown,
+      html: model.html,
+      image: model.image,
+      featured: model.featured,
+      page: model.page,
+      state: model.state,
+      locale: model.locale,
+      metaTitle: model.metaTitle,
+      metaDescription: model.metaDescription
+    }));
+}
 
 */

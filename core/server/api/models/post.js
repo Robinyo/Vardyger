@@ -20,17 +20,17 @@ var PostSchema = new Schema({
   image: {type: String, default: '', trim: true},
   featured: {type: Boolean, default: false},
   page: {type: Boolean, default: false},
-  state: { type: String, required: true, enum: ['Draft', 'Published'], default: 'Draft'},
+  state: { type: String, required: true, enum: ['draft', 'published'], default: 'draft'},
   locale: {type: String, default: 'en_GB', trim: true},
   metaTitle: {type: String, default: '', trim: true},
-  metaDescription: {type: String, default: '', trim: true}
+  metaDescription: {type: String, default: '', trim: true},
 
   // authorId: { type: Schema.ObjectId, ref: 'User' },
-  // createAt: { type: Date, default: Date.now },
+  createdAt: { type: Date, default: Date.now },
   // createdBy: { type: Schema.ObjectId, ref: 'User' },
-  // updatedAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
   // updatedBy: { type: Schema.ObjectId, ref: 'User' },
-  // publishedAt: { type: Date, default: Date.now },
+  publishedAt: { type: Date, default: Date.now }
   // publishedBy: { type: Schema.ObjectId, ref: 'User' },
 
 });

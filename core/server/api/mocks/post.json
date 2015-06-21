@@ -1,13 +1,13 @@
 {
   "title": "Post 1",
   "slug": "post-1",
-  "markdown": "##The Vardyger publishing platform :) Modelled using **Swagger 2.0** and the Swagger Editor, built using Express.js 4.0, Swagger Tools, Mongoose and MongoDB.",
-  "html": "<h2>The Vardyger publishing platform :)</h2>Modelled using <strong>Swagger 2.0</strong> and the Swagger Editor, built using Express.js 4.0, Swagger Tools, Mongoose and MongoDB.",
+  "markdown": "",
+  "html": "In a previous post, I wrote about Swagger and how it can help you to model and build a RESTful API. In this post, I'll walk you through the steps required to create the API for the Vardyger publishing platform.",
   "image": "",
   "featured": false,
   "page": false,
-  "state": "Draft",
+  "state": "draft",
   "locale": "en_GB",
-  "metaTitle": "The SEO Title",
-  "metaDescription": "The SEO Description"
+  "metaTitle": "Post 1",
+  "metaDescription": "Swagger"
 }

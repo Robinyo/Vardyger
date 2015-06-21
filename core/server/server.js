@@ -1,41 +1,41 @@
 'use strict';
 
 /**
- * Module dependencies.
+ * Module dependencies
  */
 
-var express = require('express');
-var path = require('path');
-var fs = require('fs');
+var fs             = require('fs'),
+    path           = require('path'),
 
-var SwaggerExpress = require('swagger-express-mw');
-var SwaggerUi = require('swagger-tools/middleware/swagger-ui');
+    swagger        = require('swagger-express-mw'),
+    SwaggerUi      = require('swagger-tools/middleware/swagger-ui'),
 
-// var favicon = require('serve-favicon');
-var logger = require('morgan');
-var methodOverride = require('method-override');
-// var session = require('express-session');
-var bodyParser = require('body-parser');
-// var multer = require('multer');
-var errorHandler = require('errorhandler');
-var hbs = require('express-hbs');
-var mongoose = require('mongoose');
+    express        = require('express'),
+    hbs            = require('express-hbs'),
+    helpers        = require('./helpers'),
+    middleware     = require('./middleware'),
+    mongoose       = require('mongoose'),
+
+    logger         = require('morgan'),
+    methodOverride = require('method-override'),
+    bodyParser     = require('body-parser'),
+    errorHandler   = require('errorhandler');
 
 var app = express();
 
-// all environments
 app.set('port', process.env.PORT || 10010);
 
 var config = {
   appRoot: __dirname,
   validateResponse: false, // how to support json or html response ???
   db: 'mongodb://localhost/vardyger-dev',
-  theme: 'troll'
+  theme: 'goblin' // goblin casper
 };
 
-// /content/themes/troll
+// /content/themes/goblin
 var themeDir = path.resolve(__dirname + '../../../content/themes/' + config.theme);
-
+//  /core (shared)
+var sharedDir = path.resolve(__dirname + '../../');
 // Layouts are in the theme directory
 var layoutsDir = themeDir;
 
@@ -46,9 +46,23 @@ app.engine('hbs', hbs.express4({
   // i18n:
 }));
 app.set('view engine', 'hbs');
-app.set('views', __dirname + '/views');
+app.set('views', themeDir);
+app.set('view cache', false);
 
-// Connect to mongodb
+helpers.loadCoreHelpers();
+
+// middleware(blogApp, adminApp);
+// middleware.setupMiddleware(app);
+// https://github.com/TryGhost/Ghost/blob/master/core/server/middleware/index.js#L91
+
+var themeData = {
+  title: 'Blog Title',
+  description: 'Blog Description',
+  url: 'http://robferguson.org',
+  navigation: true};
+
+hbs.updateTemplateOptions({data: {blog: themeData}});
+
 var connect = function () {
   var options = { server: { socketOptions: { keepAlive: 1 } } };
   mongoose.connect(config.db, options);
@@ -58,22 +72,17 @@ connect();
 mongoose.connection.on('error', console.log);
 // mongoose.connection.on('disconnected', connect);
 
-// Bootstrap models
+// Bootstrap mongoose models
 fs.readdirSync(__dirname + '/api/models').forEach(function (file) {
   if (~file.indexOf('.js')) require(__dirname + '/api/models/' + file);
 });
 
-
-
-
-SwaggerExpress.create(config, function(err, swaggerExpress) {
+swagger.create(config, function(err, swaggerExpress) {
 
   if (err) { throw err; }
 
   app.use(SwaggerUi(swaggerExpress.runner.swagger));
 
-  // app.use(favicon(__dirname + '/public/images/favicon.ico'));
-  // app.use(favicon(path.join(__dirname,'public','images','favicon.ico')));
   app.use(logger('dev'));
   app.use(methodOverride());
   // app.use(session({ resave: true, saveUninitialized: true, secret: 'uwotm8' }));
@@ -81,9 +90,13 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   app.use(bodyParser.urlencoded({extended: false}));
   // app.use(multer());
 
-  // app.use(express.static(path.join(__dirname, 'public')));
+  app.use(express.static(sharedDir));
   app.use(express.static(themeDir));
-  console.log('express.static: ' + themeDir);
+  // console.log('express.static: ' + sharedDir);
+  // console.log('express.static: ' + themeDir);
+
+  // global.blog = { title: 'Title', description: 'Description' };
+  // console.log('global.blog.title: ' + global.blog.title);
 
   // error handling middleware should be loaded after loading routes
   if ('development' == app.get('env')) {
