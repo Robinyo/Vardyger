@@ -1,0 +1,48 @@
+<div class="post-list">
+    {{! Each post will be output using this markup }}
+    {{#foreach posts}}   
+    <section itemscope itemtype="http://schema.org/BlogPosting" role="article" class="{{post_class}} {{#if @even}}even{{else}}odd{{/if}} {{#if tags}}has-sub-meta{{else}}{{#if featured}}has-sub-meta{{/if}}{{/if}}" {{#if @first}} id="start" {{/if}} {{#if @first}}data-author-name="{{author.name}}" data-author-img="{{author.image}}" data-author-bio="{{author.bio}}"{{/if}}>
+        <div class="post-header {{#if image}}has-background{{/if}}" {{#if image}}style="background-image: url({{image}})"{{/if}}>            
+            <div class="header-wrap">
+                <h2 itemprop="name" class="post-title"><a itemprop="url" href="{{url}}">{{{title}}}</a></h2>
+                <div class="post-meta">
+                    By {{author}} /
+                    <time datetime="{{date published_at format="YYYY-MM-DD"}}" itemprop="datePublished">
+                        {{date published_at timeago="true"}}
+                    </time>
+                </div>
+                <div class="line"></div>
+                {{#if tags}}
+                <div class="post-meta">
+                    <i class="fa fa-tags"></i>{{#if featured}} Featured{{/if}} on {{tags separator=", "}}
+                </div>
+                {{else}}
+                    {{#if featured}}
+                        <div class="post-meta">
+                            <i class="fa fa-star"></i> Featured
+                        </div>
+                    {{/if}}
+                {{/if}}
+                <div itemprop="description" class="post-excerpt">
+                    {{excerpt words="40"}}
+                </div>
+                <div class="post-action">
+                    <a href="{{url}}" class="read-more">                            
+                        Read More <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>            
+        </div>
+        <div class="post-content">
+            {{content words="0"}}
+        </div>
+    </section>
+    {{/foreach}}
+</div>
+{{#if pagination}}
+<section class="pagination-section">
+    <div class="pagination-wrap">
+        {{pagination}}  
+    </div>
+</section>
+{{/if}}

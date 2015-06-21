@@ -1,0 +1,53 @@
+<div class="header header-full-screen-center-logo"
+	data-layout="wide" {{!Header layout option: change it to 'default' or 'wide'}}
+	data-sticky="true" {{!Sticky Header option: change it to 'true' or 'false'}}
+	data-color-scheme="light" {{!Header Color Scheme option: change it to 'dark' or 'light'}}
+	data-direction="default" {{!Header Direction option: change it to 'default' or 'inverse'}}
+	>
+	<div class="header-wrap">
+		<div class="logo-container">
+			{{#if @blog.logo}}
+				<a class="logo" href="{{@blog.url}}">
+					<img src="{{@blog.logo}}" alt="{{@blog.title}}" title="{{@blog.title}}" 
+					data-sticked-src="" {{!Put the image url for sticked if you want (it effect on header have data-sticky="true"). Note it need full path }}/>
+				</a>
+			{{else}}
+				<a class="logo text" href="{{@blog.url}}">{{@blog.title}}</a>
+			{{/if}}
+		</div>
+		<div class="nav-container">
+			<a class="mini-nav-button" href="javascript:;"><span>navigation</span></a>
+		</div>
+		<div class="addition-container">
+			{{>social-icons}}
+			<a class="search-button" href="javascript:;">
+				<i class="fa fa-search"></i>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="full-screen-nav">
+	<div class="full-screen-nav-wrap">
+		<div class="full-screen-nav-wrap-inner">			
+			<ul class="full-screen-nav-items">
+				{{#if @blog.navigation}}
+					{{navigation}}
+				{{else}}
+					{{>menu-items}}
+				{{/if}}
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="search-container">
+	<div class="search-container-wrap">
+		<div class="search-container-wrap-inner">
+			<div class="search-box">
+				<h3 class="search-label">Search</h3>
+				<input type="search" name="search-keyword" id="search-keyword" placeholder="Type and hit enter!"/>
+				<ul class="search-result">				
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

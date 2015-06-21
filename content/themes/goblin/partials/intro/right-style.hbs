@@ -1,0 +1,20 @@
+<div id="site-intro" {{#if @blog.cover}} class="right-style covered" style="background-image: url({{@blog.cover}})"{{else}}class="right-style"{{/if}}>
+	<div class="intro-wrap">
+		<div class="intro-text">
+			<div class="welcome-text style1">
+				<div class="line1">Hi There,</div>
+				<div class="line2">Welcome to {{@blog.title}}!</div>
+				<div class="line3">{{@blog.description}}.</div>
+			</div>			
+			<div class="action-list">
+				<a class="action-btn highlight go-to-blog" href="#start">
+					Discover My Blog <i class="fa fa-chevron-down"></i>
+				</a>
+				<span class="or-label">Or</span>	
+				<a class="action-btn" href="{{@blog.url}}/resume/">
+					View My Resume <i class="fa fa-file-text-o"></i>
+				</a>	
+			</div>
+		</div>		
+	</div>	
+</div>

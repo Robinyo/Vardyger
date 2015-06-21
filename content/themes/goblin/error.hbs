@@ -1,0 +1,17 @@
+{{!< default}}
+<div id="site-intro" {{#if @blog.cover}} class="covered" style="background-image: url({{@blog.cover}})"{{/if}}>
+	<div class="intro-wrap">
+		<div class="intro-text">
+			<div class="welcome-text style1">
+				<div class="line1">Error</div>
+				<div class="line2">{{code}}</div>
+				<div class="line3">Ooops, the page you are looking for can't be found!</div>
+			</div>			
+		</div>
+	</div>
+	<div class="more-detail">		
+		<a href="{{@blog.url}}">
+			Back To Home
+		</a>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+<div id="site-intro" 
+	{{#if tag.image}}
+		class="covered" style="background-image: url({{tag.image}});"
+	{{else}} 
+		{{#if @blog.cover}}
+		class="covered" style="background-image: url({{@blog.cover}});"
+		{{/if}}
+	{{/if}}
+	data-more-button-style="icon-and-text" {{!More detail button option: change it to 'icon-and-text' or 'button-only' or 'icon-only'}}
+	>
+	<div class="intro-wrap">
+		<div class="intro-text">
+			<div class="welcome-text style1">
+				<div class="line1">Tag Archive</div>
+				<div class="line2">{{tag.name}}</div>
+				<div class="line3">{{plural pagination.total empty='No story' singular='Discover % story' plural='Discover % stories'}} with &#8220;{{tag.name}}&#8221; Tag.</div>
+			</div>			
+		</div>
+	</div>
+	<div class="more-detail">
+		<div class="scrollDown">
+			<span class="mouseBorder"></span>
+		    <span class="mouseWheel"></span>
+		</div>
+		<a class="start" href="#start">
+			Discover Now
+		</a>
+	</div>
+</div>

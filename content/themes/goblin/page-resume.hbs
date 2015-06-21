@@ -1,0 +1,46 @@
+{{!< default}}
+{{#contentFor "customBodyClass"}}page-resume{{/contentFor}}
+{{#post}}
+<div id="site-intro"
+	{{#if image}}
+		class="covered" style="background-image: url({{image}})"
+	{{else}}
+		{{#if author.cover}}
+			class="covered" style="background-image: url({{author.cover}})"
+		{{else}} 
+			{{#if @blog.cover}}
+			class="covered" style="background-image: url({{@blog.cover}})"
+			{{/if}}
+		{{/if}}
+	{{/if}}
+	data-more-button-style="button-only"
+	>
+	<div class="intro-wrap">
+		<div class="intro-text">
+			<div class="author-avatar">				
+				<img class="img-reponsive" itemprop="image" src="{{author.image}}" alt="{{author.name}}" />
+			</div>
+			<div class="author-info">
+				<div class="author-name">
+					{{author.name}}
+				</div>
+				<div class="author-bio">
+					{{author.bio}}
+				</div>
+			</div>			
+		</div>
+	</div>
+	<div class="more-detail">		
+		<a class="start" href="#">
+			Hire Me
+		</a>
+	</div>
+</div>
+<main class="body-content" role="main">
+	<section class="{{post_class}}">		
+		<div class="post-content">
+			{{content}}
+		</div>			
+	</section>
+</main>
+{{/post}}

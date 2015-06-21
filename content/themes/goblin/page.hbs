@@ -1,0 +1,28 @@
+{{!< default}}
+{{#post}}
+<main class="body-content" role="main">
+	<section class="{{post_class}} {{#if tags}}has-sub-meta{{else}}{{#if featured}}has-sub-meta{{/if}}{{/if}}">
+		<div class="post-header {{#if image}}has-background{{/if}}" {{#if image}}style="background-image: url({{image}})"{{/if}}>
+			<div class="header-wrap">
+				<h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+				<div class="post-meta">{{author.name}} / {{date published_at timeago="true"}}</div>
+            	<div class="line"></div>
+            	{{#if tags}}
+                <div class="post-meta">
+                    <i class="fa fa-tags"></i>{{#if featured}} Featured{{/if}} on {{tags separator=", "}}
+                </div>
+                {{else}}
+                    {{#if featured}}
+                        <div class="post-meta">
+                            <i class="fa fa-star"></i> Featured
+                        </div>
+                    {{/if}}
+                {{/if}}
+			</div>
+		</div>
+		<div class="post-content">
+			{{content}}
+		</div>			
+	</section>
+</main>
+{{/post}}

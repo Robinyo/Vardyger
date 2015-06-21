@@ -1,0 +1,37 @@
+{{#author}}
+<div id="site-intro"
+	{{#if cover}}
+		class="covered" style="background-image: url({{cover}})"
+	{{else}} 
+		{{#if @blog.cover}}
+		class="covered" style="background-image: url({{@blog.cover}})"
+		{{/if}}
+	{{/if}}
+	data-more-button-style="icon-and-text" {{!More detail button option: change it to 'icon-and-text' or 'button-only' or 'icon-only'}}
+	>
+	<div class="intro-wrap">
+		<div class="intro-text">
+			<div class="author-avatar">				
+				<img class="img-reponsive" itemprop="image" src="{{image}}" alt="{{name}}" />
+			</div>
+			<div class="author-info">
+				<div class="author-name">
+					{{name}}
+				</div>
+				<div class="author-bio">
+					{{bio}}
+				</div>
+			</div>		
+		</div>
+	</div>
+	<div class="more-detail">
+		<div class="scrollDown">
+			<span class="mouseBorder"></span>
+		    <span class="mouseWheel"></span>
+		</div>
+		<a class="start" href="#start">
+			{{plural ../pagination.total empty='No stories' singular='Discover % story' plural='Discover % stories'}}
+		</a>
+	</div>
+</div>
+{{/author}}
