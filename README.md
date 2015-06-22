@@ -1,5 +1,13 @@
 # The Vardyger publishing platform :)
 
+A sample post rendered using Handlebars and Ghost's default theme:
+
+![Vardyger post screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-post.png)
+
+For example:
+
+    <pre>curl http://localhost:10010/v1/posts/{id} --header "Accept: text/html"</pre>
+
 ##The RESTful API
 
 ![Swagger UI screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-api.png)
