@@ -1,6 +1,6 @@
 # The Vardyger publishing platform :)
 
-A sample post rendered using Handlebars and Ghost's default theme:
+A sample post rendered via Handlebars with Ghost theme support:
 
 ![Vardyger post screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-post.png)
 
