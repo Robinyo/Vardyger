@@ -23,7 +23,20 @@
 </head>
 <body class="{{body_class}} nav-closed">
 
-    {{navigation}}
+    {{! navigation}}
+
+    <div class="nav">
+        <h3 class="nav-title">Menu</h3>
+        <a href="#" class="nav-close">
+            <span class="hidden">Close</span>
+        </a>
+        <ul>
+            <li class="nav-home" role="presentation"><a href="http://robferguson.org/">Home</a></li>
+            <li class="nav-about" role="presentation"><a href="http://robferguson.org/about/">About</a></li>
+        </ul>
+        <a class="subscribe-button icon-feed" href="/rss/">Subscribe</a>
+    </div>
+    <span class="nav-cover"></span>
 
     <div class="site-wrapper">
 
@@ -31,7 +44,7 @@
         {{{body}}}
 
         <footer class="site-footer clearfix">
-            <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; {{date format="YYYY"}}</section>
+            <section class="copyright"><a href="{{@blog.url}}">{{@blog.title}}</a> &copy; 2015{{! date format="YYYY"}}</section>
             <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
         </footer>
 

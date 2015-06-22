@@ -6,11 +6,13 @@
 
 var hbs = require('express-hbs');
 
-function post_class(options) {
+function image(options) {
 
-  var output = 'post tag-express-js tag-swagger tag-vardyger';
+  var output = '';
 
   return new hbs.handlebars.SafeString(output);
 }
 
-module.exports = post_class;
+module.exports = image;
+
+// TODO: revisit im image.js

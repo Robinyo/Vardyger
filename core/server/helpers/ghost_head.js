@@ -8,7 +8,7 @@ var hbs = require('express-hbs');
 
 function ghost_head(options) {
 
-  var output = '<link rel="canonical" href="' + this.url + '" />';
+  var output = '<link rel="canonical" href="' + this.post.url + '" />';
 
   return new hbs.handlebars.SafeString(output);
 }

@@ -29,7 +29,7 @@ var config = {
   appRoot: __dirname,
   validateResponse: false, // how to support json or html response ???
   db: 'mongodb://localhost/vardyger-dev',
-  theme: 'goblin' // goblin casper
+  theme: 'casper' // goblin casper
 };
 
 // /content/themes/goblin

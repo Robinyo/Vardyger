@@ -31,30 +31,15 @@
 
         <footer class="post-footer">
 
-        {{! Everything inside the #author tags pulls data from the author }}
-        {{#author}}
-
-            {{#if image}}
-            <figure class="author-image">
-                <a class="img" href="{{url}}" style="background-image: url({{image}})"><span class="hidden">{{name}}'s Picture</span></a>
-            </figure>
-            {{/if}}
-
             <section class="author">
-                <h4><a href="{{url}}">{{name}}</a></h4>
+                <h4><a href="/author/rob-ferguson/">Rob Ferguson</a></h4>
 
-                {{#if bio}}
-                    <p>{{bio}}</p>
-                {{else}}
-                    <p>Read <a href="{{url}}">more posts</a> by this author.</p>
-                {{/if}}
+                <p>  </p>
                 <div class="author-meta">
-                    {{#if location}}<span class="author-location icon-location">{{location}}</span>{{/if}}
-                    {{#if website}}<span class="author-link icon-link"><a href="{{website}}">{{website}}</a></span>{{/if}}
+                    <span class="author-location icon-location">Sydney, Australia</span>
+
                 </div>
             </section>
-
-        {{/author}}
 
             <section class="share">
                 <h4>Share this post</h4>
@@ -76,24 +61,5 @@
 
     </article>
 </main>
-
-<aside class="read-next">
-    {{#next_post}}
-    <a class="read-next-story {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}" href="{{url}}">
-        <section class="post">
-            <h2>{{title}}</h2>
-            <p>{{excerpt words="19"}}&hellip;</p>
-        </section>
-    </a>
-    {{/next_post}}
-    {{#prev_post}}
-    <a class="read-next-story prev {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}" href="{{url}}">
-        <section class="post">
-            <h2>{{title}}</h2>
-            <p>{{excerpt words="19"}}&hellip;</p>
-        </section>
-    </a>
-    {{/prev_post}}
-</aside>
 
 {{/post}}
