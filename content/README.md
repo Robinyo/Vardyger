@@ -1,1 +1,1 @@
-Place your assets in this directory.
+Place your themes in the themes directory.
