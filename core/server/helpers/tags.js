@@ -6,11 +6,11 @@
 
 var hbs = require('express-hbs');
 
-function body_class(options) {
+function tags(options) {
 
-  var output = 'post-template pace-done';
+  var output = '';
 
   return new hbs.handlebars.SafeString(output);
 }
 
-module.exports = body_class;
+module.exports = tags;

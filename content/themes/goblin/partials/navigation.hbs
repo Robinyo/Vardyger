@@ -1,3 +1,4 @@
-{{#each post.navigation}}
-    <li {{#if current}}class="active"{{/if}}><a href="{{url}}">{{label}}</a></li>
-{{/each}}
+<!-- navigation.hbs -->
+{{#foreach navigation}}
+    <li {{#if current}}class="active"{{/if}}><a href="{{url absolute="true"}}">{{label}}</a></li>
+{{/foreach}}

@@ -157,21 +157,37 @@ function findPostById(req, res) {
 }
 
 // as per http://themes.ghost.org/v0.6.4/docs/post-context
-//        http://themes.ghost.org/v0.6.4/docs/navigation
-//        Ghost/core/server/controllers/frontend.js
-// Note: You can override the default template by placing a file called navigation.hbs in the partials directory
-//       of your theme.
+// except where the doco is incorrect:
+//   - 'content' helper returns (#post) this.html
+//   - 'meta_title' helper returns this.metaTitle
+//   - 'meta_description' helper returns this.metaDescription,
+
+var url = 'http://robferguson.org';
+// var url = 'http://localhost:10010';
 
 function formatResponse(model) {
   return {
     meta_title: model.metaTitle,
     meta_description: model.metaDescription,
+    navigation: [ {
+      label: 'Home',
+      url: url,
+      current: false,
+      slug: ''
+    },
+      {
+        label: 'About',
+        url: url + '/about',
+        current: false,
+        slug: 'about'
+      }
+    ],
     post: {
       id: model._id,
       title: model.title,
       excerpt: model.html,
-      content: model.html,
-      url: 'http://robferguson.org',
+      html: model.html,
+      url: url,
       image: model.image,
       featured: model.featured,
       page: model.page,
@@ -182,26 +198,14 @@ function formatResponse(model) {
         name: 'Rob Ferguson',
         location: 'Sydney, Australia'
       },
-      tags: '',
-      navigation: [ {
-        label: 'Home',
-        url: 'http://robferguson.org',
-        current: false,
-        slug: ''
-      },
-        {
-          label: 'About',
-          url: 'http://robferguson.org/about',
-          current: false,
-          slug: 'about'
-        }
-      ]
+      tags: ''
     }
   }
 }
 
 // website:
 // bio:
+// excerpt: model.html.slice(0, 255),
 
 function setResponseContext(req, res, data) {
 
@@ -325,6 +329,11 @@ module.exports = {
   updatePost:     updatePost,
   deletePost:     deletePost
 }
+
+//        http://themes.ghost.org/v0.6.4/docs/navigation
+//        Ghost/core/server/controllers/frontend.js
+// Note: You can override the default template by placing a file called navigation.hbs in the partials directory
+//       of your theme.
 
 /*
 

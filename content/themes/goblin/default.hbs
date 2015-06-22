@@ -45,7 +45,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset "css/YTPlayer.css"}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset "css/prism.css"}}" />
     <link rel="stylesheet" type="text/css" href="{{asset "css/style.css"}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset "css/colors/default.css"}}" /> {{! Change color scheme here }}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/colors/orange.css"}}" /> {{! Change color scheme here }}
     {{ghost_head}}
     <script type="text/javascript"> var sfThemeOptions = { global : {   rootUrl : '{{@blog.url}}' } }</script>
     {{! Place your Google Analytic here }}
@@ -63,22 +63,11 @@
 </div>
 <![endif]-->
 <div class="body-wrap">
-    {{! Change your header type here, include:
-        + header/standard
-        + header/full-screen
-        + header/full-screen-center-logo
-        + header/mini
-    }}
     {{>header/standard}}
     <div class="main-wrap">
         {{{body}}}
     </div>
-    {{! Change footer style here, include:
-        + footer/one-column
-        + footer/two-columns
-        + footer/three-columns
-    }}
-    {{>footer/three-columns}}
+     {{>footer/three-columns}}
 </div>
 {{ghost_foot}}
 {{! The main JavaScript file for Globin }}

@@ -55,11 +55,15 @@ helpers.loadCoreHelpers();
 // middleware.setupMiddleware(app);
 // https://github.com/TryGhost/Ghost/blob/master/core/server/middleware/index.js#L91
 
+var url = 'http://robferguson.org';
+// var url = 'http://localhost:10010';
+
 var themeData = {
-  title: 'Blog Title',
+  title: 'Rob Ferguson',
   description: 'Blog Description',
-  url: 'http://robferguson.org',
-  navigation: true};
+  url: url,
+  navigation: true
+};
 
 hbs.updateTemplateOptions({data: {blog: themeData}});
 
@@ -89,6 +93,10 @@ swagger.create(config, function(err, swaggerExpress) {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: false}));
   // app.use(multer());
+
+  // TODO: revisit server.js
+  // http://stackoverflow.com/questions/18310394/no-access-control-allow-origin-node-apache-port-issue
+  // app.use(require('cors')());
 
   app.use(express.static(sharedDir));
   app.use(express.static(themeDir));

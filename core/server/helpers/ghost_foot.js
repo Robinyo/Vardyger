@@ -16,3 +16,5 @@ function ghost_foot(options) {
 }
 
 module.exports = ghost_foot;
+
+// TODO: revisit ghost_foot

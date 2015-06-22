@@ -1,13 +1,13 @@
 {
-  "title": "Post 1",
-  "slug": "post-1",
+  "title": "The Vardyger publishing platform",
+  "slug": "the-vardyger-publishing-platform",
   "markdown": "",
-  "html": "In a previous post, I wrote about Swagger and how it can help you to model and build a RESTful API. In this post, I'll walk you through the steps required to create the API for the Vardyger publishing platform.",
+  "html": "In a previous <strong>post</strong>, I wrote about Swagger and how it can help you to model and build a RESTful API. In this post, I'll walk you through the steps required to create the API for the Vardyger publishing platform.",
   "image": "",
   "featured": false,
   "page": false,
   "state": "draft",
   "locale": "en_GB",
-  "metaTitle": "Post 1",
-  "metaDescription": "Swagger"
+  "metaTitle": "The Vardyger publishing platform",
+  "metaDescription": "In a previous post, ..."
 }

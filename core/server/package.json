@@ -33,6 +33,8 @@
   },
   "dependencies": {
     "body-parser": "^1.12.4",
+    "cors": "^2.7.1",
+    "downsize": "0.0.8",
     "errorhandler": "^1.4.0",
     "express": "^4.12.3",
     "express-hbs": "^0.8.4",
