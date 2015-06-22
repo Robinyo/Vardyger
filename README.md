@@ -6,7 +6,7 @@ A sample post rendered via Handlebars with Ghost theme support:
 
 For example:
 
-    <pre>curl http://localhost:10010/v1/posts/{id} --header "Accept: text/html"</pre>
+    curl http://localhost:10010/v1/posts/{id} --header "Accept: text/html"
 
 ##The RESTful API
 
