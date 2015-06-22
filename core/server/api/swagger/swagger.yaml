@@ -73,8 +73,7 @@ paths:
   /posts/{id}:
     x-swagger-router-controller: posts
     get:
-      description: >
-        Returns a post in the collection.
+      description: Returns a post in the collection.
       operationId: findPostById
       parameters:
         - name: id
