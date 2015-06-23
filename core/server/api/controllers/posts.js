@@ -169,19 +169,17 @@ function formatResponse(model) {
   return {
     meta_title: model.metaTitle,
     meta_description: model.metaDescription,
-    navigation: [ {
+    navigation: [{
       label: 'Home',
       url: url,
       current: false,
       slug: ''
-    },
-      {
-        label: 'About',
-        url: url + '/about',
-        current: false,
-        slug: 'about'
-      }
-    ],
+    }, {
+      label: 'About',
+      url: url + '/about',
+      current: false,
+      slug: 'about'
+    }],
     post: {
       id: model._id,
       title: model.title,

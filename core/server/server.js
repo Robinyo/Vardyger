@@ -29,10 +29,10 @@ var config = {
   appRoot: __dirname,
   validateResponse: false, // how to support json or html response ???
   db: 'mongodb://localhost/vardyger-dev',
-  theme: 'casper' // goblin casper
+  theme: 'casper' // casper goblin ...
 };
 
-// /content/themes/goblin
+// e.g., /content/themes/casper
 var themeDir = path.resolve(__dirname + '../../../content/themes/' + config.theme);
 //  /core (shared)
 var sharedDir = path.resolve(__dirname + '../../');
