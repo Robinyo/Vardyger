@@ -37,12 +37,12 @@ var themeDir = path.resolve(__dirname + '../../../content/themes/' + config.them
 //  /core (shared)
 var sharedDir = path.resolve(__dirname + '../../');
 // Layouts are in the theme directory
-var layoutsDir = themeDir;
+// var layoutsDir = themeDir;
 
 app.engine('hbs', hbs.express4({
-  layoutsDir: layoutsDir,
-  defaultLayout: layoutsDir + '/default.hbs',
-  partialsDir: layoutsDir + '/partials'
+  layoutsDir: themeDir,
+  defaultLayout: themeDir + '/default.hbs',
+  partialsDir: themeDir + '/partials'
   // i18n:
 }));
 app.set('view engine', 'hbs');
