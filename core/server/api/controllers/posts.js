@@ -1,7 +1,14 @@
+/*!
+ * Vardyger
+ * Copyright(c) 2015 Rob Ferguson
+ * MIT Licensed
+ */
+
 'use strict';
 
 /**
- * Module dependencies
+ * Module dependencies.
+ * @private
  */
 
 var util = require('util');  // console.log(util.inspect(anyObject));
@@ -15,10 +22,19 @@ var LOCATION = '/posts/';
 var APPLICATION_JSON = 'application/json';
 var TEXT_HTML = 'text/html';
 
-// POST /posts
-// Rule: POST must be used to create a new resource in a collection
-// Rule: Location must be used to specify the URI of a newly created resource
-
+/**
+ * addPost
+ *
+ * creates a new post in the Posts collection.
+ * Location (in the response header) is used to specify the URI of the newly created resource.
+ *
+ * @public
+ * @param {req} req - The HTTP request object.
+ * @param {res} res - The HTTP response object.
+ * @return {id} string - The unique id of the resource that was created.
+ * @see {@link http://expressjs.com/api.html#req}
+ * @see {@link http://expressjs.com/api.html#res}
+ */
 function addPost(req, res) {
 
   var model = new Post(req.body);
@@ -40,7 +56,7 @@ function addPost(req, res) {
           // res.type(APPLICATION_JSON);
           returnId(res, status.CREATED, model._id);
         },
-        default: function() {
+        'default': function() {
           returnError(res, status.NOT_ACCEPTABLE);
         }
       })
@@ -53,12 +69,24 @@ function addPost(req, res) {
   });
 }
 
-// GET /posts
-// Rule: GET must be used to retrieve a representation of a resource
-// Note: When we return the array of posts, we don’t simply return the model as returned from the database.
-// That would expose internal implementation details. Instead, we pick the information we need and construct a
-// new object to return.
-
+/**
+ * findPosts
+ *
+ * returns all the posts in the Posts collection.
+ *
+ * When we return the array of posts, we don’t simply return the model as returned from the database.
+ * That would expose internal implementation details. Instead, we pick the information we need and construct a
+ * new object to return.
+ *
+ * Rule: GET must be used to retrieve a representation of a resource
+ *
+ * @public
+ * @param {req} req - The HTTP request object.
+ * @param {res} res - The HTTP response object.
+ * @return {posts} posts - The posts collection.
+ * @see {@link http://expressjs.com/api.html#req}
+ * @see {@link http://expressjs.com/api.html#res}
+ */
 function findPosts(req, res) {
 
   var filteredQuery = {};
@@ -103,7 +131,7 @@ function findPosts(req, res) {
           }));
         },
 
-        default: function() {
+        'default': function() {
           returnError(res, status.NOT_ACCEPTABLE);
         }
       })
@@ -113,12 +141,24 @@ function findPosts(req, res) {
   });
 }
 
-// GET /posts/{id}
-// Rule: GET must be used to retrieve a representation of a resource
-// Note: When we return the array of posts, we don’t simply return the model as returned from the database.
-// That would expose internal implementation details. Instead, we pick the information we need and construct a
-// new object to return.
-
+/**
+ * findPostById
+ *
+ * returns a post in the Posts collection.
+ *
+ * When we return the post, we don’t simply return the model as returned from the database.
+ * That would expose internal implementation details. Instead, we pick the information we need and construct a
+ * new object to return.
+ *
+ * Rule: GET must be used to retrieve a representation of a resource
+ *
+ * @public
+ * @param {req} req - The HTTP request object.
+ * @param {res} res - The HTTP response object.
+ * @return {post} post - A post from the posts collection.
+ * @see {@link http://expressjs.com/api.html#req}
+ * @see {@link http://expressjs.com/api.html#res}
+ */
 function findPostById(req, res) {
 
   // Note: req.swagger.params.id.value not req.params.id
@@ -140,14 +180,15 @@ function findPostById(req, res) {
 
       res.format({
         html: function() {
-          res.type(TEXT_HTML);
+          // The view engine will return a content type of text/html and a status code of 200 by default.
+          // res.type(TEXT_HTML);
           res.render(view, response);
         },
         json: function() {
           res.type(APPLICATION_JSON);
           res.status(status.OK).send(JSON.stringify(response));
         },
-        default: function() { returnError(res, status.NOT_ACCEPTABLE); }
+        'default': function() { returnError(res, status.NOT_ACCEPTABLE); }
       })
 
     } else {
@@ -156,15 +197,25 @@ function findPostById(req, res) {
   });
 }
 
-// as per http://themes.ghost.org/v0.6.4/docs/post-context
-// except where the doco is incorrect:
-//   - 'content' helper returns (#post) this.html
-//   - 'meta_title' helper returns this.metaTitle
-//   - 'meta_description' helper returns this.metaDescription,
-
 var url = 'http://robferguson.org';
 // var url = 'http://localhost:10010';
 
+/**
+ * formatResponse
+ *
+ * returns a formatted response object see: {@link http://themes.ghost.org/v0.6.4/docs/post-context}
+ *
+ * Except where the doco is incorrect:
+ *   - 'content' helper returns (#post) this.html
+ *   - 'meta_title' helper returns this.metaTitle
+ *   - 'meta_description' helper returns this.metaDescription
+ *
+ * Rule: GET must be used to retrieve a representation of a resource
+ *
+ * @public
+ * @param {model} model - The Post model.
+ * @return {post} post - A Ghost formatted post object.
+ */
 function formatResponse(model) {
   return {
     meta_title: model.metaTitle,
@@ -218,14 +269,26 @@ function findPostBySlug(req, res) {
 
 }
 
-// PUT /posts/{id}
-// Rule: PUT must be used to both insert and update a stored resource
-// Rule: PUT must be used to update mutable resources
-
+/**
+ * updatePost
+ *
+ * updates a post in the Posts collection.
+ *
+ * Swagger sets req.swagger.params.id.value not req.params.id
+ * {@link https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md}
+ *
+ * Rule: PUT must be used to both insert and update a stored resource
+ * Rule: PUT must be used to update mutable resources
+ *
+ * @public
+ * @param {req} req - The HTTP request object.
+ * @param {res} res - The HTTP response object.
+ * @return {id} string - The unique id of the resource that was updated.
+ * @see {@link http://expressjs.com/api.html#req}
+ * @see {@link http://expressjs.com/api.html#res}
+ */
 function updatePost(req, res) {
 
-  // Note: req.swagger.params.id.value not req.params.id
-  // See: https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
   var id = req.swagger.params.id.value;
 
   // console.log('id: ' + id);
@@ -266,13 +329,25 @@ function updatePost(req, res) {
     });
 }
 
-// DELETE /posts/{id}
-// Rule: DELETE must be used to remove a resource from its parent
-
+/**
+ * deletePost
+ *
+ * deletes a post in the Posts collection.
+ *
+ * Swagger sets req.swagger.params.id.value not req.params.id
+ * {@link https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md}
+ *
+ * Rule: DELETE must be used to remove a resource from its parent
+ *
+ * @public
+ * @param {req} req - The HTTP request object.
+ * @param {res} res - The HTTP response object.
+ * @return {id} string - The unique id of the resource that was deleted.
+ * @see {@link http://expressjs.com/api.html#req}
+ * @see {@link http://expressjs.com/api.html#res}
+ */
 function deletePost(req, res) {
 
-  // Note: req.swagger.params.id.value not req.params.id
-  // See: https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md
   var id = req.swagger.params.id.value;
 
   // console.log('id: ' + id);

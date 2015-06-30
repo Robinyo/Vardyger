@@ -1,7 +1,14 @@
+/*!
+ * Vardyger
+ * Copyright(c) 2015 Rob Ferguson
+ * MIT Licensed
+ */
+
 'use strict';
 
 /**
- * Module dependencies
+ * Module dependencies.
+ * @private
  */
 
 var fs             = require('fs'),

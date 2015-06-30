@@ -13,6 +13,7 @@ results
 
 npm-debug.log
 node_modules
+out
 bower_components
 .bowerrc
 .idea/*
