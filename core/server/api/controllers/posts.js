@@ -25,7 +25,7 @@ var TEXT_HTML = 'text/html';
 /**
  * addPost
  *
- * creates a new post in the Posts collection.
+ * creates a new post in the Posts collection.</br>
  * Location (in the response header) is used to specify the URI of the newly created resource.
  *
  * @public
@@ -72,11 +72,11 @@ function addPost(req, res) {
 /**
  * findPosts
  *
- * returns all the posts in the Posts collection.
+ * returns all the posts in the Posts collection.</br>
  *
  * When we return the array of posts, we don’t simply return the model as returned from the database.
  * That would expose internal implementation details. Instead, we pick the information we need and construct a
- * new object to return.
+ * new object to return.</br></br>
  *
  * Rule: GET must be used to retrieve a representation of a resource
  *
@@ -144,11 +144,11 @@ function findPosts(req, res) {
 /**
  * findPostById
  *
- * returns a post in the Posts collection.
+ * returns a post in the Posts collection.</br>
  *
  * When we return the post, we don’t simply return the model as returned from the database.
  * That would expose internal implementation details. Instead, we pick the information we need and construct a
- * new object to return.
+ * new object to return.</br></br>
  *
  * Rule: GET must be used to retrieve a representation of a resource
  *
@@ -203,12 +203,12 @@ var url = 'http://robferguson.org';
 /**
  * formatResponse
  *
- * returns a formatted response object see: {@link http://themes.ghost.org/v0.6.4/docs/post-context}
+ * returns a formatted response object see: {@link http://themes.ghost.org/v0.6.4/docs/post-context}</br>
  *
- * Except where the doco is incorrect:
- *   - 'content' helper returns (#post) this.html
- *   - 'meta_title' helper returns this.metaTitle
- *   - 'meta_description' helper returns this.metaDescription
+ * Except where the doco is incorrect:</br>
+ *   - 'content' helper returns (#post) this.html</br>
+ *   - 'meta_title' helper returns this.metaTitle</br>
+ *   - 'meta_description' helper returns this.metaDescription</br></br>
  *
  * Rule: GET must be used to retrieve a representation of a resource
  *
@@ -272,12 +272,12 @@ function findPostBySlug(req, res) {
 /**
  * updatePost
  *
- * updates a post in the Posts collection.
+ * updates a post in the Posts collection.</br>
  *
- * Swagger sets req.swagger.params.id.value not req.params.id
- * {@link https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md}
+ * Swagger sets req.swagger.params.id.value not req.params.id, see:
+ * {@link https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md}</br></br>
  *
- * Rule: PUT must be used to both insert and update a stored resource
+ * Rule: PUT must be used to both insert and update a stored resource</br>
  * Rule: PUT must be used to update mutable resources
  *
  * @public
@@ -332,10 +332,10 @@ function updatePost(req, res) {
 /**
  * deletePost
  *
- * deletes a post in the Posts collection.
+ * deletes a post in the Posts collection.</br>
  *
- * Swagger sets req.swagger.params.id.value not req.params.id
- * {@link https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md}
+ * Swagger sets req.swagger.params.id.value not req.params.id, see:
+ * {@link https://github.com/apigee-127/swagger-tools/blob/master/docs/Middleware.md}</br></br>
  *
  * Rule: DELETE must be used to remove a resource from its parent
  *
