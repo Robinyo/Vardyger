@@ -403,6 +403,10 @@ module.exports = {
   deletePost:     deletePost
 }
 
+// ./node_modules/.bin/jsdoc /Users/robferguson/opt/WebStorm/projects/Vardyger/core/server/api/controllers/posts.js
+// ./node_modules/.bin/jsdoc /Users/robferguson/opt/WebStorm/projects/Vardyger/core/server/api/controllers/posts.js -t
+//   ./node_modules/ink-docstrap/template -c ./node_modules/jsdoc/conf.json
+
 //        http://themes.ghost.org/v0.6.4/docs/navigation
 //        Ghost/core/server/controllers/frontend.js
 // Note: You can override the default template by placing a file called navigation.hbs in the partials directory
