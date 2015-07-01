@@ -298,6 +298,8 @@ function updatePost(req, res) {
   // console.log(util.inspect(body));
 
   delete body.id;
+  // make sure no one changes the author
+  // delete body.author;
 
   // console.log(util.inspect(body));
 
