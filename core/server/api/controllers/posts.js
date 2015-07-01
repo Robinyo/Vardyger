@@ -83,7 +83,7 @@ function addPost(req, res) {
  * @public
  * @param {req} req - The HTTP request object.
  * @param {res} res - The HTTP response object.
- * @return {posts} posts - The posts collection.
+ * @return {posts} posts - The Posts collection.
  * @see {@link http://expressjs.com/api.html#req}
  * @see {@link http://expressjs.com/api.html#res}
  */
@@ -155,7 +155,7 @@ function findPosts(req, res) {
  * @public
  * @param {req} req - The HTTP request object.
  * @param {res} res - The HTTP response object.
- * @return {post} post - A post from the posts collection.
+ * @return {post} post - A post from the Posts collection.
  * @see {@link http://expressjs.com/api.html#req}
  * @see {@link http://expressjs.com/api.html#res}
  */
