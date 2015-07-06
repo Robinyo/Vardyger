@@ -1,0 +1,38 @@
+<ion-view view-title="Content">
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+
+  <!--
+  <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+      </button>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar-positive">
+      <h1 class="title">QBuddy</h1>
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+  </ion-header-bar>
+
+  ion-ios-arrow-right
+  ion-ios-arrow-thin-right
+  -->
+
+  <ion-content class="has-header">
+
+    <ion-list>
+
+      <a ng-repeat="listItem in listItems"
+         class="item item-icon-right"
+         href="{{listItem.href}}">
+        {{listItem.name}}
+        <i class="icon ion-ios-arrow-thin-right"></i>
+      </a>
+
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>

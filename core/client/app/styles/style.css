@@ -1,1 +1,56 @@
-/* Empty. Add your own CSS if you like */
+.qb-row {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 0px;
+  margin: 0px; }
+
+.qb-col {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border: 0px;
+  margin: 0px; }
+
+.qb-button {
+  padding: 0px;
+  border: 0px;
+  margin: 0px; }
+
+.qb-button-block {
+  padding: 0px;
+  border: 0px;
+  margin: 0px; }
+
+.qb-product-price {
+  right: 80px;
+  position: absolute; }
+
+.qb-order-fee {
+  right: 80px;
+  position: absolute; }
+
+.qb-tax {
+  right: 80px;
+  position: absolute; }
+
+.qb-total-price {
+  right: 80px;
+  position: absolute;
+  font-weight: bold; }
+
+.qb-receipt-number {
+  padding: 5px;
+  color: #fff;
+  background-color: #ffc900;
+  border: 1px solid #ffc900; }
+
+.qb-item {
+  padding-top: 26px;
+  padding-bottom: 26px; }
+
+.qb-content {
+  background-color: white; }
+
+.item.wrap, .wrap.qb-item, .item-content.wrap {
+  white-space: normal; }

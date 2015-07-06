@@ -1,76 +1,68 @@
+/*!
+ * Vardyger
+ * Copyright(c) 2015 Rob Ferguson
+ * MIT Licensed
+ */
+
 'use strict';
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
+angular.module('vardyger', [
+  'ionic'
+])
+  .config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
 
-angular.module('starter', ['ionic', 'starter.controllers'])
+    $ionicConfigProvider.views.maxCache(10);
+    $ionicConfigProvider.views.transition('platform');
+    // By default, when navigating, views that were recently visited are cached,
+    // and the same instance data and DOM elements are referenced when navigating back.
+    // However, when navigating back in the history, the "forward" views are removed from the cache.
+    // If you navigate forward to the same view again, it'll create a new DOM element and controller instance.
+    // Basically, any forward views are reset each time. Set this config to true to have forward views cached
+    // and not reset on each load.
+    $ionicConfigProvider.views.forwardCache(false);
+    $ionicConfigProvider.backButton.icon('ion-ios7-arrow-back');
+    // $ionicConfigProvider.backButton.text('');                  // default is 'Back'
+    // $ionicConfigProvider.backButton.previousTitleText(false);  // hides the 'Back'
+    $ionicConfigProvider.templates.maxPrefetch(20);
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
+    $stateProvider
+      .state('app', {
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/side-menu.html',
+        controller: 'SideMenuController'
+      })
 
-.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-
-  .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
-
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-    url: '/browse',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/browse.html'
-      }
-    }
-  })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+      .state('app.main', {
+        url: '/main',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/main.html',
+            controller: 'MainController'
+          }
         }
-      }
-    })
+      });
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/app/main');
+  })
+
+  .run(function($ionicPlatform) {
+
+    $ionicPlatform.ready(function() {
+
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       }
-    }
+
+      if (window.StatusBar) {
+        StatusBar.styleDefault();
+      }
+
+    });
   });
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
-});
 
 
 // Code here will be linted with JSHint.
@@ -80,3 +72,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 // You can also ignore a single line with a trailing comment like this:
 // ignoreThis(); // jshint ignore:line
+
+// https://github.com/johnpapa/angular-styleguide  9047
+// https://github.com/toddmotto/angularjs-styleguide  3218
+// https://github.com/mgechev/angularjs-style-guide  2730
