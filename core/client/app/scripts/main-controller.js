@@ -56,7 +56,23 @@ angular.module('vardyger')
       { iconLeft: 'ion-ios-location-outline',
         name: 'A JavaScript Microservices stack',
         href: '#'
+      },
+
+      { iconLeft: 'ion-ios-location-outline',
+        name: 'Microservices and Exponential Organisations',
+        href: '#'
+      },
+
+      { iconLeft: 'ion-ios-location-outline',
+        name: 'Is the BIAN Service Landscape an example of Conways Law?',
+        href: '#'
+      },
+
+      { iconLeft: 'ion-ios-location-outline',
+        name: 'Microservices, Archetypes and Exemplars',
+        href: '#'
       }
+
 
     ];
 

@@ -23,8 +23,8 @@ angular.module('vardyger', [
     // and not reset on each load.
     $ionicConfigProvider.views.forwardCache(false);
     $ionicConfigProvider.backButton.icon('ion-ios7-arrow-back');
-    // $ionicConfigProvider.backButton.text('');                  // default is 'Back'
-    // $ionicConfigProvider.backButton.previousTitleText(false);  // hides the 'Back'
+    $ionicConfigProvider.backButton.text('');                  // default is 'Back'
+    $ionicConfigProvider.backButton.previousTitleText(false);  // hides the 'Back'
     $ionicConfigProvider.templates.maxPrefetch(20);
 
     $stateProvider

@@ -1,0 +1,20 @@
+/**
+ *
+ * PATH TO THIS FILE: app/styles/styles.scss
+ *
+ * Notice that here we define styles but do not define variables.
+ * Variables should all be defined ahead of time. If we define any
+ * variables here, then they will be local to this file, and will
+ * not reset the globals.
+ *
+ **/
+
+.v-item {
+  padding-top: 26px;
+  padding-bottom: 26px; }
+
+.v-content {
+  background-color: white; }
+
+.item.wrap, .wrap.v-item, .item-content.wrap {
+  white-space: normal; }

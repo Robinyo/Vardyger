@@ -1,57 +1,33 @@
-.qb-row {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border: 0px;
-  margin: 0px; }
+@charset "UTF-8";
 
-.qb-col {
-  padding-top: 0px;
-  padding-bottom: 0px;
-  border: 0px;
-  margin: 0px; }
+/**
+ *
+ * PATH TO THIS FILE: app/styles/main.scss
+ *
+ * This includes all variables. We put them all (both ionic overrides and
+ * our own variables) in one file so it is easy for anyone who @includes
+ * our scss to locate and edit our variables.
+ *
+ **/
 
-.qb-button {
-  padding: 0px;
-  border: 0px;
-  margin: 0px; }
+@import "variables";
 
-.qb-button-block {
-  padding: 0px;
-  border: 0px;
-  margin: 0px; }
+/**
+ *
+ * This includes the SASS/SCSS version of the ionic framework so that we can
+ * customize it by overriding it's variables. To use this we need to make sure
+ * that the CSS version is not included in app/index.html
+ *
+ **/
 
-.qb-product-price {
-  right: 80px;
-  position: absolute; }
+@import "../bower_components/ionic/scss/ionic";
 
-.qb-order-fee {
-  right: 80px;
-  position: absolute; }
+/**
+ *
+ * These are the actual components of our apps that consume variables. We can
+ * override ionic's own styles here or add additional styles of our own.
+ *
+ **/
 
-.qb-tax {
-  right: 80px;
-  position: absolute; }
-
-.qb-total-price {
-  right: 80px;
-  position: absolute;
-  font-weight: bold; }
-
-.qb-receipt-number {
-  padding: 5px;
-  color: #fff;
-  background-color: #ffc900;
-  border: 1px solid #ffc900; }
-
-.qb-item {
-  padding-top: 26px;
-  padding-bottom: 26px; }
-
-.qb-content {
-  background-color: white; }
-
-.item.wrap, .wrap.qb-item, .item-content.wrap {
-  white-space: normal; }
+@import "styles";
 

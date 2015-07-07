@@ -1,0 +1,22 @@
+/**
+ *
+ * PATH TO THIS FILE: app/styles/variables.scss
+ *
+ * In this file we're smoothly overriding any ionic variables that have
+ * existing defaults inside the framework variables file. We're also defining
+ * our own variables that we can use in our app's components. Essentially we're
+ * setting the global variables for our app here.
+ *
+ * For a list of the possible variables that you can override, see bower_components/ionic/scss/_variables.scss
+ *
+ * Note: we add !default to all variables so that they can be overridden later on if need be.
+ *
+ **/
+
+// Ionic variables to override
+$calm: #4cbfeb !default;
+$balanced: #8dcb00 !default;
+
+// My own variables to be used in my components, notice that we can also depend on other variables here.
+$vardygerOrange: #ff9900 !default;
+$vardygerOther: lighten($balanced, 20%) !default;
