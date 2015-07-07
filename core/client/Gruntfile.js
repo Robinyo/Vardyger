@@ -71,9 +71,9 @@ module.exports = function (grunt) {
         files: ['<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js'],
         tasks: ['newer:copy:app', 'newer:jshint:all']
       },
-      styles: {
-        files: ['<%= yeoman.app %>/<%= yeoman.styles %>/**/*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer', 'newer:copy:tmp']
+      compass: {
+        files: ['<%= yeoman.app %>/<%= yeoman.styles %>/**/*.{scss,sass}'],
+        tasks: ['compass:server', 'autoprefixer', 'newer:copy:tmp']
       },
       gruntfile: {
         files: ['Gruntfile.js'],
@@ -154,9 +154,42 @@ module.exports = function (grunt) {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
         ignorePath:  /\.\.\//
+      },
+      sass: {
+        src: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
+        ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },
 
+    
+    // Compiles Sass to CSS and generates necessary files if requested
+    compass: {
+      options: {
+        sassDir: '<%= yeoman.app %>/<%= yeoman.styles %>',
+        cssDir: '.temp/<%= yeoman.styles %>',
+        generatedImagesDir: '.temp/<%= yeoman.images %>/generated',
+        imagesDir: '<%= yeoman.app %>/<%= yeoman.images %>',
+        javascriptsDir: '<%= yeoman.app %>/<%= yeoman.scripts %>',
+        fontsDir: '<%= yeoman.app %>/<%= yeoman.styles %>/fonts',
+        importPath: '<%= yeoman.app %>/bower_components',
+        httpImagesPath: '/<%= yeoman.images %>',
+        httpGeneratedImagesPath: '/<%= yeoman.images %>/generated',
+        httpFontsPath: '/<%= yeoman.styles %>/fonts',
+        relativeAssets: false,
+        assetCacheBuster: false,
+        raw: 'Sass::Script::Number.precision = 10\n'
+      },
+      dist: {
+        options: {
+          generatedImagesDir: '<%= yeoman.dist %>/<%= yeoman.images %>/generated'
+        }
+      },
+      server: {
+        options: {
+          debugInfo: true
+        }
+      }
+    },
     
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
@@ -276,16 +309,19 @@ module.exports = function (grunt) {
         }
       },
       server: [
+        'compass:server',
         'copy:styles',
         'copy:vendor',
         'copy:fonts'
       ],
       test: [
+        'compass',
         'copy:styles',
         'copy:vendor',
         'copy:fonts'
       ],
       dist: [
+        'compass:dist',
         'copy:styles',
         'copy:vendor',
         'copy:fonts'

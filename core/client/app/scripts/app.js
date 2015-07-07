@@ -6,6 +6,8 @@
 
 'use strict';
 
+// Declare a new module called 'vardyger', and list its dependencies.
+// Ionic is an Angular module, so we need to declare it as a dependency.
 angular.module('vardyger', [
   'ionic'
 ])
