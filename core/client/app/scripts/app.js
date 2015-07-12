@@ -7,9 +7,9 @@
 'use strict';
 
 // Declare a new module called 'vardyger', and list its dependencies.
-// Ionic is an Angular module, so we need to declare it as a dependency.
 angular.module('vardyger', [
-  'ionic'
+  'ionic',
+  'ionic.contrib.icon',  // see https://github.com/antonshevchenko/ionic-contrib-icon
 ])
   .config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
 

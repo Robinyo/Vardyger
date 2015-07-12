@@ -1,13 +1,40 @@
-<ion-view view-title="Content">
+<ion-view title="Content">
 
-  <ion-nav-buttons side="left">
-    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-    </button>
-  </ion-nav-buttons>
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
   <ion-content class="has-header">
 
     <ion-list>
+
+      <ion-item class="item-icon-right v-item">
+        <icon ios="ion-ios-arrow-thin-right" android="ion-android-arrow-forward" default="ion-arrow-right-c"></icon>
+        Annotating JavaScript using JSDoc tags
+      </ion-item>
+
+      <ion-item class="item-icon-right v-item">
+        <icon ios="ion-ios-arrow-thin-right" android="ion-android-arrow-forward" default="ion-arrow-right-c"></icon>
+        Express, Handlebars and Ghost Themes
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>
+
+<!--
+
+      <ion-item
+        class="item-icon-right"
+        ng-repeat="listItem in listItems"
+        ui-sref="app.main">
+        Sample post
+        <icon ios="ion-ios-home" default="ion-home"></icon>
+      </ion-item>
 
       <a ng-repeat="listItem in listItems"
          class="item v-item item-icon-right"
@@ -16,8 +43,4 @@
         <i class="icon ion-ios-arrow-thin-right"></i>
       </a>
 
-    </ion-list>
-
-  </ion-content>
-
-</ion-view>
+-->

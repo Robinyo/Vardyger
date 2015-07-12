@@ -13,6 +13,9 @@
  *
  **/
 
+// The path to the ionicons font files, relative to the built CSS in www/styles
+$ionicons-font-path: "../fonts" !default;
+
 // Ionic variables to override
 $calm: #4cbfeb !default;
 $balanced: #8dcb00 !default;

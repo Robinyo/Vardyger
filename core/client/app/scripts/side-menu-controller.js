@@ -14,39 +14,34 @@
  */
 
 angular.module('vardyger')
-  .controller('SideMenuController', ['$log', '$scope', function($log, $scope) {
-
-    // var self = this;
-    // self.listItems = [
+  .controller('SideMenuController', ['$log',
+    function(
+      $log
+    ) {
 
     $log.info('SideMenuController');
 
-    $scope.listItems = [
-
-      /*
-
-      { iconLeft: 'ion-person',
-        name: 'VISIT BLOG',
-        fn: ''
-      },
-
-      */
-
-      { iconLeft: 'ion-ios-paper',
-        name: 'Content',
-        fn: ''
-      },
-
-      { iconLeft: 'ion-plus-round',
-        name: 'New Post',
-        fn: ''
-      },
-
-      { iconLeft: 'ion-gear-b',  // ion-settings
-        name: 'Settings',
-        fn: ''
-      }
-
-    ];
-
   }]);
+
+/*
+
+$scope.listItems = [
+
+  { iconLeft: 'ion-ios-paper',
+    name: 'Content',
+    fn: ''
+  },
+
+  { iconLeft: 'ion-plus-round',
+    name: 'New Post',
+    fn: ''
+  },
+
+  { iconLeft: 'ion-gear-b',  // ion-settings
+    name: 'Settings',
+    fn: ''
+  }
+
+];
+
+*/
