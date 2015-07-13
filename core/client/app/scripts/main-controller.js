@@ -6,30 +6,40 @@
 
 'use strict';
 
+// Reference the 'vardyger' module to attach a controller
+
 angular.module('vardyger')
   .controller('MainController',
     function(
-      $log,
-      $scope
+      $log,   // inject the $log service
+      $scope  // inject the $scope service
     ) {
 
-    $log.info('MainController');
+      $log.info('MainController');
 
-    $scope.listItems = [
+      // Remember, values on $scope are called models and are also available in views.
 
-      { id: '1',
-        iconLeft: 'ion-ios-paper-outline',
-        name: 'Annotating JavaScript using JSDoc tags',
-        href: '#'
-      },
+      $scope.listItems = [];
 
-      { id: '2',
-        iconLeft: 'ion-ios-cart-outline',
-        name: 'Express, Handlebars and Ghost Themes',
-        href: '#'
-      }
+      /*
 
-    ];
+      $scope.listItems = [
+
+        { id: '1',
+          iconLeft: 'ion-ios-paper-outline',
+          name: 'Annotating JavaScript using JSDoc tags',
+          href: '#'
+        },
+
+        { id: '2',
+          iconLeft: 'ion-ios-cart-outline',
+          name: 'Express, Handlebars and Ghost Themes',
+          href: '#'
+        }
+
+      ];
+
+      */
 
   });
 

@@ -30,36 +30,36 @@ module.exports = function (grunt) {
 
     /*
 
-    // Environment Variables for Angular App
-    // This creates an Angular Module that can be injected via ENV
-    // Add any desired constants to the ENV objects below.
-    // https://github.com/diegonetto/generator-ionic/blob/master/docs/FAQ.md#how-do-i-add-constants
-    ngconstant: {
-      options: {
-        space: '  ',
-        wrap: '"use strict";\n\n {%= __ngModule %}',
-        name: 'config',
-        dest: '<%= yeoman.app %>/<%= yeoman.scripts %>/configuration.js'
-      },
-      development: {
-        constants: {
-          ENV: {
-            name: 'development',
-            apiEndpoint: 'http://dev.yoursite.com:10000/'
-          }
-        }
-      },
-      production: {
-        constants: {
-          ENV: {
-            name: 'production',
-            apiEndpoint: 'http://api.yoursite.com/'
-          }
-        }
-      }
-    },
+     // Environment Variables for Angular App
+     // This creates an Angular Module that can be injected via ENV
+     // Add any desired constants to the ENV objects below.
+     // https://github.com/diegonetto/generator-ionic/blob/master/docs/FAQ.md#how-do-i-add-constants
+     ngconstant: {
+     options: {
+     space: '  ',
+     wrap: '"use strict";\n\n {%= __ngModule %}',
+     name: 'config',
+     dest: '<%= yeoman.app %>/<%= yeoman.scripts %>/configuration.js'
+     },
+     development: {
+     constants: {
+     ENV: {
+     name: 'development',
+     apiEndpoint: 'http://dev.yoursite.com:10000/'
+     }
+     }
+     },
+     production: {
+     constants: {
+     ENV: {
+     name: 'production',
+     apiEndpoint: 'http://api.yoursite.com/'
+     }
+     }
+     }
+     },
 
-    */
+     */
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -82,12 +82,12 @@ module.exports = function (grunt) {
 
       /*
 
-      gruntfile: {
-        files: ['Gruntfile.js'],
-        tasks: ['ngconstant:development', 'newer:copy:app']
-      }
+       gruntfile: {
+       files: ['Gruntfile.js'],
+       tasks: ['ngconstant:development', 'newer:copy:app']
+       }
 
-      */
+       */
     },
 
     // The actual grunt server settings
@@ -362,6 +362,51 @@ module.exports = function (grunt) {
     //   dist: {}
     // },
 
+    // Test settings
+    // These will override any config options in karma.conf.js if you create it.
+    karma: {
+      options: {
+        basePath: '',
+        frameworks: ['mocha', 'chai'],
+        files: [
+          '<%= yeoman.app %>/bower_components/angular/angular.js',
+          '<%= yeoman.app %>/bower_components/angular-mocks/angular-mocks.js',
+          '<%= yeoman.app %>/bower_components/angular-animate/angular-animate.js',
+          '<%= yeoman.app %>/bower_components/angular-sanitize/angular-sanitize.js',
+          '<%= yeoman.app %>/bower_components/angular-ui-router/release/angular-ui-router.js',
+          '<%= yeoman.app %>/bower_components/ionic/release/js/ionic.js',
+          '<%= yeoman.app %>/bower_components/ionic/release/js/ionic-angular.js',
+          '<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js',
+          '<%= yeoman.test %>/mock/**/*.js',
+          '<%= yeoman.test %>/spec/**/*.js'
+        ],
+        autoWatch: false,
+        reporters: ['dots', 'coverage'],
+        port: 8080,
+        singleRun: false,
+        preprocessors: {
+          // Update this if you change the yeoman config path
+          '<%= yeoman.app %>/<%= yeoman.scripts %>/**/*.js': ['coverage']
+        },
+        coverageReporter: {
+          reporters: [
+            { type: 'html', dir: 'coverage/' },
+            { type: 'text-summary' }
+          ]
+        }
+      },
+      unit: {
+        // Change this to 'Chrome', 'Firefox', etc. Note that you will need
+        // to install a karma launcher plugin for browsers other than Chrome.
+        browsers: ['PhantomJS'],
+        background: true
+      },
+      continuous: {
+        browsers: ['PhantomJS'],
+        singleRun: true,
+      }
+    },
+
     // ngAnnotate tries to make the code safe for minification automatically by
     // using the Angular long form for dependency injection.
     ngAnnotate: {
@@ -514,13 +559,13 @@ module.exports = function (grunt) {
 
   grunt.registerTask('coverage',
     ['karma:continuous',
-    'connect:coverage:keepalive'
-  ]);
+      'connect:coverage:keepalive'
+    ]);
 
   grunt.registerTask('default', [
     'wiredep',
     'newer:jshint',
-    // 'karma:continuous',
+    'karma:continuous',
     'compress'
   ]);
 };
