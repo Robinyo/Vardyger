@@ -6,21 +6,25 @@
     </ion-nav-buttons>
   </ion-nav-bar>
 
-  <ion-content class="has-header">
+  <div class="bar bar-subheader bar-stable">
+    <div class="title title-left"><small>ALL POSTS</small></div>
+    <a class="button icon-right ion-ios-compose button-clear button-balanced"></a>
+  </div>
+
+  <ion-content class="has-header has-subheader">
+
+    <div ng-if="! listItems.length" class="item item-energized v-item">No posts :(</div>
 
     <ion-list>
 
-      <ion-item class="item-icon-right v-item">
-        <icon ios="ion-ios-arrow-thin-right" android="ion-android-arrow-forward" default="ion-arrow-right-c"></icon>
-        Annotating JavaScript using JSDoc tags
+      <ion-item class="item-icon-right v-item"
+        ng-repeat="listItem in listItems">
+        {{listItem.name}}
+        <icon ios="ion-ios-arrow-thin-right"
+              android="ion-android-arrow-forward"
+              default="ion-arrow-right-c">
+        </icon>
       </ion-item>
-
-      <ion-item class="item-icon-right v-item">
-        <icon ios="ion-ios-arrow-thin-right" android="ion-android-arrow-forward" default="ion-arrow-right-c"></icon>
-        Express, Handlebars and Ghost Themes
-      </ion-item>
-
-      <p ng-if="! listItems.length">No posts</p>
 
     </ion-list>
 
@@ -30,19 +34,14 @@
 
 <!--
 
-      <ion-item
-        class="item-icon-right"
+      <ion-item class="item-icon-right v-item"
         ng-repeat="listItem in listItems"
         ui-sref="app.main">
-        Sample post
-        <icon ios="ion-ios-home" default="ion-home"></icon>
-      </ion-item>
-
-      <a ng-repeat="listItem in listItems"
-         class="item v-item item-icon-right"
-         href="{{listItem.href}}">
         {{listItem.name}}
-        <i class="icon ion-ios-arrow-thin-right"></i>
-      </a>
+        <icon ios="ion-ios-arrow-thin-right"
+              android="ion-android-arrow-forward"
+              default="ion-arrow-right-c">
+        </icon>
+      </ion-item>
 
 -->

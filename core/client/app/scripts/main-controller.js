@@ -19,28 +19,29 @@ angular.module('vardyger')
 
       // Remember, values on $scope are called models and are also available in views.
 
-      $scope.listItems = [];
-
-      /*
-
       $scope.listItems = [
 
         { id: '1',
-          iconLeft: 'ion-ios-paper-outline',
           name: 'Annotating JavaScript using JSDoc tags',
           href: '#'
         },
 
         { id: '2',
-          iconLeft: 'ion-ios-cart-outline',
           name: 'Express, Handlebars and Ghost Themes',
+          href: '#'
+        },
+
+        { id: '3',
+          name: 'Swagger, Express, and Content Negotiation',
+          href: '#'
+        },
+
+        { id: '4',
+          name: 'The Vardyger publishing platform :)',
           href: '#'
         }
 
       ];
-
-      */
-
   });
 
 
