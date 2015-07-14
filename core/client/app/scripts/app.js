@@ -9,20 +9,14 @@
 // Declare a new module called 'vardyger', and list its dependencies.
 angular.module('vardyger', [
   'ionic',
-  'ionic.contrib.icon',  // see https://github.com/antonshevchenko/ionic-contrib-icon
+  'ionic.contrib.icon'
 ])
   .config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
 
     $ionicConfigProvider.views.maxCache(10);
     $ionicConfigProvider.views.transition('platform');
-    // By default, when navigating, views that were recently visited are cached,
-    // and the same instance data and DOM elements are referenced when navigating back.
-    // However, when navigating back in the history, the "forward" views are removed from the cache.
-    // If you navigate forward to the same view again, it'll create a new DOM element and controller instance.
-    // Basically, any forward views are reset each time. Set this config to true to have forward views cached
-    // and not reset on each load.
     $ionicConfigProvider.views.forwardCache(false);
-    $ionicConfigProvider.backButton.icon('ion-ios7-arrow-back');
+    $ionicConfigProvider.backButton.icon('ion-ios-arrow-back');
     $ionicConfigProvider.backButton.text('');                  // default is 'Back'
     $ionicConfigProvider.backButton.previousTitleText(false);  // hides the 'Back'
     $ionicConfigProvider.templates.maxPrefetch(20);
@@ -38,9 +32,19 @@ angular.module('vardyger', [
       .state('app.main', {
         url: '/main',
         views: {
-          'menuContent': {
-            templateUrl: 'templates/main.html',
-            controller: 'MainController'
+          menuContent: {
+          templateUrl: 'templates/main.html',
+          controller: 'MainController'
+          }
+        }
+      })
+
+      .state('app.preview', {
+        url: '/preview',
+        views: {
+          menuContent: {
+            templateUrl: 'templates/preview.html',
+            controller: 'PreviewController'
           }
         }
       });
@@ -74,7 +78,3 @@ angular.module('vardyger', [
 
 // You can also ignore a single line with a trailing comment like this:
 // ignoreThis(); // jshint ignore:line
-
-// https://github.com/johnpapa/angular-styleguide  9047
-// https://github.com/toddmotto/angularjs-styleguide  3218
-// https://github.com/mgechev/angularjs-style-guide  2730

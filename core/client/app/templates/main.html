@@ -18,7 +18,8 @@
     <ion-list>
 
       <ion-item class="item-icon-right v-item"
-        ng-repeat="listItem in listItems">
+        ng-repeat="listItem in listItems"
+        ui-sref="app.preview">
         {{listItem.name}}
         <icon ios="ion-ios-arrow-thin-right"
               android="ion-android-arrow-forward"
