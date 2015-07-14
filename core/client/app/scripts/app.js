@@ -47,6 +47,16 @@ angular.module('vardyger', [
             controller: 'PreviewController'
           }
         }
+      })
+
+      .state('app.editor', {
+        url: '/editor',
+        views: {
+          menuContent: {
+            templateUrl: 'templates/editor.html',
+            controller: 'EditorController'
+          }
+        }
       });
 
     // if none of the above states are matched, use this as the fallback

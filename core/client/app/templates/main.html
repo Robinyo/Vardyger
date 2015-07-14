@@ -7,8 +7,12 @@
   </ion-nav-bar>
 
   <div class="bar bar-subheader bar-stable">
-    <div class="title title-left"><small>ALL POSTS</small></div>
-    <a class="button icon-right ion-ios-compose button-clear button-balanced"></a>
+    <div class="title title-left">
+      <small>ALL POSTS</small>
+    </div>
+    <a class="button icon-right ion-ios-compose button-clear button-balanced"
+       href="#/app/editor">
+    </a>
   </div>
 
   <ion-content class="has-header has-subheader">
@@ -20,7 +24,7 @@
       <ion-item class="item-icon-right v-item"
         ng-repeat="listItem in listItems"
         ui-sref="app.preview">
-        {{listItem.name}}
+        {{listItem.post.title}}
         <icon ios="ion-ios-arrow-thin-right"
               android="ion-android-arrow-forward"
               default="ion-arrow-right-c">
@@ -34,6 +38,15 @@
 </ion-view>
 
 <!--
+
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left"
+              class="button button-icon icon ion-navicon"
+              onclick="location.href='#/app/main'">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
 
       <ion-item class="item-icon-right v-item"
         ng-repeat="listItem in listItems"
