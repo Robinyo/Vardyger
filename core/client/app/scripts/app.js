@@ -32,19 +32,29 @@ angular.module('vardyger', [
       .state('app.main', {
         url: '/main',
         views: {
-          menuContent: {
-          templateUrl: 'templates/main.html',
-          controller: 'MainController'
+          'menuContent': {
+            templateUrl: 'templates/main.html',
+            controller: 'MainController',
+            resolve: {
+              posts: function(PostsService) {
+                return PostsService.findPosts();
+              }
+            }
           }
         }
       })
 
       .state('app.preview', {
-        url: '/preview',
+        url: '/preview/:postId',
         views: {
-          menuContent: {
+          'menuContent': {
             templateUrl: 'templates/preview.html',
-            controller: 'PreviewController'
+            controller: 'PreviewController',
+            resolve: {
+              post: function($stateParams, PostsService) {
+                return PostsService.findPostById($stateParams.postId);
+              }
+            }
           }
         }
       })
@@ -52,11 +62,12 @@ angular.module('vardyger', [
       .state('app.editor', {
         url: '/editor',
         views: {
-          menuContent: {
+          'menuContent': {
             templateUrl: 'templates/editor.html',
             controller: 'EditorController'
           }
         }
+
       });
 
     // if none of the above states are matched, use this as the fallback

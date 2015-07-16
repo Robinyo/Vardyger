@@ -17,9 +17,7 @@ angular.module('vardyger')
 
       $log.info('PostsService');
 
-      var model = [];
-      var sampleData = [
-
+      var model = [
         {
           metaTitle: 'metaTitle',
           metaDescription: 'metaDescription',
@@ -58,10 +56,39 @@ angular.module('vardyger')
             title: 'The Vardyger publishing platform :)',
             html: ''
           }
+        },
+
+        {
+          metaTitle: 'metaTitle',
+          metaDescription: 'metaDescription',
+          post: {
+            id: '5',
+            title: 'Build your Microservices API with Swagger and Express',
+            html: ''
+          }
+        },
+
+        {
+          metaTitle: 'metaTitle',
+          metaDescription: 'metaDescription',
+          post: {
+            id: '6',
+            title: 'A JavaScript Microservices stack',
+            html: ''
+          }
+        },
+
+        {
+          metaTitle: 'metaTitle',
+          metaDescription: 'metaDescription',
+          post: {
+            id: '7',
+            title: 'Microservices and Exponential Organisations',
+            html: ''
+          }
         }
       ];
 
-      // model = sampleData;
       // $log.info('model: ', model);
 
       this.getModel = function () {
@@ -75,37 +102,43 @@ angular.module('vardyger')
 
         $log.info('findPosts()');
 
-        model = sampleData;
-
         return model;
       };
 
       this.findPostById = function(id) {
 
-        $log.info('findPostById(): ', id);
+        $log.info('findPostById(): ' + id);
 
-        return model[id];
+        $log.info('model.length: ' + model.length);
+
+        var deferred = $q.defer();
+
+        // Note: model.forEach NOT this.model.forEach
+
+        model.forEach(function(item) {
+          if (item.post.id === id) {
+            $log.info('item.post.id === id');
+            deferred.resolve(item);
+          }
+        });
+
+        return deferred.promise;
       };
 
     });
 
 
-
 /*
 
-this.findPosts = function() {
-
-  $log.info('findPosts()');
-
-  var deferred = $q.defer();
-
   setTimeout(function() {
-    model = sampleData;
-    deferred.resolve(sampleData);
+     model.forEach(function(item) {
+       if (item.post.id === id) {
+         $log.info('item.post.id === id');
+         deferred.resolve(item);
+       }
+     });
   }, 2000);
 
-  return deferred.promise;
-};
 
 
  $scope.item = {

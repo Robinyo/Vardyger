@@ -13,12 +13,12 @@ angular.module('vardyger')
   function(
     $log,         // inject the $log service
     $scope,       // inject the $scope service
-    PostsService  // inject the PostsService
+    post
   ) {
 
     $log.info('PreviewController');
 
-    $scope.item = PostsService.findPostById('2');
+    $scope.item = post;
 
     // $log.info('$scope.item: ', $scope.item);
 

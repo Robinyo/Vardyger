@@ -23,7 +23,7 @@
 
       <ion-item
         ng-repeat="listItem in listItems"
-        ui-sref="app.preview">
+        ui-sref='app.preview({postId: listItem.post.id})'>
           {{listItem.post.title}}
 
         <a class="item-icon-right">
@@ -50,6 +50,9 @@
 </ion-view>
 
 <!--
+
+        ui-sref="preview({postId: listItem.post.id})">
+        ng-class='{done: listItem.done}'>
 
       <ion-item
         class="v-item"
