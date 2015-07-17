@@ -7,7 +7,7 @@
   </ion-nav-bar>
 
   <div class="bar bar-subheader bar-stable">
-    <div class="title title-left">
+    <div class="title title-left padding-left">
       <small>ALL POSTS</small>
     </div>
     <a class="button icon-right ion-ios-compose button-clear button-balanced"
@@ -30,14 +30,16 @@
           <i class="icon ion-ios-arrow-thin-right"></i>
         </a>
 
-        <div class="padding-top">
+        <div>
           <p>
-            <icon class="v-icon-item-left positive"
-                  ios="ion-ios-person"
-                  android="ion-android-person"
-                  default="ion-person">
-            </icon>
-            &nbsp;Published 5 days ago
+            <span>
+              <icon class="v-icon-item-left positive"
+                    ios="ion-ios-person"
+                    android="ion-android-person"
+                    default="ion-person">
+              </icon>
+            </span>
+            <span class="padding-top">&nbsp;Published 5 days ago</span>
           </p>
         </div>
 
@@ -50,6 +52,12 @@
 </ion-view>
 
 <!--
+
+            <icon class="v-icon-item-left positive"
+                  ios="ion-ios-person"
+                  android="ion-android-person"
+                  default="ion-person">
+            </icon>
 
         ui-sref="preview({postId: listItem.post.id})">
         ng-class='{done: listItem.done}'>

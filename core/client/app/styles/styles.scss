@@ -45,6 +45,14 @@ p {
   font-weight: $body-font-weight;
 }
 
+// Emphasis & misc
+// -------------------------
+
+small {
+  font-size: 60%;  // 85%
+  font-weight: $small-font-weight;
+}
+
 // Headings
 // -------------------------
 

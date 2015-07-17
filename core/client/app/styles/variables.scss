@@ -23,11 +23,11 @@ $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
-$balanced:                        #33cd5f !default;
+$balanced:                        #9FBB58 !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #444 !default;
+$dark:                            #242628 !default;
 
 // Base
 // -------------------------------
@@ -40,7 +40,7 @@ $font-family-monospace:           monospace !default;
 $font-family-base:                $font-family-sans-serif !default;
 $font-size-base:                  18px !default; // 14px
 $font-size-large:                 18px !default;
-$font-size-small:                 11px !default;
+$font-size-small:                 9px !default; // 11px
 
 $line-height-base:                1.428571429 !default; // 20/14
 $line-height-computed:            floor($font-size-base * $line-height-base) !default; // ~20px
@@ -74,3 +74,4 @@ $border-radius-small:             3px !default;
 
 
 $body-font-weight:                200 !default;
+$small-font-weight:               400 !default;

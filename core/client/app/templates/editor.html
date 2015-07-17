@@ -1,18 +1,23 @@
 <ion-view title="Editor">
 
-  <div class="bar bar-subheader bar-stable">
-
-  </div>
+  <ion-subheader-bar class="bar bar-subheader">
+    <div class="button-bar">
+      <a class="button button-positive">MARKDOWN</a>
+      <a class="button">PREVIEW</a>
+    </div>
+  </ion-subheader-bar>
 
   <ion-content class="has-header has-subheader has-footer">
 
     <div class="wrapper">
-      <div ng-bind-html="item.post.html"></div>
+      <div ng-bind-html="item.post.markdown"></div>
     </div>
 
   </ion-content>
 
-  <div class="bar bar-footer bar-stable">
+  <div class="bar bar-footer bar-dark">
+
+    <button class="button button-positive pull-right">UPDATE POST</button>
   </div>
 
 </ion-view>
@@ -20,5 +25,19 @@
 <!--
 
     <h1 class="padding">{{item.post.title}}</h1>
-    
+
+  <div class="bar bar-subheader bar-stable">
+    <div class="button-bar">
+      <a class="button">MARKDOWN</a>
+      <a class="button">PREVIEW</a>
+    </div>
+  </div>
+
+    <ion-subheader-bar class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-positive">FOOD</a>
+            <a class="button">DRINKS</a>
+        </div>
+    </ion-subheader-bar>
+
 -->
