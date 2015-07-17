@@ -1,19 +1,24 @@
 <ion-view title="Editor">
 
   <div class="bar bar-subheader bar-stable">
-    <h1 class="padding">{{item.post.title}}</h1>
+
   </div>
 
   <ion-content class="has-header has-subheader has-footer">
 
+    <div class="wrapper">
+      <div ng-bind-html="item.post.html"></div>
+    </div>
 
   </ion-content>
 
-  <div class="bar bar-footer">
+  <div class="bar bar-footer bar-stable">
   </div>
 
 </ion-view>
 
 <!--
 
+    <h1 class="padding">{{item.post.title}}</h1>
+    
 -->

@@ -60,11 +60,16 @@ angular.module('vardyger', [
       })
 
       .state('app.editor', {
-        url: '/editor',
+        url: '/editor/:postId',
         views: {
           'menuContent': {
             templateUrl: 'templates/editor.html',
-            controller: 'EditorController'
+            controller: 'EditorController',
+            resolve: {
+              post: function($stateParams, PostsService) {
+                return PostsService.findPostById($stateParams.postId);
+              }
+            }
           }
         }
 

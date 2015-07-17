@@ -26,3 +26,31 @@
   font-size: 24px;
   vertical-align: text-top;
 }
+
+.wrapper {
+  padding-top: 6px;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+/**
+ * Typography, see bower_components/ionic/scss/_types.scss
+ */
+
+// Body text
+// -------------------------
+
+p {
+  margin: 0 0 ($line-height-computed / 2);
+  font-weight: $body-font-weight;
+}
+
+// Headings
+// -------------------------
+
+h1, .h1 { font-size: floor($font-size-base * 2.80); } // ~36px  2.60
+h2, .h2 { font-size: floor($font-size-base * 2.15); } // ~30px
+h3, .h3 { font-size: ceil($font-size-base * 2.00); } // ~24px   1.7
+h4, .h4 { font-size: ceil($font-size-base * 1.25); } // ~18px
+h5, .h5 { font-size:  $font-size-base; }
+h6, .h6 { font-size: ceil($font-size-base * 0.85); } // ~12px

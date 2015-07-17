@@ -17,76 +17,38 @@ angular.module('vardyger')
 
       $log.info('PostsService');
 
+      // https://docs.angularjs.org/api/ng/service/$sce
+
       var model = [
+
         {
-          metaTitle: 'metaTitle',
-          metaDescription: 'metaDescription',
+          metaTitle: 'Ionic Style Guide',
+          metaDescription: 'AngularJS is the toolset that underpins the Ionic Framework.',
           post: {
             id: '1',
-            title: 'Annotating JavaScript using JSDoc tags',
-            html: ''
+            title: 'Ionic Style Guide',
+            html: '<p>AngularJS is the toolset that underpins the Ionic Framework.</p>' +
+              '<p>This means that if you want to use the Ionic Framework to develop hybrid mobile applications' +
+              ' then you will need to understand how Angular web applications are built and structured. A great ' +
+              'place to start is to take a look at the Angular project structure templates created by popular ' +
+              'Yeoman <a href="http://yeoman.io/generators/" target="_blank">generators</a> and projects like ' +
+              '<a href="http://joshdmiller.github.io/ng-boilerplate/#/home" target="_blank">ng-boilerplate</a></p>' +
+              '<h3 id="yeoman">Yeoman</h3>' +
+              '<p>Yeoman provides a <a href="http://yeoman.io/generators/" target="_blank">generator</a> ecosystem' +
+              'that helps you to kickstart new projects. A generator is basically a plugin that can be run with the ' +
+              '<code>yo</code> command to create the scaffolding for a new project:</p>'
           }
         },
-
         {
-          metaTitle: 'metaTitle',
-          metaDescription: 'metaDescription',
+          metaTitle: 'Customising Ionic with Sass',
+          metaDescription: 'In a previous post, I wrote about using generator-ionic to create the scaffolding for a mobile-optimised Administration UI.',
           post: {
             id: '2',
-            title: 'Express, Handlebars and Ghost Themes',
-            html: ''
-          }
-        },
-
-        {
-          metaTitle: 'metaTitle',
-          metaDescription: 'metaDescription',
-          post: {
-            id: '3',
-            title: 'Swagger, Express, and Content Negotiation',
-            html: ''
-          }
-        },
-
-        {
-          metaTitle: 'metaTitle',
-          metaDescription: 'metaDescription',
-          post: {
-            id: '4',
-            title: 'The Vardyger publishing platform :)',
-            html: ''
-          }
-        },
-
-        {
-          metaTitle: 'metaTitle',
-          metaDescription: 'metaDescription',
-          post: {
-            id: '5',
-            title: 'Build your Microservices API with Swagger and Express',
-            html: ''
-          }
-        },
-
-        {
-          metaTitle: 'metaTitle',
-          metaDescription: 'metaDescription',
-          post: {
-            id: '6',
-            title: 'A JavaScript Microservices stack',
-            html: ''
-          }
-        },
-
-        {
-          metaTitle: 'metaTitle',
-          metaDescription: 'metaDescription',
-          post: {
-            id: '7',
-            title: 'Microservices and Exponential Organisations',
-            html: ''
+            title: 'Customising Ionic with Sass',
+            html: '<p>In a previous post, I wrote about using generator-ionic to create the scaffolding for a mobile-optimised Administration UI.</p>'
           }
         }
+
       ];
 
       // $log.info('model: ', model);
@@ -109,7 +71,7 @@ angular.module('vardyger')
 
         $log.info('findPostById(): ' + id);
 
-        $log.info('model.length: ' + model.length);
+        // $log.info('model.length: ' + model.length);
 
         var deferred = $q.defer();
 
@@ -117,7 +79,7 @@ angular.module('vardyger')
 
         model.forEach(function(item) {
           if (item.post.id === id) {
-            $log.info('item.post.id === id');
+            // $log.info('item.post.id === id');
             deferred.resolve(item);
           }
         });

@@ -13,7 +13,7 @@ angular.module('vardyger')
   function(
     $log,         // inject the $log service
     $scope,       // inject the $scope service
-    post
+    post          // inject Post model
   ) {
 
     $log.info('PreviewController');
@@ -24,3 +24,14 @@ angular.module('vardyger')
 
   });
 
+/*
+
+ $scope.editPost = function() {
+
+   $log.info('editPost()');
+
+   // $state.go('app.editor({postId: item.post.id})');
+
+ };
+
+*/

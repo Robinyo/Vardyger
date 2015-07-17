@@ -1,17 +1,24 @@
 <ion-view title="Preview">
 
   <ion-nav-buttons side="right">
-    <button class="button" onclick="location.href='#/app/editor'">EDIT</button>
+    <button class="button" ui-sref="app.editor({postId: item.post.id})">EDIT</button>
    </ion-nav-buttons>
 
   <ion-content class="has-header">
 
-    <h1 class="padding">{{item.post.title}}</h1>
+    <div class="wrapper">
+      <h1 class="padding-top">{{item.post.title}}</h1>
+      <div ng-bind-html="item.post.html"></div>
+    </div>
 
   </ion-content>
 
 </ion-view>
 
 <!--
+
+  ng-click="editPost()"
+
+  {{ renderHTML(item.post.html) }}
 
 -->
