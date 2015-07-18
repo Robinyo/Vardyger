@@ -8,21 +8,25 @@
   </ion-subheader-bar>
 
   <ion-content class="has-header has-subheader has-footer">
-
     <div class="wrapper">
-      <div ng-bind-html="item.post.markdown"></div>
+      <textarea ng-model="item.post.markdown"></textarea>
     </div>
-
   </ion-content>
 
   <div class="bar bar-footer bar-dark">
-
     <button class="button button-positive pull-right">UPDATE POST</button>
   </div>
 
 </ion-view>
 
 <!--
+
+    <div class="wrapper">
+      <textarea placeholder="Comments"></textarea>
+    </div>
+
+
+     <div ng-bind-html="item.post.markdown"></div>
 
     <h1 class="padding">{{item.post.title}}</h1>
 

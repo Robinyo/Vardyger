@@ -9,29 +9,11 @@
  *
  **/
 
-.v-item {
-  padding-top: 6px;
-  padding-bottom: 6px;
-}
-
-.v-content {
-  background-color: white;
-}
-
-.item.wrap, .wrap.v-item, .item-content.wrap {
-  white-space: normal;
-}
-
-.v-icon-item-left {
-  font-size: 24px;
-  vertical-align: text-top;
-}
-
-.wrapper {
-  padding-top: 6px;
-  padding-left: 14px;
-  padding-right: 14px;
-}
+// TODO:
+// Update Gruntfile.js so that it only compiles main.scss and not
+// all .scss files in the styles directory.
+@import "variables";
+// e.g., grunt serve --force v grunt serve
 
 /**
  * Typography, see bower_components/ionic/scss/_types.scss
@@ -62,3 +44,27 @@ h3, .h3 { font-size: ceil($font-size-base * 2.00); } // ~24px   1.7
 h4, .h4 { font-size: ceil($font-size-base * 1.25); } // ~18px
 h5, .h5 { font-size:  $font-size-base; }
 h6, .h6 { font-size: ceil($font-size-base * 0.85); } // ~12px
+
+.v-item {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.v-content {
+  background-color: white;
+}
+
+.item.wrap, .wrap.v-item, .item-content.wrap {
+  white-space: normal;
+}
+
+.v-icon-item-left {
+  font-size: 24px;
+  vertical-align: text-top;
+}
+
+.wrapper {
+  padding-top: 6px;
+  padding-left: 14px;
+  padding-right: 14px;
+}

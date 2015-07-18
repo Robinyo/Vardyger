@@ -24,16 +24,16 @@ angular.module('vardyger', [
     $stateProvider
       .state('app', {
         url: '/app',
-        abstract: true,
-        templateUrl: 'templates/side-menu.html',
-        controller: 'SideMenuController'
+        templateUrl: 'templates/side-menu-template.html',
+        controller: 'SideMenuController',
+        abstract: true
       })
 
       .state('app.main', {
         url: '/main',
         views: {
           'menuContent': {
-            templateUrl: 'templates/main.html',
+            templateUrl: 'templates/main-template.html',
             controller: 'MainController',
             resolve: {
               posts: function(PostsService) {
@@ -48,7 +48,7 @@ angular.module('vardyger', [
         url: '/preview/:postId',
         views: {
           'menuContent': {
-            templateUrl: 'templates/preview.html',
+            templateUrl: 'templates/preview-template.html',
             controller: 'PreviewController',
             resolve: {
               post: function($stateParams, PostsService) {
@@ -63,7 +63,7 @@ angular.module('vardyger', [
         url: '/editor/:postId',
         views: {
           'menuContent': {
-            templateUrl: 'templates/editor.html',
+            templateUrl: 'templates/editor-template.html',
             controller: 'EditorController',
             resolve: {
               post: function($stateParams, PostsService) {
