@@ -13,7 +13,7 @@ angular.module('vardyger')
   function(
     $log,         // inject the $log service
     $scope,       // inject the $scope service
-    post          // inject Post model
+    post          // inject resolved post data
   ) {
 
     $log.info('PreviewController');

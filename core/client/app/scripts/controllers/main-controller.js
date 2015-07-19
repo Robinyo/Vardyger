@@ -13,10 +13,12 @@ angular.module('vardyger')
     function(
       $log,         // inject the $log service
       $scope,       // inject the $scope service
-      posts         // inject Posts model
+      posts         // inject the resolved posts data
     ) {
 
       $log.info('MainController');
+
+      // Values on $scope are called models and are also available in views.
 
       $scope.listItems = posts;
 
