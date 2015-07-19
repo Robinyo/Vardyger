@@ -45,7 +45,7 @@ angular.module('vardyger', [
       })
 
       .state('app.preview', {
-        url: '/preview/:postId',
+        url: '/preview/{postId}',
         views: {
           'menuContent': {
             templateUrl: 'templates/preview-template.html',
@@ -60,7 +60,7 @@ angular.module('vardyger', [
       })
 
       .state('app.editor', {
-        url: '/editor/:postId',
+        url: '/editor/{postId}',
         views: {
           'menuContent': {
             templateUrl: 'templates/editor-template.html',
