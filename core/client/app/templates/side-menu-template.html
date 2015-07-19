@@ -7,9 +7,15 @@
       <ion-nav-back-button>
       </ion-nav-back-button>
 
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      <!--
+      Use primary and secondary, so buttons correctly map to the side familiar to users of each platform.
+      ion-nav-buttons must be immediate descendants of the ion-view or ion-nav-bar element
+      (basically, don't wrap it in another div).
+      -->
+      <ion-nav-buttons side="primary">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="primary"></button>
       </ion-nav-buttons>
+
     </ion-nav-bar>
 
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
