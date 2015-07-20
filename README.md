@@ -1,8 +1,14 @@
 # The Vardyger publishing platform :)
 
-##The Administration UI
+##The Admin UI
 
+1. View the Admin UI:
 
+    <pre>grunt serve (in the project's /core/client directory)</pre>
+
+![Admin UI Content screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-content.png)
+
+##The Vardyger Server
 
 A sample post rendered via Handlebars with Ghost theme support:
 
