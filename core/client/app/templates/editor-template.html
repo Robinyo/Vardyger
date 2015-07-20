@@ -1,9 +1,13 @@
-<ion-view title="Editor">
+<ion-view title="{{ 'EDITOR_TEMPLATE_TITLE' | translate }}">
 
   <ion-subheader-bar class="bar bar-subheader">
     <div class="button-bar">
-      <a class="button button-positive">MARKDOWN</a>
-      <a class="button">PREVIEW</a>
+      <a class="button button-positive">
+        {{ 'MARKDOWN' | translate }}
+      </a>
+      <a class="button">
+        {{ 'PREVIEW' | translate }}
+      </a>
     </div>
   </ion-subheader-bar>
 
@@ -14,7 +18,9 @@
   </ion-content>
 
   <div class="bar bar-footer bar-dark">
-    <button class="button button-positive pull-right">UPDATE POST</button>
+    <button class="button button-positive pull-right">
+      {{ 'UPDATE_POST' | translate }}
+    </button>
   </div>
 
 </ion-view>
@@ -24,7 +30,6 @@
     <div class="wrapper">
       <textarea placeholder="Comments"></textarea>
     </div>
-
 
      <div ng-bind-html="item.post.markdown"></div>
 

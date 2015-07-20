@@ -31,17 +31,17 @@
 
         <ion-item menu-close class="item-icon-left item-dark" ui-sref="app.main" ui-sref-opts="{ reload: true,  inherit:false }">
           <icon ios="ion-ios-paper" android="ion-document" default="ion-document"></icon>
-          Content
+          {{ 'SIDE_MENU_TEMPLATE_CONTENT' | translate }}
         </ion-item>
 
         <ion-item menu-close class="item-icon-left item-dark" ui-sref="app.main">
           <icon ios="ion-ios-compose" android="ion-compose" default="ion-compose"></icon>
-          New Post
+          {{ 'SIDE_MENU_TEMPLATE_NEW_POST' | translate }}
         </ion-item>
 
         <ion-item menu-close class="item-icon-left item-dark" ui-sref="app.main">
           <icon ios="ion-ios-gear" android="ion-settings" default="ion-settings"></icon>
-          Settings
+          {{ 'SIDE_MENU_TEMPLATE_SETTINGS' | translate }}
         </ion-item>
 
       </ion-list>

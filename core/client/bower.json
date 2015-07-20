@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "ionic": "v1.0.0-rc.3",
-    "ionic-contrib-icon": "v0.0.3"
+    "ionic-contrib-icon": "v0.0.3",
+    "angular-translate": "~2.7.2"
   }
 }

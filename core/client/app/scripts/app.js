@@ -9,9 +9,49 @@
 // Declare a new module called 'vardyger', and list its dependencies.
 angular.module('vardyger', [
   'ionic',
-  'ionic.contrib.icon'
+  'ionic.contrib.icon',
+  'pascalprecht.translate'
 ])
-  .config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider) {
+  .config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
+
+    $translateProvider.translations('en', {
+
+      MAIN_TEMPLATE_TITLE:         'Content',
+      PREVIEW_TEMPLATE_TITLE:      'Preview',
+      EDITOR_TEMPLATE_TITLE:       'Editor',
+
+      SIDE_MENU_TEMPLATE_CONTENT:  'Content',
+      SIDE_MENU_TEMPLATE_NEW_POST: 'New Post',
+      SIDE_MENU_TEMPLATE_SETTINGS: 'Settings',
+
+      EDIT:        'EDIT',
+      MARKDOWN:    'MARKDOWN',
+      PREVIEW:     'PREVIEW',
+      UPDATE_POST: 'UPDATE POST'
+
+    });
+
+    $translateProvider.translations('de', {
+
+      MAIN_TEMPLATE_TITLE:         'Inhalt',
+      PREVIEW_TEMPLATE_TITLE:      'Vorschau',
+      EDITOR_TEMPLATE_TITLE:       'Editor',
+
+      SIDE_MENU_TEMPLATE_CONTENT:  'Inhalt',
+      SIDE_MENU_TEMPLATE_NEW_POST: 'neuer Beitrag',
+      SIDE_MENU_TEMPLATE_SETTINGS: 'Einstellungen',
+
+      EDIT:        'EDIT',
+      MARKDOWN:    'MARKDOWN',
+      PREVIEW:     'VORSCHAU',
+      UPDATE_POST: 'UPDATE POST'
+
+    });
+
+    $translateProvider.preferredLanguage('de');
+    $translateProvider.fallbackLanguage('de');
+
+    $translateProvider.useSanitizeValueStrategy('escapeParameters');
 
     $ionicConfigProvider.views.maxCache(10);
     $ionicConfigProvider.views.transition('platform');
