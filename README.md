@@ -8,6 +8,8 @@
 
 ![Admin UI Content screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-content.png)
 
+![Admin UI Content screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-preview.png)
+
 ##The Vardyger Server
 
 A sample post rendered via Handlebars with Ghost theme support:
