@@ -49,12 +49,68 @@ angular.module('vardyger')
               'the `yo` command to create the scaffolding for a new project:'
           }
         },
+
         {
           metaTitle: 'Customising Ionic with Sass',
           metaDescription: 'In a previous post, ...',
           post: {
             id: '2',
             title: 'Customising Ionic with Sass',
+            html: '<p>In a previous post, ...</p>',
+            markdown: 'In a previous post, ...'
+          }
+        },
+
+        {
+          metaTitle: 'Ionic, Angular and Cordova',
+          metaDescription: 'In a previous post, ...',
+          post: {
+            id: '3',
+            title: 'Ionic, Angular and Cordova',
+            html: '<p>In a previous post, ...</p>',
+            markdown: 'In a previous post, ...'
+          }
+        },
+
+        {
+          metaTitle: 'Annotating JavaScript using JSDoc tags',
+          metaDescription: 'In a previous post, ...',
+          post: {
+            id: '4',
+            title: 'Annotating JavaScript using JSDoc tags',
+            html: '<p>In a previous post, ...</p>',
+            markdown: 'In a previous post, ...'
+          }
+        },
+
+        {
+          metaTitle: 'Express, Handlebars and Ghost Themes',
+          metaDescription: 'In a previous post, ...',
+          post: {
+            id: '5',
+            title: 'Express, Handlebars and Ghost Themes',
+            html: '<p>In a previous post, ...</p>',
+            markdown: 'In a previous post, ...'
+          }
+        },
+
+        {
+          metaTitle: 'Swagger, Express, and Content Negotiation',
+          metaDescription: 'In a previous post, ...',
+          post: {
+            id: '6',
+            title: 'Swagger, Express, and Content Negotiation',
+            html: '<p>In a previous post, ...</p>',
+            markdown: 'In a previous post, ...'
+          }
+        },
+
+        {
+          metaTitle: 'The Vardyger publishing platform :)',
+          metaDescription: 'In a previous post, ...',
+          post: {
+            id: '7',
+            title: 'The Vardyger publishing platform :)',
             html: '<p>In a previous post, ...</p>',
             markdown: 'In a previous post, ...'
           }
