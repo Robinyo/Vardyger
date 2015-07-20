@@ -1,5 +1,9 @@
 # The Vardyger publishing platform :)
 
+##The Administration UI
+
+
+
 A sample post rendered via Handlebars with Ghost theme support:
 
 ![Vardyger post screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-post.png)
