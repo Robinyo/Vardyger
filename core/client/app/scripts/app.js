@@ -14,48 +14,19 @@ angular.module('vardyger', [
 ])
   .config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
 
-    $translateProvider.translations('en', {
+    $translateProvider
+      .useStaticFilesLoader({
+        prefix: 'scripts/locales/',
+        suffix: '.json'
+      })
 
-      MAIN_TEMPLATE_TITLE:         'Content',
-      PREVIEW_TEMPLATE_TITLE:      'Preview',
-      EDITOR_TEMPLATE_TITLE:       'Editor',
+      .preferredLanguage('de_DE')
+      .fallbackLanguage('de_DE')
+      .useSanitizeValueStrategy('escapeParameters');
 
-      SIDE_MENU_TEMPLATE_CONTENT:  'Content',
-      SIDE_MENU_TEMPLATE_NEW_POST: 'New Post',
-      SIDE_MENU_TEMPLATE_SETTINGS: 'Settings',
-
-
-      ALL_POSTS:   'ALL POSTS',
-      NO_POSTS:    'No posts :(',
-      EDIT:        'EDIT',
-      MARKDOWN:    'MARKDOWN',
-      PREVIEW:     'PREVIEW',
-      UPDATE_POST: 'UPDATE POST'
-
-    });
-
-    $translateProvider.translations('de', {
-
-      MAIN_TEMPLATE_TITLE:         'Inhalt',
-      PREVIEW_TEMPLATE_TITLE:      'Vorschau',
-      EDITOR_TEMPLATE_TITLE:       'Editor',
-
-      SIDE_MENU_TEMPLATE_CONTENT:  'Inhalt',
-      SIDE_MENU_TEMPLATE_NEW_POST: 'neuer Beitrag',
-      SIDE_MENU_TEMPLATE_SETTINGS: 'Einstellungen',
-
-      ALL_POSTS:   'Alle Beiträge',
-      NO_POSTS:    'keine Einträge :(',
-      EDIT:        'BEARBEITEN',
-      MARKDOWN:    'MARKDOWN',
-      PREVIEW:     'VORSCHAU',
-      UPDATE_POST: 'UPDATE BEITRAG'
-
-    });
-
-    $translateProvider.preferredLanguage('de');
-    $translateProvider.fallbackLanguage('de');
-    $translateProvider.useSanitizeValueStrategy('escapeParameters');
+    // .registerAvailableLanguageKeys()
+    // .determinePreferredLanguage()
+    // .useStorage();
 
     $ionicConfigProvider.views.maxCache(10);
     $ionicConfigProvider.views.transition('platform');
@@ -148,3 +119,46 @@ angular.module('vardyger', [
 
 // You can also ignore a single line with a trailing comment like this:
 // ignoreThis(); // jshint ignore:line
+
+/*
+
+$translateProvider.translations('en', {
+
+  MAIN_TEMPLATE_TITLE:         'Content',
+  PREVIEW_TEMPLATE_TITLE:      'Preview',
+  EDITOR_TEMPLATE_TITLE:       'Editor',
+
+  SIDE_MENU_TEMPLATE_CONTENT:  'Content',
+  SIDE_MENU_TEMPLATE_NEW_POST: 'New Post',
+  SIDE_MENU_TEMPLATE_SETTINGS: 'Settings',
+
+
+  ALL_POSTS:   'ALL POSTS',
+  NO_POSTS:    'No posts :(',
+  EDIT:        'EDIT',
+  MARKDOWN:    'MARKDOWN',
+  PREVIEW:     'PREVIEW',
+  UPDATE_POST: 'UPDATE POST'
+
+});
+
+$translateProvider.translations('de', {
+
+  MAIN_TEMPLATE_TITLE:         'Inhalt',
+  PREVIEW_TEMPLATE_TITLE:      'Vorschau',
+  EDITOR_TEMPLATE_TITLE:       'Editor',
+
+  SIDE_MENU_TEMPLATE_CONTENT:  'Inhalt',
+  SIDE_MENU_TEMPLATE_NEW_POST: 'neuer Beitrag',
+  SIDE_MENU_TEMPLATE_SETTINGS: 'Einstellungen',
+
+  ALL_POSTS:   'Alle Beiträge',
+  NO_POSTS:    'keine Einträge :(',
+  EDIT:        'BEARBEITEN',
+  MARKDOWN:    'MARKDOWN',
+  PREVIEW:     'VORSCHAU',
+  UPDATE_POST: 'UPDATE BEITRAG'
+
+});
+
+*/

@@ -14,34 +14,19 @@
  */
 
 angular.module('vardyger')
-  .controller('SideMenuController', ['$log',
+  .controller('SideMenuController', ['$log', '$scope', '$translate',
     function(
-      $log
+      $log,         // inject the $log service
+      $scope,       // inject the $scope service
+      $translate    // inject the $translate service
     ) {
 
-    $log.info('SideMenuController');
+      $log.info('SideMenuController');
+
+      $scope.switchLanguage = function (key) {
+        $log.info('switchLanguage()');
+        $translate.use(key);
+      };
 
   }]);
 
-/*
-
-$scope.listItems = [
-
-  { iconLeft: 'ion-ios-paper',
-    name: 'Content',
-    fn: ''
-  },
-
-  { iconLeft: 'ion-plus-round',
-    name: 'New Post',
-    fn: ''
-  },
-
-  { iconLeft: 'ion-gear-b',  // ion-settings
-    name: 'Settings',
-    fn: ''
-  }
-
-];
-
-*/

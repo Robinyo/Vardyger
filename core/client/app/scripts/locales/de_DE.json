@@ -1,0 +1,18 @@
+{
+
+  "MAIN_TEMPLATE_TITLE":         "Inhalt",
+  "PREVIEW_TEMPLATE_TITLE":      "Vorschau",
+  "EDITOR_TEMPLATE_TITLE":       "Editor",
+
+  "SIDE_MENU_TEMPLATE_CONTENT":  "Inhalt",
+  "SIDE_MENU_TEMPLATE_NEW_POST": "neuer Beitrag",
+  "SIDE_MENU_TEMPLATE_SETTINGS": "Einstellungen",
+
+  "ALL_POSTS":                   "Alle Beiträge",
+  "NO_POSTS":                    "keine Einträge :(",
+  "EDIT":                        "BEARBEITEN",
+  "MARKDOWN":                    "MARKDOWN",
+  "PREVIEW":                     "VORSCHAU",
+  "UPDATE_POST":                 "UPDATE BEITRAG"
+
+}
