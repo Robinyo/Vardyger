@@ -8,9 +8,9 @@
 
 // Declare a new module called 'vardyger', and list its dependencies.
 angular.module('vardyger', [
-  'ionic',
-  'ionic.contrib.icon',
-  'pascalprecht.translate'
+  'ionic',                  // inject the Ionic framework
+  'ionic.contrib.icon',     //
+  'pascalprecht.translate'  // inject the angular-translate module
 ])
   .config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
 
@@ -19,12 +19,12 @@ angular.module('vardyger', [
         prefix: 'scripts/locales/',
         suffix: '.json'
       })
-      .preferredLanguage('de')
-      .fallbackLanguage('de')
       .registerAvailableLanguageKeys(['en', 'de'], {
         'en' : 'en', 'en_GB': 'en', 'en_US': 'en',
         'de' : 'de', 'de_DE': 'de', 'de_CH': 'de'
       })
+      .preferredLanguage('de')
+      .fallbackLanguage('de')
       .determinePreferredLanguage()
       .useSanitizeValueStrategy('escapeParameters');
 
