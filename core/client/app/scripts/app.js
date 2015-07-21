@@ -19,14 +19,14 @@ angular.module('vardyger', [
         prefix: 'scripts/locales/',
         suffix: '.json'
       })
-
-      .preferredLanguage('de_DE')
-      .fallbackLanguage('de_DE')
+      .preferredLanguage('de')
+      .fallbackLanguage('de')
+      .registerAvailableLanguageKeys(['en', 'de'], {
+        'en' : 'en', 'en_GB': 'en', 'en_US': 'en',
+        'de' : 'de', 'de_DE': 'de', 'de_CH': 'de'
+      })
+      .determinePreferredLanguage()
       .useSanitizeValueStrategy('escapeParameters');
-
-    // .registerAvailableLanguageKeys()
-    // .determinePreferredLanguage()
-    // .useStorage();
 
     $ionicConfigProvider.views.maxCache(10);
     $ionicConfigProvider.views.transition('platform');
@@ -121,6 +121,8 @@ angular.module('vardyger', [
 // ignoreThis(); // jshint ignore:line
 
 /*
+
+ // .useStorage();
 
 $translateProvider.translations('en', {
 
