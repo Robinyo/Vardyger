@@ -2,11 +2,15 @@
 
   <ion-subheader-bar class="bar bar-subheader">
     <div class="button-bar">
-      <a class="button button-positive">
+      <a class="button button-positive" translate="MARKDOWN">
+        <!-- Using translateFilter is great, but using translateDirective is better.
         {{ 'MARKDOWN' | translate }}
+        -->
       </a>
-      <a class="button">
+      <a class="button" translate="PREVIEW">
+        <!-- Using translateFilter is great, but using translateDirective is better.
         {{ 'PREVIEW' | translate }}
+        -->
       </a>
     </div>
   </ion-subheader-bar>
@@ -18,8 +22,10 @@
   </ion-content>
 
   <div class="bar bar-footer bar-dark">
-    <button class="button button-positive pull-right">
+    <button class="button button-positive pull-right" translate="UPDATE_POST">
+      <!-- Using translateFilter is great, but using translateDirective is better.
       {{ 'UPDATE_POST' | translate }}
+      -->
     </button>
   </div>
 
@@ -27,26 +33,5 @@
 
 <!--
 
-    <div class="wrapper">
-      <textarea placeholder="Comments"></textarea>
-    </div>
-
-     <div ng-bind-html="item.post.markdown"></div>
-
-    <h1 class="padding">{{item.post.title}}</h1>
-
-  <div class="bar bar-subheader bar-stable">
-    <div class="button-bar">
-      <a class="button">MARKDOWN</a>
-      <a class="button">PREVIEW</a>
-    </div>
-  </div>
-
-    <ion-subheader-bar class="bar bar-subheader">
-        <div class="button-bar">
-            <a class="button button-positive">FOOD</a>
-            <a class="button">DRINKS</a>
-        </div>
-    </ion-subheader-bar>
 
 -->

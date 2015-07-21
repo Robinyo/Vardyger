@@ -8,7 +8,11 @@
 
   <div class="bar bar-subheader bar-stable">
     <div class="title title-left padding-left">
-      <small>ALL POSTS</small>
+      <small translate="ALL_POSTS">
+        <!-- Using translateFilter is great, but using translateDirective is better.
+        {{ 'ALL_POSTS' | translate }}
+        -->
+      </small>
     </div>
     <a class="button icon-right ion-ios-compose button-clear button-balanced"
        href="#/app/editor">
@@ -17,7 +21,11 @@
 
   <ion-content class="has-header has-subheader">
 
-    <div ng-if="! listItems.length" class="item item-energized v-item">No posts :(</div>
+    <div ng-if="! listItems.length" class="item item-energized v-item" translate="NO_POSTS">
+      <!-- Using translateFilter is great, but using translateDirective is better.
+      {{ 'NO_POSTS' | translate }}
+      -->
+    </div>
 
     <ion-list>
 
@@ -53,37 +61,5 @@
 
 <!--
 
-<ion-view title="Content">
-
-            <icon class="v-icon-item-left positive"
-                  ios="ion-ios-person"
-                  android="ion-android-person"
-                  default="ion-person">
-            </icon>
-
-        ui-sref="preview({postId: listItem.post.id})">
-        ng-class='{done: listItem.done}'>
-
-      <ion-item
-        class="v-item"
-
-        <a class="item-icon-right">
-          <i class="icon ion-ios-arrow-right balanced"></i>
-        </a>
-
-        <div class="item-icon-right">
-          <icon class="item-icon-right positive"
-                ios="ion-ios-arrow-right"
-                android="ion-android-arrow-forward"
-                default="ion-chevron-right">
-          </icon>
-        </div>
-
-          <icon class="positive" ...
-
-          <icon ios="ion-ios-arrow-thin-right"
-                android="ion-android-arrow-forward"
-                default="ion-arrow-right-c">
-          </icon>
 
 -->

@@ -1,8 +1,10 @@
 <ion-view title="{{ 'PREVIEW_TEMPLATE_TITLE' | translate }}">
 
   <ion-nav-buttons side="right">
-    <button class="button button-outline" ui-sref="app.editor({postId: item.post.id})">
+    <button class="button button-outline" ui-sref="app.editor({postId: item.post.id})" translate="EDIT">
+      <!-- Using translateFilter is great, but using translateDirective is better.
       {{ 'EDIT' | translate }}
+      -->
     </button>
    </ion-nav-buttons>
 

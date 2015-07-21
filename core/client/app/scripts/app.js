@@ -24,6 +24,9 @@ angular.module('vardyger', [
       SIDE_MENU_TEMPLATE_NEW_POST: 'New Post',
       SIDE_MENU_TEMPLATE_SETTINGS: 'Settings',
 
+
+      ALL_POSTS:   'ALL POSTS',
+      NO_POSTS:    'No posts :(',
       EDIT:        'EDIT',
       MARKDOWN:    'MARKDOWN',
       PREVIEW:     'PREVIEW',
@@ -41,16 +44,17 @@ angular.module('vardyger', [
       SIDE_MENU_TEMPLATE_NEW_POST: 'neuer Beitrag',
       SIDE_MENU_TEMPLATE_SETTINGS: 'Einstellungen',
 
-      EDIT:        'EDIT',
+      ALL_POSTS:   'Alle Beiträge',
+      NO_POSTS:    'keine Einträge :(',
+      EDIT:        'BEARBEITEN',
       MARKDOWN:    'MARKDOWN',
       PREVIEW:     'VORSCHAU',
-      UPDATE_POST: 'UPDATE POST'
+      UPDATE_POST: 'UPDATE BEITRAG'
 
     });
 
     $translateProvider.preferredLanguage('de');
     $translateProvider.fallbackLanguage('de');
-
     $translateProvider.useSanitizeValueStrategy('escapeParameters');
 
     $ionicConfigProvider.views.maxCache(10);
