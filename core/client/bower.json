@@ -1,5 +1,4 @@
 {
-
   "name": "Vardyger",
   "version": "1.0.0",
   "dependencies": {
@@ -8,5 +7,4 @@
     "angular-translate": "~2.7.2",
     "angular-translate-loader-static-files": "~2.7.2"
   }
-  
 }
