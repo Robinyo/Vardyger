@@ -33,7 +33,7 @@ angular.module('vardyger', [
     $ionicConfigProvider.views.forwardCache(false);
     $ionicConfigProvider.backButton.icon('ion-ios-arrow-back');
     $ionicConfigProvider.backButton.text('');                  // default is 'Back'
-    $ionicConfigProvider.backButton.previousTitleText(false);  // hides the 'Back'
+    $ionicConfigProvider.backButton.previousTitleText(false);  // hides the 'Back' text
     $ionicConfigProvider.templates.maxPrefetch(20);
 
     $stateProvider

@@ -2,7 +2,7 @@
   "name": "Vardyger",
   "version": "1.0.0",
   "dependencies": {
-    "ionic": "v1.0.0-rc.3",
+    "ionic": "v1.0.0",
     "ionic-contrib-icon": "v0.0.3",
     "angular-translate": "~2.7.2",
     "angular-translate-loader-static-files": "~2.7.2"

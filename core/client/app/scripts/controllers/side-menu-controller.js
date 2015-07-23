@@ -23,7 +23,7 @@ angular.module('vardyger')
 
       $log.info('SideMenuController');
 
-      $scope.switchLanguage = function (key) {
+      $scope.switchLanguage = function(key) {
         $log.info('switchLanguage() to ' + key);
         $translate.use(key);
       };
