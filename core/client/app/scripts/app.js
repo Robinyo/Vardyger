@@ -28,17 +28,22 @@ angular.module('vardyger', [
       .determinePreferredLanguage()
       .useSanitizeValueStrategy('escapeParameters');
 
-    $ionicConfigProvider.views.maxCache(10);
+    // By default, views are cached to improve performance.
+    // Set $ionicConfigProvider.views.maxCache(0); to disable cache globally
+    // See: http://ionicframework.com/docs/api/directive/ionNavView/
+
+    $ionicConfigProvider.views.maxCache(10);                     // the default is 10
     $ionicConfigProvider.views.transition('platform');
-    $ionicConfigProvider.views.forwardCache(false);
+    $ionicConfigProvider.views.forwardCache(false);              // the default is false
     $ionicConfigProvider.backButton.icon('ion-ios-arrow-back');
-    $ionicConfigProvider.backButton.text('');                  // default is 'Back'
-    $ionicConfigProvider.backButton.previousTitleText(false);  // hides the 'Back' text
+    $ionicConfigProvider.backButton.text('');                    // default is 'Back'
+    $ionicConfigProvider.backButton.previousTitleText(false);    // hides the 'Back' text
     $ionicConfigProvider.templates.maxPrefetch(20);
 
     $stateProvider
       .state('app', {
         url: '/app',
+        // cache: false,
         templateUrl: 'templates/side-menu-template.html',
         controller: 'SideMenuController',
         abstract: true
@@ -46,6 +51,7 @@ angular.module('vardyger', [
 
       .state('app.main', {
         url: '/main',
+        // cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/main-template.html',
@@ -61,6 +67,7 @@ angular.module('vardyger', [
 
       .state('app.preview', {
         url: '/preview/{postId}',
+        // cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/preview-template.html',
@@ -76,6 +83,7 @@ angular.module('vardyger', [
 
       .state('app.editor', {
         url: '/editor/{postId}',
+        // cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/editor-template.html',

@@ -118,8 +118,6 @@ angular.module('vardyger')
 
       ];
 
-      // $log.info('model: ', model);
-
       this.getModel = function () {
 
         $log.info('getModel()');
@@ -129,16 +127,14 @@ angular.module('vardyger')
 
       this.findPosts = function() {
 
-        $log.info('findPosts()');
+        // $log.info('findPosts()');
 
         return model;
       };
 
       this.findPostById = function(id) {
 
-        $log.info('findPostById(): ' + id);
-
-        // $log.info('model.length: ' + model.length);
+        // $log.info('findPostById(): ' + id);
 
         var deferred = $q.defer();
 
@@ -158,6 +154,9 @@ angular.module('vardyger')
 
 
 /*
+
+
+ // $log.info('model.length: ' + model.length);
 
   setTimeout(function() {
      model.forEach(function(item) {
