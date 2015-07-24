@@ -20,6 +20,8 @@ angular.module('vardyger')
 
       $scope.listItems = {};
 
+      // Or you can use $state.reload()
+
       $scope.$on('$ionicView.beforeEnter', function() {
         // The view has fully entered and is now the active view.
         // This event will fire, whether it was the first load or a cached view.
