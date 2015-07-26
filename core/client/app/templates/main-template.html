@@ -1,5 +1,9 @@
 <ion-view title="{{ 'MAIN_TEMPLATE_TITLE' | translate }}">
 
+  <ion-nav-buttons side="primary">
+    <button class="button button-icon button-clear icon ion-navicon" menu-toggle="primary"></button>
+  </ion-nav-buttons>
+
   <div class="bar bar-subheader bar-stable">
     <div class="title title-left padding-left">
       <small translate="ALL_POSTS">
@@ -13,10 +17,12 @@
 
   <ion-content class="has-header has-subheader">
 
-    <div ng-if="! listItems.length" class="item item-energized v-item" translate="NO_POSTS">
-      <!-- Using translateFilter is great, but using translateDirective is better.
-      {{ 'NO_POSTS' | translate }}
-      -->
+    <div class="vertical-center-container" ng-show="! listItems.length">
+      <div class="vertical-center text-center" translate="NO_POSTS">
+        <!-- Using translateFilter is great, but using translateDirective is better.
+        {{ 'NO_POSTS' | translate }}
+        -->
+      </div>
     </div>
 
     <ion-list>
@@ -52,6 +58,10 @@
 </ion-view>
 
 <!--
+
+  <ion-content class="has-header has-subheader">
+
+    <div ng-if="! listItems.length" class="item item-energized v-item" translate="NO_POSTS"></div>
 
   <a class="button icon-right ion-ios-compose button-clear button-balanced" href="#/app/editor"></a>
 

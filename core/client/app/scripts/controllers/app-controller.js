@@ -14,19 +14,36 @@
  */
 
 angular.module('vardyger')
-  .controller('SideMenuController', ['$log', '$scope', '$translate',
+  .controller('AppController', ['$log', '$scope', '$ionicModal', '$translate',
     function(
       $log,         // inject the $log service
       $scope,       // inject the $scope service
+      $ionicModal,  // inject the $ionicModal service
       $translate    // inject the $translate service
     ) {
 
-      $log.info('SideMenuController');
+      $log.info('AppController');
+
+      $scope.loggedIn = false;
 
       $scope.switchLanguage = function(key) {
         $log.info('switchLanguage() to ' + key);
         $translate.use(key);
       };
 
-  }]);
+      // Login / Logout
+
+      $ionicModal.fromTemplateUrl('templates/login-template.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        focusFirstInput: true
+      }).then(function(modal) {
+        $scope.loginModal = modal;
+      });
+
+      $scope.$on('$destroy', function() {
+        $scope.loginModal.remove();
+      });
+
+    }]);
 

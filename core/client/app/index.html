@@ -16,6 +16,8 @@
     <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
     <script src="bower_components/angular-translate/angular-translate.js"></script>
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/angular-http-auth/src/http-auth-interceptor.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
 
     <!--
@@ -23,6 +25,8 @@
     Issue: Missing "main": "./ionic.icon.js" in bower.json
     -->
     <script src="bower_components/ionic-contrib-icon/ionic.icon.js"></script>
+
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
 
     <!-- cordova script (this will be a 404 during development)
     <script src="cordova.js"></script>
@@ -32,12 +36,14 @@
     <!-- build:js scripts/scripts.js -->
     <script type="text/javascript" src="scripts/app.js"></script>
 
+    <script type="text/javascript" src="scripts/controllers/app-controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/editor-controller.js"></script>
+    <script type="text/javascript" src="scripts/controllers/login-controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/main-controller.js"></script>
     <script type="text/javascript" src="scripts/controllers/preview-controller.js"></script>
-    <script type="text/javascript" src="scripts/controllers/side-menu-controller.js"></script>
 
     <script type="text/javascript" src="scripts/services/posts-service.js"></script>
+    <script type="text/javascript" src="scripts/services/authentication-service.js"></script>
     <!-- endbuild -->
   </head>
 

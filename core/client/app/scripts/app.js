@@ -9,7 +9,11 @@
 // Declare a new module called 'vardyger', and list its dependencies.
 angular.module('vardyger', [
   'ionic',                  // inject the Ionic framework
-  'ionic.contrib.icon',     //
+  'ionic.contrib.icon',     // inject the ionic.contrib.icon module
+   // 'angular-http-auth',  // in bower.json but http-auth-interceptor in http-auth-interceptor.js
+  'http-auth-interceptor',
+  'LocalStorageModule',     // inject the LocalStorageModule module
+  'ngMockE2E',              // inject the ngMockE2E module
   'pascalprecht.translate'  // inject the angular-translate module
 ])
   .config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
@@ -45,13 +49,24 @@ angular.module('vardyger', [
         url: '/app',
         // cache: false,
         templateUrl: 'templates/side-menu-template.html',
-        controller: 'SideMenuController',
+        controller: 'AppController',
         abstract: true
+      })
+
+      // TODO:
+      .state('app.welcome', {
+        url: '/welcome',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/welcome-template.html'
+            // controller: 'WelcomeController'
+          }
+        }
       })
 
       .state('app.main', {
         url: '/main',
-        // cache: false,
+        cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/main-template.html',
@@ -67,7 +82,6 @@ angular.module('vardyger', [
 
       .state('app.preview', {
         url: '/preview/{postId}',
-        // cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/preview-template.html',
@@ -83,7 +97,6 @@ angular.module('vardyger', [
 
       .state('app.editor', {
         url: '/editor/{postId}',
-        // cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/editor-template.html',
@@ -95,14 +108,24 @@ angular.module('vardyger', [
             }
           }
         }
+      })
 
+      .state('app.logout', {
+        url: '/logout',
+        views: {
+          'menuContent': {
+            // templateUrl: 'templates/welcome-template.html',
+            templateUrl: 'templates/welcome-template.html',
+            controller: 'LogoutController'
+          }
+        }
       });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/main');
+    $urlRouterProvider.otherwise('/app/welcome');
   })
 
-  .run(function($ionicPlatform) {
+  .run(function($ionicPlatform, $httpBackend, localStorageService) {
 
     $ionicPlatform.ready(function() {
 
@@ -117,6 +140,76 @@ angular.module('vardyger', [
       }
 
     });
+
+    var posts = [
+
+      {
+        metaTitle: 'Ionic Style Guide',
+        metaDescription: 'In a previous post, ...',
+        post: {
+          id: '1',
+          title: 'Ionic Style Guide',
+          html: '<p>In a previous post, ...</p>',
+          markdown: 'In a previous post, ...'
+        }
+      },
+
+      {
+        metaTitle: 'Customising Ionic with Sass',
+        metaDescription: 'In a previous post, ...',
+        post: {
+          id: '2',
+          title: 'Customising Ionic with Sass',
+          html: '<p>In a previous post, ...</p>',
+          markdown: 'In a previous post, ...'
+        }
+      },
+
+      {
+        metaTitle: 'Ionic, Angular and Cordova',
+        metaDescription: 'In a previous post, ...',
+        post: {
+          id: '3',
+          title: 'Ionic, Angular and Cordova',
+          html: '<p>In a previous post, ...</p>',
+          markdown: 'In a previous post, ...'
+        }
+      },
+
+      {
+        metaTitle: 'Annotating JavaScript using JSDoc tags',
+        metaDescription: 'In a previous post, ...',
+        post: {
+          id: '4',
+          title: 'Annotating JavaScript using JSDoc tags',
+          html: '<p>In a previous post, ...</p>',
+          markdown: 'In a previous post, ...'
+        }
+      }
+
+    ];
+
+    /* jshint ignore:start */
+
+    // GET /vardyger/api/v1.0/posts or 401
+    $httpBackend.whenGET('https://posts').respond(function (method, url, data, headers) {
+      var authToken = localStorageService.get('authorizationToken');
+      return authToken ? [200, posts] : [401];
+    });
+
+    $httpBackend.whenPOST('https://login').respond(function(method, url, data) {
+      var authorizationToken = 'NjMwNjM4OTQtMjE0Mi00ZWYzLWEzMDQtYWYyMjkyMzNiOGIy';
+      return [200 , { authorizationToken: authorizationToken } ];
+    });
+
+    $httpBackend.whenPOST('https://logout').respond(function(method, url, data) {
+      return [200];
+    });
+
+    $httpBackend.whenGET(/.*/).passThrough();
+
+    /* jshint ignore:end */
+
   });
 
 
@@ -131,44 +224,5 @@ angular.module('vardyger', [
 /*
 
  // .useStorage();
-
-$translateProvider.translations('en', {
-
-  MAIN_TEMPLATE_TITLE:         'Content',
-  PREVIEW_TEMPLATE_TITLE:      'Preview',
-  EDITOR_TEMPLATE_TITLE:       'Editor',
-
-  SIDE_MENU_TEMPLATE_CONTENT:  'Content',
-  SIDE_MENU_TEMPLATE_NEW_POST: 'New Post',
-  SIDE_MENU_TEMPLATE_SETTINGS: 'Settings',
-
-
-  ALL_POSTS:   'ALL POSTS',
-  NO_POSTS:    'No posts :(',
-  EDIT:        'EDIT',
-  MARKDOWN:    'MARKDOWN',
-  PREVIEW:     'PREVIEW',
-  UPDATE_POST: 'UPDATE POST'
-
-});
-
-$translateProvider.translations('de', {
-
-  MAIN_TEMPLATE_TITLE:         'Inhalt',
-  PREVIEW_TEMPLATE_TITLE:      'Vorschau',
-  EDITOR_TEMPLATE_TITLE:       'Editor',
-
-  SIDE_MENU_TEMPLATE_CONTENT:  'Inhalt',
-  SIDE_MENU_TEMPLATE_NEW_POST: 'neuer Beitrag',
-  SIDE_MENU_TEMPLATE_SETTINGS: 'Einstellungen',
-
-  ALL_POSTS:   'Alle Beiträge',
-  NO_POSTS:    'keine Einträge :(',
-  EDIT:        'BEARBEITEN',
-  MARKDOWN:    'MARKDOWN',
-  PREVIEW:     'VORSCHAU',
-  UPDATE_POST: 'UPDATE BEITRAG'
-
-});
 
 */

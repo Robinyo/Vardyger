@@ -68,3 +68,21 @@ h6, .h6 { font-size: ceil($font-size-base * 0.85); } // ~12px
   padding-left: 14px;
   padding-right: 14px;
 }
+
+// Misc
+// -------------------------
+
+.vertical-center-container {
+  height: 100%;
+
+  @include display-flex();
+  @include justify-content(center);
+  @include align-items(center);
+
+  .vertical-center {
+    width: 100%;
+
+    @include display-flex();
+    @include flex-direction(column);
+  }
+}

@@ -13,6 +13,7 @@ angular.module('vardyger')
     function(
       $log,         // inject the $log service
       $scope,       // inject the $scope service
+      $http,        // inject the $http service
       posts         // inject the resolved posts data
     ) {
 
@@ -30,16 +31,25 @@ angular.module('vardyger')
 
       // Values on $scope are called models and are also available in views.
 
-      $scope.listItems = posts;
+      // $scope.listItems = posts;
 
-      // $log.info('$scope.listItems.length: ' + $scope.listItems.length);
-
-      // $log.info('$scope.listItems: ' + $scope.listItems);
+      $http.get('https://posts')
+        .success(function (data, status, headers, config) {
+          $log.info('MainController - $http.get()');
+          $scope.listItems = data;
+        })
+        .error(function (data, status, headers, config) {
+          $log.error('An error occurred: ' + status);
+        });
 
     });
 
 
 /*
+
+ // $log.info('$scope.listItems.length: ' + $scope.listItems.length);
+
+ // $log.info('$scope.listItems: ' + $scope.listItems);
 
 angular.module('vardyger')
   .controller('MainController',

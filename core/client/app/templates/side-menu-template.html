@@ -31,17 +31,22 @@
 
         <ion-item menu-close class="item-icon-left item-dark" ui-sref="app.main" ui-sref-opts="{ reload: true,  inherit:false }">
           <icon ios="ion-ios-paper" android="ion-document" default="ion-document"></icon>
-          {{ 'SIDE_MENU_TEMPLATE_CONTENT' | translate }}
+          {{ 'CONTENT' | translate }}
         </ion-item>
 
         <ion-item menu-close class="item-icon-left item-dark" ui-sref="app.main">
           <icon ios="ion-ios-compose" android="ion-compose" default="ion-compose"></icon>
-          {{ 'SIDE_MENU_TEMPLATE_NEW_POST' | translate }}
+          {{ 'NEW_POST' | translate }}
         </ion-item>
 
         <ion-item menu-close class="item-icon-left item-dark" ng-click="switchLanguage('de_CH')">
           <icon ios="ion-ios-gear" android="ion-settings" default="ion-settings"></icon>
-          {{ 'SIDE_MENU_TEMPLATE_SETTINGS' | translate }}
+          {{ 'SETTINGS' | translate }}
+        </ion-item>
+
+        <ion-item menu-close class="item-icon-left item-dark" ui-sref="app.logout">
+          <icon ios="ion-log-out" android="ion-log-out" default="ion-log-out"></icon>
+          {{ 'LOGOUT' | translate }}
         </ion-item>
 
       </ion-list>
@@ -52,5 +57,8 @@
 
 
 <!--
+
+ <ion-item menu-close class="item-icon-left item-dark" ui-sref="app.logout" ui-sref-opts="{reload: true}">
+
 
 -->
