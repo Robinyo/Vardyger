@@ -52,8 +52,7 @@ angular.module('vardyger')
 
     $scope.$on('event:auth-logout-complete', function() {
       $log.info('LoginController - event:auth-logout-complete');
-      // $state.go('app.welcome', {}, {reload: true, inherit: false});
-      $state.go('app.welcome');
+      $state.go('app.welcome', {}, {reload: true, inherit: false});
     });
 
   })

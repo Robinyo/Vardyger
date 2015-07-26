@@ -44,7 +44,7 @@
           {{ 'SETTINGS' | translate }}
         </ion-item>
 
-        <ion-item menu-close class="item-icon-left item-dark" ui-sref="app.logout">
+        <ion-item menu-close class="item-icon-left item-dark" ng-click="logout()">
           <icon ios="ion-log-out" android="ion-log-out" default="ion-log-out"></icon>
           {{ 'LOGOUT' | translate }}
         </ion-item>
@@ -57,6 +57,11 @@
 
 
 <!--
+
+<ion-item menu-close class="item-icon-left item-dark" ui-sref="app.logout" ui-sref-opts="{reload: true}">
+          <icon ios="ion-log-out" android="ion-log-out" default="ion-log-out"></icon>
+          {{ 'LOGOUT' | translate }}
+        </ion-item>
 
  <ion-item menu-close class="item-icon-left item-dark" ui-sref="app.logout" ui-sref-opts="{reload: true}">
 

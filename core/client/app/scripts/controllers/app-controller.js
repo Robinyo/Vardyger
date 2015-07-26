@@ -14,12 +14,13 @@
  */
 
 angular.module('vardyger')
-  .controller('AppController', ['$log', '$scope', '$ionicModal', '$translate',
+  .controller('AppController', ['$log', '$scope', '$ionicModal', '$translate', 'AuthenticationService',
     function(
       $log,         // inject the $log service
       $scope,       // inject the $scope service
       $ionicModal,  // inject the $ionicModal service
-      $translate    // inject the $translate service
+      $translate,    // inject the $translate service
+      AuthenticationService  // inject the AuthenticationService service
     ) {
 
       $log.info('AppController');
@@ -40,6 +41,12 @@ angular.module('vardyger')
       }).then(function(modal) {
         $scope.loginModal = modal;
       });
+
+      $scope.logout = function() {
+        $log.info('logout()');
+        AuthenticationService.logout();
+        $scope.loggedIn = false;
+      };
 
       $scope.$on('$destroy', function() {
         $scope.loginModal.remove();

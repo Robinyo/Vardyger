@@ -56,6 +56,7 @@ angular.module('vardyger', [
       // TODO:
       .state('app.welcome', {
         url: '/welcome',
+        cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/welcome-template.html'

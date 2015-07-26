@@ -27,6 +27,8 @@ angular.module('vardyger')
         // The view has fully entered and is now the active view.
         // This event will fire, whether it was the first load or a cached view.
         $log.info('MainController - $ionicView.beforeEnter');
+
+        // $ionicHistory.clearHistory();
       });
 
       // Values on $scope are called models and are also available in views.
