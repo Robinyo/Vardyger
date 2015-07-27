@@ -11,9 +11,9 @@ angular.module('vardyger', [
   'ionic',                  // inject the Ionic framework
   'ionic.contrib.icon',     // inject the ionic.contrib.icon module
    // 'angular-http-auth',  // in bower.json but http-auth-interceptor in http-auth-interceptor.js
-  'http-auth-interceptor',
-  'LocalStorageModule',     // inject the LocalStorageModule module
-  'ngMockE2E',              // inject the ngMockE2E module
+  'http-auth-interceptor',  // inject the angular-http-auth module
+  'LocalStorageModule',     // inject the angular-local-storage module
+  'ngMockE2E',              // inject the angular-mocks module
   'pascalprecht.translate'  // inject the angular-translate module
 ])
   .config(function($ionicConfigProvider, $stateProvider, $urlRouterProvider, $translateProvider) {
@@ -52,14 +52,12 @@ angular.module('vardyger', [
         abstract: true
       })
 
-      // TODO:
       .state('app.welcome', {
         url: '/welcome',
         cache: false,
         views: {
           'menuContent': {
             templateUrl: 'templates/welcome-template.html'
-            // controller: 'WelcomeController'
           }
         }
       })
@@ -171,6 +169,39 @@ angular.module('vardyger', [
         post: {
           id: '4',
           title: 'Annotating JavaScript using JSDoc tags',
+          html: '<p>In a previous post, ...</p>',
+          markdown: 'In a previous post, ...'
+        }
+      },
+
+      {
+        metaTitle: 'Express, Handlebars and Ghost Themes',
+        metaDescription: 'In a previous post, ...',
+        post: {
+          id: '5',
+          title: 'Express, Handlebars and Ghost Themes',
+          html: '<p>In a previous post, ...</p>',
+          markdown: 'In a previous post, ...'
+        }
+      },
+
+      {
+        metaTitle: 'Swagger, Express, and Content Negotiation',
+        metaDescription: 'In a previous post, ...',
+        post: {
+          id: '6',
+          title: 'Swagger, Express, and Content Negotiation',
+          html: '<p>In a previous post, ...</p>',
+          markdown: 'In a previous post, ...'
+        }
+      },
+
+      {
+        metaTitle: 'The Vardyger publishing platform :)',
+        metaDescription: 'In a previous post, ...',
+        post: {
+          id: '7',
+          title: 'The Vardyger publishing platform :)',
           html: '<p>In a previous post, ...</p>',
           markdown: 'In a previous post, ...'
         }

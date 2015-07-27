@@ -40,8 +40,6 @@ angular.module('vardyger')
 
     $scope.$on('event:auth-loginConfirmed', function() {
       $log.info('LoginController - event:auth-loginConfirmed');
-      // $scope.username = null;
-      // $scope.password = null;
       $scope.loginModal.hide();
     });
 
@@ -56,7 +54,6 @@ angular.module('vardyger')
 
     $scope.$on('event:auth-logout-complete', function() {
       $log.info('LoginController - event:auth-logout-complete');
-      // $state.go('app.welcome', {}, {reload: true, inherit: false});
       $state.go('app.welcome');
     });
 

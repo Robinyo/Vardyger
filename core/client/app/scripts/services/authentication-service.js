@@ -79,7 +79,7 @@ angular.module('vardyger')
               delete $http.defaults.headers.common.Authorization;
               $rootScope.$broadcast('event:auth-logout-complete');
             });
-         }
+        }
 
       };
 
