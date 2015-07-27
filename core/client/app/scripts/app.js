@@ -47,7 +47,6 @@ angular.module('vardyger', [
     $stateProvider
       .state('app', {
         url: '/app',
-        // cache: false,
         templateUrl: 'templates/side-menu-template.html',
         controller: 'AppController',
         abstract: true
@@ -107,17 +106,6 @@ angular.module('vardyger', [
                 return PostsService.findPostById($stateParams.postId);
               }
             }
-          }
-        }
-      })
-
-      .state('app.logout', {
-        url: '/logout',
-        views: {
-          'menuContent': {
-            // templateUrl: 'templates/welcome-template.html',
-            templateUrl: 'templates/welcome-template.html',
-            controller: 'LogoutController'
           }
         }
       });

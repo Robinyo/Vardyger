@@ -22,13 +22,15 @@ angular.module('vardyger')
 
     $scope.message = '';
 
-    $scope.user = {
+    $scope.credentials = {
+      grant_type: 'password',
       username: null,
-      password: null
+      password: null,
+      client_id: 'ghost-admin'
     };
 
     $scope.login = function() {
-      AuthenticationService.login($scope.user);
+      AuthenticationService.login($scope.credentials);
     };
 
     $scope.$on('event:auth-loginRequired', function(e, rejection) {
@@ -37,12 +39,14 @@ angular.module('vardyger')
     });
 
     $scope.$on('event:auth-loginConfirmed', function() {
-      $scope.username = null;
-      $scope.password = null;
+      $log.info('LoginController - event:auth-loginConfirmed');
+      // $scope.username = null;
+      // $scope.password = null;
       $scope.loginModal.hide();
     });
 
     $scope.$on('event:auth-login-failed', function(e, status) {
+      $log.info('LoginController - event:auth-login-failed');
       var error = 'Login failed.';
       if (status === 401) {
         error = 'Invalid Username or Password.';
@@ -52,18 +56,8 @@ angular.module('vardyger')
 
     $scope.$on('event:auth-logout-complete', function() {
       $log.info('LoginController - event:auth-logout-complete');
-      $state.go('app.welcome', {}, {reload: true, inherit: false});
-    });
-
-  })
-
-  .controller('LogoutController', function($log, $scope, AuthenticationService) {
-
-    $log.info('LogoutController');
-
-    $scope.$on('$ionicView.enter', function() {
-      $log.info('LogoutController - $ionicView.enter');
-      AuthenticationService.logout();
+      // $state.go('app.welcome', {}, {reload: true, inherit: false});
+      $state.go('app.welcome');
     });
 
   });

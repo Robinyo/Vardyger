@@ -4,6 +4,11 @@
   "PREVIEW_TEMPLATE_TITLE": "Vorschau",
   "EDITOR_TEMPLATE_TITLE":  "Editor",
 
+  "WELCOME":                "Willkommen in der Admin UI :)",
+
+  "LOGIN_BUTTON":           "EINLOGGEN",
+  "FORGOTTEN_PASSWORD":     "Passwort vergessen?",
+
   "CONTENT":                "Inhalt",
   "NEW_POST":               "neuer Beitrag",
   "SETTINGS":               "Einstellungen",

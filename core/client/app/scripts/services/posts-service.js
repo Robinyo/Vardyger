@@ -17,8 +17,6 @@ angular.module('vardyger')
 
       $log.info('PostsService');
 
-      // https://docs.angularjs.org/api/ng/service/$sce
-
       var model = [
 
         {
@@ -118,23 +116,23 @@ angular.module('vardyger')
 
       ];
 
-      this.getModel = function () {
+      this.getModel = function() {
 
-        $log.info('getModel()');
+        $log.info('PostsService.getModel()');
 
         return model;
       };
 
       this.findPosts = function() {
 
-        // $log.info('findPosts()');
+        // $log.info('PostsService.findPosts()');
 
         return model;
       };
 
       this.findPostById = function(id) {
 
-        // $log.info('findPostById(): ' + id);
+        // $log.info('PostsService.findPostById(): ' + id);
 
         var deferred = $q.defer();
 
@@ -155,6 +153,7 @@ angular.module('vardyger')
 
 /*
 
+ // https://docs.angularjs.org/api/ng/service/$sce
 
  // $log.info('model.length: ' + model.length);
 

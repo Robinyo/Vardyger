@@ -16,16 +16,16 @@
 angular.module('vardyger')
   .controller('AppController', ['$log', '$scope', '$ionicModal', '$translate', 'AuthenticationService',
     function(
-      $log,         // inject the $log service
-      $scope,       // inject the $scope service
-      $ionicModal,  // inject the $ionicModal service
-      $translate,    // inject the $translate service
+      $log,                  // inject the $log service
+      $scope,                // inject the $scope service
+      $ionicModal,           // inject the $ionicModal service
+      $translate,            // inject the $translate service
       AuthenticationService  // inject the AuthenticationService service
     ) {
 
       $log.info('AppController');
 
-      $scope.loggedIn = false;
+      // AuthenticationService.logout();
 
       $scope.switchLanguage = function(key) {
         $log.info('switchLanguage() to ' + key);
@@ -42,13 +42,18 @@ angular.module('vardyger')
         $scope.loginModal = modal;
       });
 
+      $scope.isLoggedIn = function() {
+        // $log.info('AppController - isLoggedIn()');
+        return AuthenticationService.isLoggedIn();
+      };
+
       $scope.logout = function() {
-        $log.info('logout()');
+        // $log.info('AppController - logout()');
         AuthenticationService.logout();
-        $scope.loggedIn = false;
       };
 
       $scope.$on('$destroy', function() {
+        $log.info('AppController - $destroy');
         $scope.loginModal.remove();
       });
 

@@ -53,23 +53,4 @@ angular.module('vardyger')
 
  // $log.info('$scope.listItems: ' + $scope.listItems);
 
-angular.module('vardyger')
-  .controller('MainController',
-  function(
-    $log,         // inject the $log service
-    $scope,       // inject the $scope service
-    PostsService  // inject the PostsService
-  ) {
-
-    $log.info('MainController');
-
-    // Remember, values on $scope are called models and are also available in views.
-
-    PostsService.findPosts();
-    $scope.listItems = PostsService.getModel();
-
-    // $log.info('$scope.listItems: ', $scope.listItems);
-
-  });
-
 */
