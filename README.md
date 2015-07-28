@@ -6,9 +6,15 @@
 
     <pre>grunt serve (in the project's /core/client directory)</pre>
 
+![Admin UI Welcome EN screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-welcome-en.png)
+
+![Admin UI Welcome DE screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-welcome-de.png)
+
 ![Admin UI Content screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-content.png)
 
-![Admin UI Content screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-preview.png)
+![Admin UI Preview screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-preview.png)
+
+![Admin UI Editor screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-editor.png)
 
 ##The Vardyger Server
 

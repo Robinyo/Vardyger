@@ -25,7 +25,7 @@ angular.module('vardyger')
 
       $log.info('AppController');
 
-      AuthenticationService.logout();
+      // AuthenticationService.logout();
 
       $scope.switchLanguage = function(key) {
         $log.info('switchLanguage() to ' + key);
