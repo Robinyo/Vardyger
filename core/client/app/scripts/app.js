@@ -37,7 +37,8 @@ angular.module('vardyger', [
     // See: http://ionicframework.com/docs/api/directive/ionNavView/
 
     $ionicConfigProvider.views.maxCache(10);                     // the default is 10
-    $ionicConfigProvider.views.transition('platform');
+    // $ionicConfigProvider.views.transition('none');
+    $ionicConfigProvider.views.transition('platform');           // platform, ios, android, none
     $ionicConfigProvider.views.forwardCache(false);              // the default is false
     $ionicConfigProvider.backButton.icon('ion-ios-arrow-back');
     $ionicConfigProvider.backButton.text('');                    // default is 'Back'

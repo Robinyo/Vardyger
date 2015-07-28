@@ -36,7 +36,7 @@ angular.module('vardyger')
 
       $ionicModal.fromTemplateUrl('templates/login-template.html', {
         scope: $scope,
-        animation: 'slide-in-up',
+        animation: 'slide-in-up',  // fade-in, reverse, slide-in-up
         focusFirstInput: true
       }).then(function(modal) {
         $scope.loginModal = modal;
