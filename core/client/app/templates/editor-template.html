@@ -2,26 +2,26 @@
 
   <ion-subheader-bar class="bar bar-subheader">
     <div class="button-bar">
-      <a class="button button-positive" translate="MARKDOWN">
-        <!-- Using translateFilter is great, but using translateDirective is better.
-        {{ 'MARKDOWN' | translate }}
-        -->
-      </a>
-      <a class="button" translate="PREVIEW">
-        <!-- Using translateFilter is great, but using translateDirective is better.
-        {{ 'PREVIEW' | translate }}
-        -->
-      </a>
-    </div>
+    <a class="button button-positive" translate="MARKDOWN">
+      <!-- Using translateFilter is great, but using translateDirective is better.
+      {{ 'MARKDOWN' | translate }}
+      -->
+    </a>
+    <a class="button" translate="PREVIEW">
+      <!-- Using translateFilter is great, but using translateDirective is better.
+      {{ 'PREVIEW' | translate }}
+      -->
+    </a>
+  </div>
   </ion-subheader-bar>
 
-  <ion-content class="has-header has-subheader has-footer">
+  <ion-content class="has-subheader">
     <div class="wrapper">
       <textarea ng-model="item.post.markdown"></textarea>
     </div>
   </ion-content>
 
-  <ion-footer-bar class="bar bar-footer bar-dark">
+  <ion-footer-bar class="bar-dark">
     <button class="button button-positive pull-right" translate="UPDATE_POST">
     <!-- Using translateFilter is great, but using translateDirective is better.
     {{ 'UPDATE_POST' | translate }}
@@ -33,7 +33,9 @@
 
 <!--
 
-<ion-footer-bar
+  <ion-content class="has-header has-subheader has-footer">
+
+  <ion-footer-bar class="bar bar-footer bar-dark">
 
   <div class="bar bar-footer bar-dark">
     <button class="button button-positive pull-right" translate="UPDATE_POST">

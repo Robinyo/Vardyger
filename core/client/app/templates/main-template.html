@@ -1,17 +1,14 @@
 <ion-view title="{{ 'MAIN_TEMPLATE_TITLE' | translate }}">
 
-  <div class="bar bar-subheader bar-stable">
+  <ion-subheader-bar class="bar bar-subheader bar-stable">
     <div class="title title-left padding-left">
       <small translate="ALL_POSTS">
-        <!-- Using translateFilter is great, but using translateDirective is better.
-        {{ 'ALL_POSTS' | translate }}
-        -->
       </small>
     </div>
     <button class="button icon-right ion-ios-compose button-clear button-balanced"></button>
-  </div>
+  </ion-subheader-bar>
 
-  <ion-content class="has-header has-subheader">
+  <ion-content class="has-subheader">
 
     <div class="vertical-center-container" ng-show="! listItems.length">
       <div class="vertical-center text-center" translate="NO_POSTS">
@@ -22,7 +19,6 @@
     </div>
 
     <ion-list>
-
       <ion-item
         ng-repeat="listItem in listItems"
         ui-sref='app.preview({postId: listItem.post.id})'>
@@ -46,7 +42,6 @@
         </div>
 
       </ion-item>
-
     </ion-list>
 
   </ion-content>
@@ -55,6 +50,25 @@
 
 <!--
 
+  <ion-subheader-bar class="bar-subheader bar-stable">
+    <div class="title title-left padding-left">
+      <small translate="ALL_POSTS">
+      </small>
+    </div>
+    <button class="button icon-right ion-ios-compose button-clear button-balanced"></button>
+  </ion-subheader-bar>
+
+  <ion-content class="has-subheader">
+
+  <div class="bar bar-subheader bar-stable">
+    <div class="title title-left padding-left">
+      <small translate="ALL_POSTS">
+      </small>
+    </div>
+    <button class="button icon-right ion-ios-compose button-clear button-balanced"></button>
+  </div>
+
+  <ion-content class="has-subheader">
   <ion-content class="has-header has-subheader">
 
   <ion-nav-buttons side="primary">
