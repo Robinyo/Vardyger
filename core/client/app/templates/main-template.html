@@ -1,12 +1,21 @@
 <ion-view title="{{ 'MAIN_TEMPLATE_TITLE' | translate }}">
 
-  <ion-subheader-bar class="bar bar-subheader bar-stable">
+  <!-- There is no <ion-subheader-bar> directive -->
+  <div class="bar bar-subheader bar-stable">
     <div class="title title-left padding-left">
-      <small translate="ALL_POSTS">
-      </small>
+      <small translate="ALL_POSTS"></small>
     </div>
     <button class="button icon-right ion-ios-compose button-clear button-balanced"></button>
-  </ion-subheader-bar>
+  </div>
+
+  <!--
+  <ion-header-bar class="bar bar-subheader bar-stable">
+    <div class="title title-left padding-left">
+      <small translate="ALL_POSTS"></small>
+    </div>
+    <button class="button icon-right ion-ios-compose button-clear button-balanced"></button>
+  </ion-header-bar>
+  -->
 
   <ion-content class="has-subheader">
 
@@ -50,41 +59,5 @@
 
 <!--
 
-  <ion-subheader-bar class="bar-subheader bar-stable">
-    <div class="title title-left padding-left">
-      <small translate="ALL_POSTS">
-      </small>
-    </div>
-    <button class="button icon-right ion-ios-compose button-clear button-balanced"></button>
-  </ion-subheader-bar>
-
-  <ion-content class="has-subheader">
-
-  <div class="bar bar-subheader bar-stable">
-    <div class="title title-left padding-left">
-      <small translate="ALL_POSTS">
-      </small>
-    </div>
-    <button class="button icon-right ion-ios-compose button-clear button-balanced"></button>
-  </div>
-
-  <ion-content class="has-subheader">
-  <ion-content class="has-header has-subheader">
-
-  <ion-nav-buttons side="primary">
-    <button class="button button-icon button-clear icon ion-navicon" menu-toggle="primary"></button>
-  </ion-nav-buttons>
-
-  <ion-content class="has-header has-subheader">
-
-    <div ng-if="! listItems.length" class="item item-energized v-item" translate="NO_POSTS"></div>
-
-  <a class="button icon-right ion-ios-compose button-clear button-balanced" href="#/app/editor"></a>
-
-  <ion-nav-bar class="bar-dark">
-    <ion-nav-buttons side="left">
-      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
-    </ion-nav-buttons>
-  </ion-nav-bar>
 
 -->
