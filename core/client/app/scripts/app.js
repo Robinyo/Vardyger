@@ -13,6 +13,8 @@ angular.module('vardyger', [
    // 'angular-http-auth',  // in bower.json but http-auth-interceptor in http-auth-interceptor.js
   'http-auth-interceptor',  // inject the angular-http-auth module
   'LocalStorageModule',     // inject the angular-local-storage module
+  'ngAnimate',              // inject the ngAnimate module
+  'ngFx',                   // inject the ngFx module
   'ngMockE2E',              // inject the angular-mocks module
   'pascalprecht.translate'  // inject the angular-translate module
 ])

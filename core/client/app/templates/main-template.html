@@ -10,18 +10,17 @@
 
   <ion-content class="has-subheader">
 
+    <!-- See: main-controller.js $timeout
     <div class="vertical-center-container" ng-show="! listItems.length">
-      <div class="vertical-center text-center" translate="NO_POSTS">
-        <!-- Using translateFilter is great, but using translateDirective is better.
-        {{ 'NO_POSTS' | translate }}
-        -->
-      </div>
+      <div class="vertical-center text-center" translate="NO_POSTS"></div>
     </div>
+    -->
 
     <ion-list>
       <ion-item
         ng-repeat="listItem in listItems"
-        ui-sref='app.preview({postId: listItem.post.id})'>
+        ui-sref='app.preview({postId: listItem.post.id})'
+        class="fx-bounce-right fx-easing-bounce fx-speed-800">
           {{listItem.post.title}}
 
         <a class="item-icon-right">
@@ -48,6 +47,11 @@
 
 </ion-view>
 
+<!--
+
+class="fx-bounce-right fx-easing-bounce fx-speed-800">
+
+-->
 
 <!-- The following markup does not render correctly as there are some left over
      <ion-header-bar> styles. -->
@@ -59,3 +63,6 @@
   <button class="button icon-right ion-ios-compose button-clear button-balanced"></button>
 </ion-header-bar>
 -->
+
+<!-- Using translateFilter is great, but using translateDirective is better.
+     {{ 'NO_POSTS' | translate }} -->

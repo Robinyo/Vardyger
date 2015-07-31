@@ -14,7 +14,9 @@ angular.module('vardyger')
       $log,         // inject the $log service
       $scope,       // inject the $scope service
       $http,        // inject the $http service
-      posts         // inject the resolved posts data
+      posts,        // inject the resolved posts data
+      $timeout,
+      $ionicScrollDelegate
     ) {
 
       $log.info('MainController');
@@ -38,7 +40,20 @@ angular.module('vardyger')
       $http.get('https://posts')
         .success(function (data, status, headers, config) {
           $log.info('MainController - $http.get()');
-          $scope.listItems = data;
+
+          // $scope.listItems = data;
+
+          // See: http://forum.ionicframework.com/t/ngfx-animation-in-ionic/15176
+
+          for (var i = 0; i < data.length; i++) {
+            (function() {
+              var j = i;
+              $timeout(function(){
+                $scope.listItems[j] = data[j];
+                $ionicScrollDelegate.resize();
+              }, j * 300);
+            })();
+          }
         })
         .error(function (data, status, headers, config) {
           $log.error('An error occurred: ' + status);
@@ -46,11 +61,3 @@ angular.module('vardyger')
 
     });
 
-
-/*
-
- // $log.info('$scope.listItems.length: ' + $scope.listItems.length);
-
- // $log.info('$scope.listItems: ' + $scope.listItems);
-
-*/
