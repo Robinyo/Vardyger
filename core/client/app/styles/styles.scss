@@ -67,6 +67,19 @@ h6, .h6 { font-size: ceil($font-size-base * 0.85); } // ~12px
   padding-top: 6px;
   padding-left: 14px;
   padding-right: 14px;
+
+  // height: 100%;
+  // width: 100%;
+}
+
+.markdown-editor {
+  // height: 100%;
+  width: 100%;
+}
+
+textarea {
+  // height: auto;
+  resize: none;
 }
 
 // Misc
