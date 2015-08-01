@@ -1,19 +1,11 @@
 <ion-view title="{{ 'EDITOR_TEMPLATE_TITLE' | translate }}">
 
-  <!-- There is no <ion-subheader-bar> directive
-  <div class="bar bar-subheader">
-    <div class="button-bar">
-      <a class="button button-positive" translate="MARKDOWN"></a>
-      <a class="button" translate="PREVIEW"></a>
-    </div>
-  </div>
-  -->
-
   <!-- There is no <ion-subheader-bar> directive -->
   <div class="bar bar-subheader">
     <div class="post-title">
       <h1>
-        <input type="text" class="form-control markdown-editor" ng-model="item.post.title" placeholder="Your Post Title" required />
+        <input type="text" class="form-control markdown-editor" ng-model="item.post.title"
+               placeholder="Your Post Title" required />
       </h1>
     </div>
   </div>
@@ -21,15 +13,24 @@
   <!-- There is no <ion-subsubheader-bar> directive -->
   <div class="bar bar-subsubheader">
     <div class="button-bar padding-left padding-right">
-      <a class="button button-positive" translate="MARKDOWN"></a>
-      <a class="button" translate="PREVIEW"></a>
+      <a class="button" ng-class="{'active button-positive' : preview === false}"
+         ng-click="previewPost(false)" translate="MARKDOWN"></a>
+      <a class="button" ng-class="{'active button-positive' : preview === true}"
+         ng-click="previewPost(true)" translate="PREVIEW"></a>
     </div>
   </div>
 
   <ion-content class="has-subheader has-subsubheader">
-    <div class="post-content">
-      <textarea class="form-control markdown-editor" rows="24" ng-model="item.post.markdown" placeholder="..." required></textarea>
+
+    <div class="post-content" ng-show="! isPreview()">
+      <textarea class="form-control markdown-editor" rows="24" ng-model="item.post.markdown"
+                placeholder="..." required></textarea>
     </div>
+
+    <div class="post-content" ng-show="isPreview()">
+      <div ng-bind-html="item.post.html"></div>
+    </div>
+
   </ion-content>
 
   <ion-footer-bar class="bar-dark">
@@ -46,6 +47,15 @@
 
 
 
+-->
+
+<!-- There is no <ion-subheader-bar> directive
+<div class="bar bar-subheader">
+  <div class="button-bar">
+    <a class="button button-positive" translate="MARKDOWN"></a>
+    <a class="button" translate="PREVIEW"></a>
+  </div>
+</div>
 -->
 
 <!-- Using translateFilter is great, but using translateDirective is better.

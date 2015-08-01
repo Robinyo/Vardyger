@@ -19,8 +19,15 @@ angular.module('vardyger')
     $log.info('EditorController');
 
     $scope.item = post;
+    $scope.preview = false;
 
-    // $log.info('$scope.item: ', $scope.item);
+    $scope.previewPost = function(flag) {
+      $scope.preview = flag;
+    };
+
+    $scope.isPreview = function() {
+      return $scope.preview;
+    };
 
   });
 

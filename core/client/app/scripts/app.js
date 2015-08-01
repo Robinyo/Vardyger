@@ -221,8 +221,8 @@ angular.module('vardyger', [
     });
 
     $httpBackend.whenPOST('https://login').respond(function(method, url, data) {
-      var authorizationToken = 'NjMwNjM4OTQtMjE0Mi00ZWYzLWEzMDQtYWYyMjkyMzNiOGIy';
-      return [200 , { authorizationToken: authorizationToken } ];
+      var authToken = 'NjMwNjM4OTQtMjE0Mi00ZWYzLWEzMDQtYWYyMjkyMzNiOGIy';
+      return [200 , { authorizationToken: authToken } ];
     });
 
     $httpBackend.whenPOST('https://logout').respond(function(method, url, data) {
