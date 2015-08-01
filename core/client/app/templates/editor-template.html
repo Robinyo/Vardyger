@@ -2,12 +2,18 @@
 
   <!-- There is no <ion-subheader-bar> directive -->
   <div class="bar bar-subheader">
-    <div class="post-title">
+
+    <div class="post-title" ng-show="! isPreview()">
       <h1>
         <input type="text" class="form-control markdown-editor" ng-model="item.post.title"
                placeholder="Your Post Title" required />
       </h1>
     </div>
+
+    <div class="post-title" ng-show="isPreview()">
+      <h5>{{item.post.title}}</h5>
+    </div>
+
   </div>
 
   <!-- There is no <ion-subsubheader-bar> directive -->

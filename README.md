@@ -14,7 +14,9 @@
 
 ![Admin UI Preview screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-preview.png)
 
-![Admin UI Editor screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-editor.png)
+![Admin UI Editor screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-editor-markdown.png)
+
+![Admin UI Editor screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-editor-preview.png)
 
 ##The Vardyger Server
 
