@@ -63,23 +63,38 @@ h6, .h6 { font-size: ceil($font-size-base * 0.85); } // ~12px
   vertical-align: text-top;
 }
 
-.wrapper {
+.post-title {
+  padding-top: 6px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.post-content {
   padding-top: 6px;
   padding-left: 14px;
   padding-right: 14px;
-
-  // height: 100%;
-  // width: 100%;
-}
-
-.markdown-editor {
-  // height: 100%;
-  width: 100%;
 }
 
 textarea {
   // height: auto;
   resize: none;
+}
+
+.markdown-editor {
+  width: 100%;
+}
+
+// _bar.scss
+.bar-subsubheader {
+  top: $bar-height + $bar-height;
+  display: block;
+
+  height: $bar-subheader-height;
+}
+
+// _scaffolding.scss
+.has-subsubheader {
+  top: $bar-height + $bar-subheader-height + $bar-subheader-height;
 }
 
 // Misc

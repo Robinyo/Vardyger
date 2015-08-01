@@ -1,25 +1,35 @@
 <ion-view title="{{ 'EDITOR_TEMPLATE_TITLE' | translate }}">
 
-  <!-- There is no <ion-subheader-bar> directive -->
+  <!-- There is no <ion-subheader-bar> directive
   <div class="bar bar-subheader">
     <div class="button-bar">
-      <a class="button button-positive" translate="MARKDOWN">
-        <!-- Using translateFilter is great, but using translateDirective is better.
-        {{ 'MARKDOWN' | translate }}
-        -->
-      </a>
-      <a class="button" translate="PREVIEW">
-        <!-- Using translateFilter is great, but using translateDirective is better.
-        {{ 'PREVIEW' | translate }}
-        -->
-      </a>
+      <a class="button button-positive" translate="MARKDOWN"></a>
+      <a class="button" translate="PREVIEW"></a>
+    </div>
+  </div>
+  -->
+
+  <!-- There is no <ion-subheader-bar> directive -->
+  <div class="bar bar-subheader">
+    <div class="post-title">
+      <h1>
+        <input type="text" class="form-control markdown-editor" ng-model="item.post.title" placeholder="Your Post Title" required />
+      </h1>
     </div>
   </div>
 
-  <ion-content class="has-subheader">
-      <div class="wrapper">
-        <textarea rows="28" class="markdown-editor" ng-model="item.post.markdown"></textarea>
-      </div>
+  <!-- There is no <ion-subsubheader-bar> directive -->
+  <div class="bar bar-subsubheader">
+    <div class="button-bar padding-left padding-right">
+      <a class="button button-positive" translate="MARKDOWN"></a>
+      <a class="button" translate="PREVIEW"></a>
+    </div>
+  </div>
+
+  <ion-content class="has-subheader has-subsubheader">
+    <div class="post-content">
+      <textarea class="form-control markdown-editor" rows="24" ng-model="item.post.markdown" placeholder="..." required></textarea>
+    </div>
   </ion-content>
 
   <ion-footer-bar class="bar-dark">
@@ -34,14 +44,14 @@
 
 <!--
 
-         <textarea rows="10" ng-model="item.post.markdown"></textarea>
 
-    <form>
-      <div class="wrapper">
-        <textarea ng-model="item.post.markdown" auto-grow></textarea>
-      </div>
-    </form>
 
 -->
 
+<!-- Using translateFilter is great, but using translateDirective is better.
+  {{ 'PREVIEW' | translate }}
+-->
 
+<!-- Using translateFilter is great, but using translateDirective is better.
+  {{ 'MARKDOWN' | translate }}
+-->
