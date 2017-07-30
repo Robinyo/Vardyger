@@ -1,6 +1,6 @@
 # The Vardyger publishing platform :)
 
-##The Admin UI
+## The Admin UI
 
 1. View the Admin UI:
 
@@ -18,7 +18,7 @@
 
 ![Admin UI Editor screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-admin-ui-editor-preview.png)
 
-##The Vardyger Server
+## The Vardyger Server
 
 A sample post rendered via Handlebars with Ghost theme support:
 
@@ -28,22 +28,22 @@ For example:
 
     curl http://localhost:10010/v1/posts/{id} --header "Accept: text/html"
 
-##The RESTful API
+## The RESTful API
 
 ![Swagger UI screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/vardyger-api.png)
 
 Modelled using Swagger 2.0 and the Swagger Editor, built using Express.js 4.0, Swagger Tools, Mongoose and MongoDB.
 
-##Developer Install
+## Developer Install
 
-###Install MongoDB
+### Install MongoDB
 
 1. Install MongoDB
 
     <pre>brew update
     brew install mongodb</pre>
 
-###Install Node.js
+### Install Node.js
 
 1. Install Node.js
 
@@ -79,6 +79,6 @@ Modelled using Swagger 2.0 and the Swagger Editor, built using Express.js 4.0, S
 
 ![Swagger Editor screenshot](https://github.com/Robinyo/Vardyger/blob/master/content/assets/swagger-editor.png)
 
-####Copyright & License
+#### Copyright & License
 
-Copyright (c) 2015 The Vardyger Foundation - Released under the MIT license.
+Copyright (c) 2015-2017 The Vardyger Foundation - Released under the MIT license.
